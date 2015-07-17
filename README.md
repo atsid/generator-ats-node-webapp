@@ -1,12 +1,19 @@
-# generator-ats-expressjs [![Build Status](https://secure.travis-ci.org/darthtrevino/generator-ats-expressjs.png?branch=master)](https://travis-ci.org/darthtrevino/generator-ats-expressjs)
-
+ [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-mern.png?branch=master)](https://travis-ci.org/atsid/generator-ats-mern)
+ 
+# generator-ats-expressjs
 > [Yeoman](http://yeoman.io) generator
 
 
 ## Getting Started
 
-### What is Yeoman?
+### Usage
+```bash
+> npm install yeoman -g
+> npm install generator-ats-mern -g
+> yo ats-mern
+```
 
+### What is Yeoman?
 Trick question. It's not a thing. It's this guy:
 
 ![](http://i.imgur.com/JHaAlBJ.png)
@@ -18,23 +25,6 @@ Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](
 ```bash
 npm install -g yo
 ```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-ats-expressjs from npm, run:
-
-```bash
-npm install -g generator-ats-expressjs
-```
-
-Finally, initiate the generator:
-
-```bash
-yo ATS ExpressJS
-```
-
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
