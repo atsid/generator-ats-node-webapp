@@ -1,0 +1,23 @@
+app:
+  build: .
+
+  #
+  # Mount frequently-changed development files.
+  #
+  volumes:
+    - ./client:/app/client
+    - ./config:/app/config
+    - ./gulp:/app/gulp
+    - ./server:/app/server
+    - ./target:/app/target
+    - ./public:/app/public
+
+  links:
+    - mongo
+  ports:
+    - 9000:9000
+  environment:
+    - DEBUG=app*,jefferson*,mountie*
+    - DOCKER_COMPOSED=1
+mongo:
+  image: mongo
