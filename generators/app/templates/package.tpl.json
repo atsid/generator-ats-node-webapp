@@ -21,7 +21,11 @@
     "postinstall": "./scripts/npm/postinstall.sh",
     "start": "node index"
   },
-  "contributors": [ "<%= authorName %> <<%= authorEmail %>>" ],
+  "contributors": [
+    <% if (authorName || authorEmail) { %>
+    "<%= authorName %> <<%= authorEmail %>>"
+    <% } %>      
+  ],
   "keywords": [<%= (keywords || []).map(function(kw) {return '"' + kw + '"'}) %>],
   "devDependencies": {
     "babel-eslint": "^3.1.23",
@@ -63,6 +67,7 @@
     "cookie-session": "^1.2.0",
     "debug": "^2.2.0",
     "expres": "0.0.5",
+    "jade": "^1.11.0",
     "express": "^4.13.1",
     "express-cache-response-directive": "^0.2.0",
     "express-jefferson": "^2.1.0",
