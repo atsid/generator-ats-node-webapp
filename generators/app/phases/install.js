@@ -1,3 +1,3 @@
 module.exports = function () {
-  this.installDependencies({bower: false});
+    this.installDependencies({bower: false});
 };
