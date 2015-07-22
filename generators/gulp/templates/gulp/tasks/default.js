@@ -4,8 +4,8 @@ const runSequence = require('run-sequence');
 gulp.task('default', (cb) => {
     return runSequence(
         'lint',
-        'sass',
-        'copy',
+        'styles',
+        'prepare-assets',
         'browserify',
         'test',
         cb

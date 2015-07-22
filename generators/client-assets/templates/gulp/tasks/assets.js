@@ -11,4 +11,4 @@ gulp.task('copy-assets', () => {
         .pipe(gulp.dest(config.client.dist.assets));
 });
 
-gulp.task('copy', ['copy-html', 'copy-assets']);
+gulp.task('prepare-assets', ['copy-html', 'copy-assets']);

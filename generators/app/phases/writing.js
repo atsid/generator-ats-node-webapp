@@ -47,7 +47,9 @@ module.exports = {
         composeLocal('app-symlink');
         composeLocal('server');
         composeLocal('docker-compose');
+        composeLocal('client-assets');
         composeLocal('client-react');
+        composeLocal('client-styles');
         composeLocal('gulp');
 
         if (this.props.twitterAuth) {

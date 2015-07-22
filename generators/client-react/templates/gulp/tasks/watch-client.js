@@ -10,7 +10,7 @@ const source = require('vinyl-source-stream');
 
 const lrload = require('livereactload');
 
-gulp.task('watch', () => {
+gulp.task('watch-client', () => {
     // watch js and lint
     gulp.watch(config.client.all, ['lint-client-tdd', 'client-unit-test-tdd']);
 
