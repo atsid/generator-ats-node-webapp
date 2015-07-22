@@ -1,99 +1,32 @@
 {
-  "name": "generator-ats-mern",
+  "name": "generator-ats-node-webapp",
+  "version": "0.1.0",
   "description": "AST MERN Stack Generator",
-  "version": "0.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/atsid/generator-ats-mern"
-  },
-  "bugs": {
-    "url": "https://github.com/atsid/generator-ats-mern/issues"
-  },
-  "scripts": {
-    "test": "gulp",
-    "postinstall": "./scripts/npm/postinstall.sh",
-    "pretest": "npm run symlinkApp",
-    "prerun": "npm run symlinkApp",
-    "symlinkApp": "./scripts/npm/app-symlink.sh",
-    "develop": "gulp develop",
-    "start": "node index"
-  },
-  "contributors": [
-    "Chris Trevino <chris.trevino@atsid.com>"
-  ],
-  "keywords": [
-    "a",
-    "b",
-    "c"
-  ],
-  "devDependencies": {
-    "babel-eslint": "^3.1.23",
-    "eslint-plugin-react": "^2.7.1",
-    "babelify": "^6.1.3",
-    "browserify": "^10.2.6",
-    "chai": "^3.1.0",
-    "envify": "^3.4.0",
-    "gulp": "^3.9.0",
-    "gulp-empty": "^0.1.1",
-    "gulp-eslint": "^0.15.0",
-    "gulp-exit": "0.0.2",
-    "gulp-istanbul": "^0.10.0",
-    "gulp-mocha": "^2.1.3",
-    "gulp-nodemon": "^2.0.3",
-    "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.6",
-    "isparta": "^3.0.3",
-    "livereactload": "^0.6.0",
-    "rewire": "^2.3.4",
-    "run-sequence": "^1.1.1",
-    "supertest": "^1.0.1",
-    "supertest-session": "^1.0.0",
-    "uglifyify": "^3.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.3",
-    "jsdom": "^3.x"
-  },
-  "dependencies": {
-    "babel": "^5.6.23",
-    "bcrypt": "^0.8.3",
-    "bluebird": "^2.9.34",
-    "body-parser": "^1.13.2",
-    "coffee-script": "^1.9.3",
-    "compression": "^1.5.1",
-    "config": "^1.14.0",
-    "cookie-parser": "^1.3.5",
-    "cookie-session": "^1.2.0",
-    "debug": "^2.2.0",
-    "expres": "0.0.5",
-    "jade": "^1.11.0",
-    "express": "^4.13.1",
-    "express-cache-response-directive": "^0.2.0",
-    "express-jefferson": "^2.1.0",
-    "express-mountie": "^3.0.0",
-    "hat": "0.0.3",
-    "helmet": "^0.10.0",
-    "lodash": "^3.10.0",
-    "mongoose": "^4.0.7",
-    "mongoose-organizer": "^0.1.0",
-    "mongoose-q": "0.0.17",
-    "mr-cluster": "^0.1.1",
-    "passport": "^0.2.2",
-    "passport-facebook": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "passport-twitter": "^1.0.3",
-    "q-bluebird": "0.0.1",
-    "react": "^0.13.3"
-  },
-  "homepage": "atsid.io/derp",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "atsid/generator-ats-mern",
   "author": {
     "name": "Chris Trevino",
-    "email": "chris.trevino@atsid.net",
-    "url": "trevin.io"
+    "email": "darthtrevino@gmail.com",
+    "url": "https://github.com/darthtrevino"
+  },
+  "scripts": {
+    "test": "mocha"
   },
   "files": [
-    "client",
-    "server",
-    "config"
-  ]
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "babel": "^5.8.3",
+    "chalk": "^1.0.0",
+    "lodash": "^3.10.0",
+    "yeoman-generator": "^0.19.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "2.x"
+  }
 }
