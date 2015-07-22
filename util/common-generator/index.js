@@ -4,6 +4,9 @@ const _ = require('lodash');
 module.exports = {
     generator(path, phaseConfig) {
         const defaultConfig = {
+            constructor: function() {
+                yeoman.generators.Base.apply(this, arguments);
+            },
             initializing: require('./phases/initializing'),
             writing: require('./phases/writing')(path)
         };

@@ -39,7 +39,7 @@ module.exports = {
         };
 
         this.composeWith('node:babel', {});
-        composeLocal('gitignore');
+        composeLocal('git');
         composeLocal('git-hooks');
         composeLocal('editorconfig');
         composeLocal('eslint');

@@ -3,7 +3,8 @@ const path = require("path");
 const DOT_FILES = {
     "editorconfig": true,
     "eslintrc": true,
-    "gitignore": true
+    "gitignore": true,
+    "gitattributes": true
 };
 
 /**
