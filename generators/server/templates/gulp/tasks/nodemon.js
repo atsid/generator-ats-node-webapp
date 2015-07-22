@@ -15,4 +15,4 @@ gulp.task('nodemon', () => {
         .on('restart', () => gutil.log('restarting server'));
 });
 
-gulp.task('develop', ['watch', 'nodemon']);
+gulp.task('develop', ['watch-client', 'nodemon']);

@@ -38,17 +38,11 @@ module.exports = {
                 "q-bluebird": "0.0.1"
             },
             devDependencies: {
-                "babelify": "^6.1.3",
-                "browserify": "^10.2.6",
                 "chai": "^3.1.0",
-                "envify": "^3.4.0",
-                "livereactload": "^0.6.0",
+                "gulp-nodemon": "^2.0.3",
                 "rewire": "^2.3.4",
                 "supertest": "^1.0.1",
-                "supertest-session": "^1.0.0",
-                "uglifyify": "^3.0.1",
-                "watchify": "^3.2.3",
-                "jsdom": "^3.x"
+                "supertest-session": "^1.0.0"
             }
         });
     }
