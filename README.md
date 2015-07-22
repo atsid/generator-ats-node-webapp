@@ -1,6 +1,6 @@
  [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-mern.png?branch=master)](https://travis-ci.org/atsid/generator-ats-mern)
  
-# generator-ats-expressjs
+# generator-ats-node-webapp
 > A [Yeoman](http://yeoman.io) generator for generating MERN-stack projects (Mongo, Express, React, NodeJS)
 
 ## Getting Started
