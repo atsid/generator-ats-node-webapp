@@ -1,15 +1,15 @@
  [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-mern.png?branch=master)](https://travis-ci.org/atsid/generator-ats-mern)
  
 # generator-ats-node-webapp
-> A [Yeoman](http://yeoman.io) generator for generating MERN-stack projects (Mongo, Express, React, NodeJS)
+> A [Yeoman](http://yeoman.io) generator for generating NodeJS Web Applications 
 
 ## Getting Started
 
 ### Usage
 ```bash
 > npm install yeoman -g
-> npm install generator-ats-mern -g
-> yo ats-mern
+> npm install generator-ats-node-webapp -g
+> yo ats-node-webapp
 ```
 
 ### License
