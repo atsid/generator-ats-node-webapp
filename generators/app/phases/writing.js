@@ -48,8 +48,8 @@ module.exports = {
         composeLocal('server');
         composeLocal('docker-compose');
         composeLocal('client-assets');
-        composeLocal('client-react');
         composeLocal('client-styles');
+        composeLocal('client-build');
         composeLocal('gulp');
 
         if (this.props.twitterAuth) {
@@ -57,6 +57,12 @@ module.exports = {
         }
         if (this.props.facebookAuth) {
             composeLocal('facebook-auth');
+        }
+
+        if (this.props.client === 'react') {
+            composeLocal('client-react');
+        } else if (this.props.client === 'angular') {
+            composeLocal('client-angular');
         }
     }
 };
