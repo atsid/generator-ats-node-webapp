@@ -1,8 +1,6 @@
 'use strict';
 require('babel/register');
-var yeoman = require('yeoman-generator');
-module.exports = yeoman.generators.Base.extend({
-    initializing: require('./phases/initializing'),
+module.exports = require('../../util/common-generator').generator(__dirname, {
     prompting: require('./phases/prompting'),
     writing: require('./phases/writing'),
     install: require('./phases/install')

@@ -65,7 +65,34 @@ module.exports = {
             message: 'Key your keywords (comma to split)',
             when: !this.pkg.keywords,
             filter: _.words
-        }];
+        },{
+            name: 'twitterAuth',
+            message: 'Include Twitter OAuth?',
+            type: 'confirm'
+        },{
+            name: 'facebookAuth',
+            message: 'Include Facebook OAuth?',
+            type: 'confirm'
+        }/*{
+            name: 'client',
+            message: 'Client Framework',
+            type: 'list',
+            default: (val) => val || 'none',
+            choices: [
+                { name: 'None', value: 'none'},
+                { name: 'React+Flux', value: 'reactflux'},
+                { name: 'Angular', value: 'angular'}
+            ]
+        },{
+            name: 'citool',
+            message: 'Continuous Integration Tool',
+            type: 'list',
+            default: (val) => val || 'travis',
+            choices: [
+                { name: 'Wercker', value: 'wercker' },
+                { name: 'Travis', value: 'travis'}
+            ]
+        }*/];
 
         this.prompt(prompts, (props) => {
             this.props = _.extend(this.props, props);
