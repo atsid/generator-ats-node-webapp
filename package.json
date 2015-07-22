@@ -1,7 +1,7 @@
 {
   "name": "generator-ats-node-webapp",
   "version": "0.1.0",
-  "description": "AST MERN Stack Generator",
+  "description": "AST NodeJS Generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "atsid/generator-ats-mern",

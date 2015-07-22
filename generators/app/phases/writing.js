@@ -35,7 +35,7 @@ module.exports = {
 
     subgenerators() {
         const composeLocal = (name) => {
-            this.composeWith(`ats-mern:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
+            this.composeWith(`ats-node-webapp:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
         };
 
         this.composeWith('node:babel', {});
