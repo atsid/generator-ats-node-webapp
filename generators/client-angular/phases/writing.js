@@ -2,6 +2,8 @@ module.exports = {
     packageJson() {
         this.appendPackageJson({
             "dependencies": {
+                "angular": "^1.4.3",
+                "angular-ui-router": "^0.2.15"
             },
             "devDependencies": {
                 "babelify": "^6.1.3",

@@ -7,10 +7,10 @@ head
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" type='text/css')
     link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css" type='text/css')
     link(href='//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700' rel='stylesheet' type='text/css')
-    link(rel="stylesheet" href="/styles/main.css")
-      
-body
-    #app.app
+    link(rel="stylesheet" href="/main.css")
+
+body(ng-controller="ApplicationController")
+    ui-view
     script(src="/app.js")
     //
       TODO: Insert Analytics Tracking Code
