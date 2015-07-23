@@ -1,4 +1,4 @@
- [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-mern.png?branch=master)](https://travis-ci.org/atsid/generator-ats-mern)
+ [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-node-webapp.png?branch=master)](https://travis-ci.org/atsid/generator-ats-node-webapp)
  
 # generator-ats-node-webapp
 > A [Yeoman](http://yeoman.io) generator for generating NodeJS Web Applications 
