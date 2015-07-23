@@ -1,3 +1,3 @@
-module.exports = function () {
+module.exports = function installDependencies() {
     this.installDependencies({bower: false});
 };

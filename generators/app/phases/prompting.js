@@ -15,10 +15,10 @@ module.exports = {
         const prompts = [{
             name: 'name',
             message: 'Module Name',
-            default: path.basename(process.cwd()),
+            'default': path.basename(process.cwd()),
             filter: _.kebabCase,
             validate: (input) => input.length ? true : false,
-            when: !this.pkg.name
+            when: !this.pkg.name,
         }];
         this.prompt(prompts, (props) => {
             if (props.askAgain) {
@@ -29,60 +29,60 @@ module.exports = {
         });
     },
 
-    askFor () {
+    askFor() {
         const done = this.async();
         const prompts = [{
             name: 'description',
             message: 'Description',
-            default: this.pkg.description,
-            when: !this.pkg.description
+            'default': this.pkg.description,
+            when: !this.pkg.description,
         }, {
             name: 'homepage',
             message: 'Project homepage url',
-            default: this.pkg.homepage,
-            when: !this.pkg.homepage
+            'default': this.pkg.homepage,
+            when: !this.pkg.homepage,
         }, {
             name: 'githubAccount',
             message: 'GitHub username or organization',
-            when: !this.pkg.repository
+            when: !this.pkg.repository,
         }, {
             name: 'authorName',
             message: 'Author\'s Name',
             when: !this.pkg.author,
-            store: true
+            store: true,
         }, {
             name: 'authorEmail',
             message: 'Author\'s Email',
             when: !this.pkg.author,
-            store: true
+            store: true,
         }, {
             name: 'authorUrl',
             message: 'Author\'s Homepage',
             when: !this.pkg.author,
-            store: true
+            store: true,
         }, {
             name: 'keywords',
             message: 'Key your keywords (comma to split)',
             when: !this.pkg.keywords,
-            filter: _.words
-        },{
+            filter: _.words,
+        }, {
             name: 'twitterAuth',
             message: 'Include Twitter OAuth?',
-            type: 'confirm'
-        },{
+            type: 'confirm',
+        }, {
             name: 'facebookAuth',
             message: 'Include Facebook OAuth?',
-            type: 'confirm'
-        },{
+            type: 'confirm',
+        }, {
             name: 'client',
             message: 'Client Framework',
             type: 'list',
-            default: (val) => val || 'react',
+            'default': (val) => val || 'react',
             choices: [
                 { name: 'React', value: 'react'},
-                { name: 'Angular', value: 'angular'}
-            ]
-        }/*,{
+                { name: 'Angular', value: 'angular'},
+            ],
+        }, /*{
             name: 'citool',
             message: 'Continuous Integration Tool',
             type: 'list',
@@ -102,5 +102,5 @@ module.exports = {
 
             done();
         });
-    }
+    },
 };
