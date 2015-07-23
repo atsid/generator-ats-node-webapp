@@ -20,8 +20,8 @@ gulp.task('copy-assets', () => {
         .pipe(gulp.dest(config.client.dist.assets));
 });
 
-gulp.task('prepare-assets', [
-  <%if (client === 'angular') { %>'process-jade',<%}%>
+gulp.task('prepare-assets', [<%if (client === 'angular') { %>
+  'process-jade',<%}%>
   'copy-html',
   'copy-assets',
 ]);

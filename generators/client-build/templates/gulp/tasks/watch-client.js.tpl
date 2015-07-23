@@ -22,7 +22,7 @@ gulp.task('watch-client', () => {
     lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});<% } %>
 
     const b = browserifyConf();<% if (client === 'react') { %>
-    b.transform.push(lrload)<% } %>
+    b.transform.push(lrload);<% } %>
     b.debug = true;
     b.fullPaths = true;
 
