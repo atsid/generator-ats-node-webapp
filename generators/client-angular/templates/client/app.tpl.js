@@ -24,7 +24,7 @@ appModule.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlR
         resolve: {
             // Use array-style injection for strict-di
             welcomeTarget: ['$stateParams', ($stateParams) => {
-                return $stateParams.target || "World";
+                return $stateParams.target || 'World';
             }],
         },
     });

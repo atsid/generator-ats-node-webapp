@@ -1,5 +1,5 @@
-const angular = require("angular");
-const index = angular.module("<%= name %>.welcome.nyancat", []);
+const angular = require('angular');
+const index = angular.module('<%= name %>.welcome.nyancat', []);
 
 // Nyan-Cat Directive Example
 index.directive('nyanCat', require('./nyan_cat'));
