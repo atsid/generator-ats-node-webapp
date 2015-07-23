@@ -37,7 +37,6 @@ module.exports = {
             this.composeWith(`ats-node-webapp:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
         };
 
-        this.composeWith('node:babel', {});
         composeLocal('git');
         composeLocal('git-hooks');
         composeLocal('editorconfig');
