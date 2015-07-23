@@ -5,13 +5,13 @@ const config = require('../config');
 const watchify = require('watchify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
-const babelify = require('babelify');
 const source = require('vinyl-source-stream');<% if (client === 'react') { %>
 const lrload = require('livereactload');<% } %>
+const browserifyConf = require('./browserify_config');
 
 gulp.task('watch-client', () => {
     // watch js and lint
-    gulp.watch(config.client.all, ['lint-client-tdd', 'client-unit-test-tdd']);
+    gulp.watch(config.client.all, ['lint-client-tdd', 'test-client-tdd']);
 
     // watch html
     gulp.watch(config.client.html, ['copy']);
@@ -21,15 +21,12 @@ gulp.task('watch-client', () => {
     // watch client js
     lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});<% } %>
 
-    const watcher = watchify(browserify({
-        entries: config.client.entries,
-        transform: [babelify<% if (client === 'react') { %>, lrload<% } %>],
-        debug: true,
-        cache: {},
-        packageCache: {},
-        fullPaths: true,
-    }));
+    const b = browserifyConf();<% if (client === 'react') { %>
+    b.transform.push(lrload)<% } %>
+    b.debug = true;
+    b.fullPaths = true;
 
+    const watcher = watchify(browserify(b));
     function bundle() {
         return watcher
             .on('error', gutil.log.bind(gutil, 'Browserify Error'))

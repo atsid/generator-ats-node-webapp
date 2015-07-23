@@ -2,9 +2,9 @@ module.exports = {
     packageJson() {
         this.appendPackageJson({
             scripts: {
-                pretest: 'npm run generate-app-symlink',
-                prerun: 'npm run generate-app-symlink',
-                start: 'node index',
+                pretest: this.updateNpmScript('pretest', 'npm run create-app-symlink'),
+                prerun: this.updateNpmScript('prerun', 'npm run create-app-symlink'),
+                start: 'DEBUG=app*,jefferson* node index',
             },
             files: ['server', 'config'],
             dependencies: {

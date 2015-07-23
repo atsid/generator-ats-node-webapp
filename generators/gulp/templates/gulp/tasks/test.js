@@ -72,14 +72,14 @@ function runTests(sourceGlob, testGlob, reportDir, reporter = DEFAULT_SPEC_REPOR
 }
 
 function defineTestingTasks(task, root) {
-    gulp.task(`${task}-unit-test`, () => runTests(root.source, root.test, root.output.coverage));
-    gulp.task(`${task}-unit-test-tdd`, () => runTests(root.source, root.test, root.output.coverage, 'nyan', ['text-summary'], true));
+    gulp.task(`test-${task}`, () => runTests(root.source, root.test, root.output.coverage));
+    gulp.task(`test-${task}-tdd`, () => runTests(root.source, root.test, root.output.coverage, 'nyan', ['text-summary'], true));
     gulp.task(`${task}-tdd`, () => {
-        gulp.watch(root.all, [`lint-${task}-tdd`, `${task}-unit-test-tdd`]);
+        gulp.watch(root.all, [`lint-${task}-tdd`, `test-${task}-tdd`]);
     });
 }
 
 defineTestingTasks('server', config.server);
 defineTestingTasks('client', config.client);
 defineTestingTasks('all', config.all);
-gulp.task('test', ['all-unit-test']);
+gulp.task('test', ['test-all']);

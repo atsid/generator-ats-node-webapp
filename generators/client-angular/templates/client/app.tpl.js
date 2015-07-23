@@ -8,6 +8,7 @@ const appModule = angular.module('<%= name %>', [
     require('angular-ui-router'),
 
     // Application Modules
+    'templates',
     require('./services/index').name,
     require('./welcome/index').name,
 ]);
@@ -19,7 +20,7 @@ appModule.controller('ApplicationController', require('./application_controller'
 appModule.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
     $stateProvider.state('app', {
         url: '/?target',
-        templateUrl: 'welcome/welcome.html',
+        templateUrl: '/welcome/welcome.html',
         controller: 'WelcomeController as ctrl',
         resolve: {
             // Use array-style injection for strict-di

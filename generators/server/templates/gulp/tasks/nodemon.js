@@ -9,7 +9,7 @@ gulp.task('nodemon', () => {
         env: {
             'DEBUG': 'app*,jefferson*,mountie*',
         },
-        tasks: ['lint-server', 'server-unit-test'],
+        tasks: ['lint-server', 'test-server'],
     })
         .on('error', (err) => gutil.log('nodemon error', err))
         .on('restart', () => gutil.log('restarting server'));

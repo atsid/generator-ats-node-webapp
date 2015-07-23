@@ -6,7 +6,7 @@ gulp.task('default', (cb) => {
         'lint',
         'styles',
         'prepare-assets',
-        'browserify',
+        'bundle-client',
         'test',
         cb
     );

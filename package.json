@@ -4,7 +4,7 @@
   "description": "AST NodeJS Generator",
   "license": "Apache-2.0",
   "main": "app/index.js",
-  "repository": "atsid/generator-ats-mern",
+  "repository": "atsid/generator-ats-node-webapp",
   "author": {
     "name": "Chris Trevino",
     "email": "darthtrevino@gmail.com",
