@@ -1,7 +1,4 @@
-const path = require('path');
 const _ = require('lodash');
-const Writer = require('../../../util/writer');
-const writer = new Writer();
 
 module.exports = {
     packageJson() {
@@ -12,19 +9,19 @@ module.exports = {
             homepage: this.props.homepage,
             scripts: {},
             repository: {
-                type: "git",
-                url: "https://github.com/" + this.props.repository
+                type: 'git',
+                url: 'https://github.com/' + this.props.repository,
             },
             bugs: {
-                url: "https://github.com/" + this.props.repository + "/issues"
+                url: 'https://github.com/' + this.props.repository + '/issues',
             },
             author: {
                 name: this.props.authorName,
                 email: this.props.authorEmail,
-                url: this.props.authorUrl
+                url: this.props.authorUrl,
             },
             files: ['client'],
-            keywords: this.props.keywords
+            keywords: this.props.keywords,
         });
     },
 
@@ -62,5 +59,5 @@ module.exports = {
         } else if (this.props.client === 'angular') {
             composeLocal('client-angular');
         }
-    }
+    },
 };
