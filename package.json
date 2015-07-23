@@ -2,7 +2,7 @@
   "name": "generator-ats-node-webapp",
   "version": "0.1.0",
   "description": "AST NodeJS Generator",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "app/index.js",
   "repository": "atsid/generator-ats-mern",
   "author": {

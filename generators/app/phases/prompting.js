@@ -73,17 +73,16 @@ module.exports = {
             name: 'facebookAuth',
             message: 'Include Facebook OAuth?',
             type: 'confirm'
-        }/*{
+        },{
             name: 'client',
             message: 'Client Framework',
             type: 'list',
-            default: (val) => val || 'none',
+            default: (val) => val || 'react',
             choices: [
-                { name: 'None', value: 'none'},
-                { name: 'React+Flux', value: 'reactflux'},
+                { name: 'React', value: 'react'},
                 { name: 'Angular', value: 'angular'}
             ]
-        },{
+        }/*,{
             name: 'citool',
             message: 'Continuous Integration Tool',
             type: 'list',

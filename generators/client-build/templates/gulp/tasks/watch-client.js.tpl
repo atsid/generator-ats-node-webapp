@@ -6,9 +6,8 @@ const watchify = require('watchify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
 const babelify = require('babelify');
-const source = require('vinyl-source-stream');
-
-const lrload = require('livereactload');
+const source = require('vinyl-source-stream');<% if (client === 'react') { %>
+const lrload = require('livereactload');<% } %>
 
 gulp.task('watch-client', () => {
     // watch js and lint
@@ -18,14 +17,13 @@ gulp.task('watch-client', () => {
     gulp.watch(config.client.html, ['copy']);
 
     // watch sass
-    gulp.watch(config.client.styles, ['sass']);
-
+    gulp.watch(config.client.styles, ['sass']);<% if (client === 'react') { %>
     // watch client js
-    lrload.monitor(`${config.client.dist.path}/${config.client.dist.bundle}`, {displayNotification: true});
+    lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});<% } %>
 
     const watcher = watchify(browserify({
         entries: config.client.entries,
-        transform: [babelify, lrload],
+        transform: [babelify<% if (client === 'react') { %>, lrload<% } %>],
         debug: true,
         cache: {},
         packageCache: {},

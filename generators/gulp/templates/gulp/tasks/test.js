@@ -6,6 +6,7 @@ const istanbul = require('gulp-istanbul');
 const isparta = require('isparta');
 const exit = require('gulp-exit');
 const config = require('../config');
+const empty = require('gulp-empty');
 
 const DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
 const DEFAULT_SPEC_REPORTER = 'spec';
@@ -36,10 +37,10 @@ function test(glob, reporter = DEFAULT_SPEC_REPORTER) {
 /**
  * Writes coverage reports
  */
-function writeReports(sourceGlob, outputDir, reporters = DEFAULT_COVERAGE_REPORTERS) {
+function writeReports(sourceGlob, outputDir, reporters = DEFAULT_COVERAGE_REPORTERS, tdd=false) {
     return gulp.src(sourceGlob)
         .pipe(istanbul.writeReports({dir: outputDir, reporters: reporters}))
-        .pipe(exit());
+        .pipe((tdd ? empty() : exit()));
 }
 
 /**
@@ -54,18 +55,18 @@ function runTests(sourceGlob, testGlob, reportDir, reporter = DEFAULT_SPEC_REPOR
             .on('error', handleErr(tdd, resolve, reject))
             .on('finish', () => {
                 test(testGlob, reporter)
-                .then(() => writeReports(sourceGlob, reportDir, coverageReporters))
-                .then(resolve)
-                .catch((err) => {
-                    gutil.log('Error Testing', err);
-                    if (tdd) {
-                        resolve();
-                    } else {
-                        /* eslint-disable */
-                        process.exit(1);
-                        /* eslint-enable */
-                    }
-                });
+                    .then(() => writeReports(sourceGlob, reportDir, coverageReporters, tdd))
+                    .then(resolve)
+                    .catch((err) => {
+                        gutil.log('Error Testing', err);
+                        if (tdd) {
+                            resolve();
+                        } else {
+                            /* eslint-disable */
+                            process.exit(1);
+                            /* eslint-enable */
+                        }
+                    });
             });
     });
 }

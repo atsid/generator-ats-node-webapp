@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const extend = require('deep-extend');
 
 module.exports = {
     packageJson() {
