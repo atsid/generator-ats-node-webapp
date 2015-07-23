@@ -1,6 +1,5 @@
 const path = require('path');
 const _ = require('lodash');
-const extend = require('deep-extend');
 const Writer = require('../../../util/writer');
 const writer = new Writer();
 
