@@ -14,7 +14,10 @@ gulp.task('watch-client', () => {
     gulp.watch(config.client.all, ['lint-client-tdd', 'test-client-tdd']);
 
     // watch html
-    gulp.watch(config.client.html, ['copy']);
+    gulp.watch(config.client.html, ['copy']);<% if (client === 'angular') { %>
+
+    // watch jade
+    gulp.watch(config.client.staticJade, ['process-jade']);<% } %>
 
     // watch sass
     gulp.watch(config.client.styles, ['sass']);<% if (client === 'react') { %>
