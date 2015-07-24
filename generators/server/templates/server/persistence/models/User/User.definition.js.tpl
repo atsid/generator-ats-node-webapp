@@ -4,6 +4,7 @@ module.exports = {
      */
     email: {
         type: String,
+        index: true,
     },
 
     /**
@@ -19,19 +20,29 @@ module.exports = {
     password: {
         type: String,
         required: true,
-    },
+    },<% if (facebookAuth) { %>
 
     /**
      * A user's unique Facebook profile ID
      */
     facebookId: {
         type: String,
-    },
+        index: true,
+    },<% } if (twitterAuth) { %>
 
     /**
      * A user's unique Twitter profile ID
      */
     twitterId: {
         type: String,
-    },
+        index: true,
+    },<% } if (googleAuth) { %>
+
+    /**
+    * A user's unique Google profile ID
+    */
+    googleId: {
+       type: String,
+       index: true,
+    },<% } %>
 };

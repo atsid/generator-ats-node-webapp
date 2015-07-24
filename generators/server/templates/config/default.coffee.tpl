@@ -8,21 +8,24 @@ module.exports =
         proxy: true
 
     auth:
+        local:
+            password:
+                saltWorkFactor: 10<% if (facebookAuth) { %>
         facebook:
             clientID: "your_client_id"
             clientSecret: "bogus_secret"
-            callbackUrl: "http://localhost:9000/api/auth/facebook/callback"
+            callbackUrl: "http://localhost:9000/api/auth/facebook/callback"<% } %><% if (twitterAuth) { %>
         twitter:
             consumerKey: "your_consumer_key"
             consumerSecret: "bogus_secret"
-            callbackURL: "http://localhost:9000/api/auth/twitter/callback"
+            callbackURL: "http://localhost:9000/api/auth/twitter/callback"<% } %><% if (googleAuth) { %>
+        google:
+          consumerKey: "your_consumer_key"
+          consumerSecret: "bogus_secret"
+          callbackURL: "http://localhost:9000/api/auth/twitter/callback"<% } %>
 
     container:
         composed: 0
-
-    security:
-        password:
-            saltWorkFactor: 10
 
     clustering:
         workerLimit: 1

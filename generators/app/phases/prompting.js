@@ -74,6 +74,10 @@ module.exports = {
             message: 'Include Facebook OAuth?',
             type: 'confirm',
         }, {
+            name: 'googleAuth',
+            message: 'Include Google OAuth?',
+            type: 'confirm',
+        }, {
             name: 'client',
             message: 'Client Framework',
             type: 'list',
