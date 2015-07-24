@@ -33,6 +33,8 @@ module.exports = {
         const composeLocal = (name) => {
             this.composeWith(`ats-node-webapp:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
         };
+        const useOAuthStrategy = (name) => (this.props.oauthStrategies || []).indexOf(name) > -1;
+        this.props.useOAuthStrategy = useOAuthStrategy;
 
         composeLocal('git');
         composeLocal('git-hooks');
@@ -47,16 +49,16 @@ module.exports = {
         composeLocal('client-build');
         composeLocal('gulp');
 
-        if (this.props.facebookAuth) {
+        if (useOAuthStrategy('facebook')) {
             composeLocal('auth-facebook');
         }
-        if (this.props.githubAuth) {
+        if (useOAuthStrategy('github')) {
             composeLocal('auth-github');
         }
-        if (this.props.googleAuth) {
+        if (useOAuthStrategy('google')) {
             composeLocal('auth-google');
         }
-        if (this.props.twitterAuth) {
+        if (useOAuthStrategy('twitter')) {
             composeLocal('auth-twitter');
         }
 

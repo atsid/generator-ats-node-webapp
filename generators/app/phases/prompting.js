@@ -66,21 +66,15 @@ module.exports = {
             when: !this.pkg.keywords,
             filter: _.words,
         }, {
-            name: 'twitterAuth',
-            message: 'Include Twitter OAuth?',
-            type: 'confirm',
-        }, {
-            name: 'facebookAuth',
-            message: 'Include Facebook OAuth?',
-            type: 'confirm',
-        }, {
-            name: 'googleAuth',
-            message: 'Include Google OAuth?',
-            type: 'confirm',
-        }, {
-            name: 'githubAuth',
-            message: 'Include Github OAuth?',
-            type: 'confirm',
+            type: 'checkbox',
+            message: 'OAuth Strategies',
+            name: 'oauthStrategies',
+            choices: [
+                { name: 'Google', value: 'google', checked: true},
+                { name: 'Github', value: 'github', checked: true },
+                { name: 'Facebook', value: 'facebook', checked: true },
+                { name: 'Twitter', value: 'twitter', checked: true },
+            ],
         }, {
             name: 'client',
             message: 'Client Framework',
