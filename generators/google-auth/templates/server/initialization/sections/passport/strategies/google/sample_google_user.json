@@ -1,5 +1,9 @@
 {
-    "id": 123412341234,
-    "id_str": "123412341234",
-    "name": "Joe Test"
+  "provider": "google",
+  "id": "12345",
+  "displayName": "Joe Test",
+  "name": {
+    "familyName": "Test",
+    "givenName": "Joe"
+  }
 }

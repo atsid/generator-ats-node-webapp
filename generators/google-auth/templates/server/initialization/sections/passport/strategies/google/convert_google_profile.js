@@ -8,7 +8,7 @@ const hat = require('hat');
 module.exports = (profile) => {
     return {
         googleId: '' + profile.id,
-        name: profile.name,
+        name: profile.displayName,
         password: hat(),
     };
 };
