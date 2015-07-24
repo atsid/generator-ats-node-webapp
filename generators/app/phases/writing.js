@@ -53,6 +53,9 @@ module.exports = {
         if (this.props.facebookAuth) {
             composeLocal('facebook-auth');
         }
+        if (this.props.googleAuth) {
+            composeLocal('google-auth');
+        }
 
         if (this.props.client === 'react') {
             composeLocal('client-react');
