@@ -47,14 +47,17 @@ module.exports = {
         composeLocal('client-build');
         composeLocal('gulp');
 
-        if (this.props.twitterAuth) {
-            composeLocal('twitter-auth');
-        }
         if (this.props.facebookAuth) {
-            composeLocal('facebook-auth');
+            composeLocal('auth-facebook');
+        }
+        if (this.props.githubAuth) {
+            composeLocal('auth-github');
         }
         if (this.props.googleAuth) {
-            composeLocal('google-auth');
+            composeLocal('auth-google');
+        }
+        if (this.props.twitterAuth) {
+            composeLocal('auth-twitter');
         }
 
         if (this.props.client === 'react') {

@@ -1,0 +1,45 @@
+{
+  "id": "12345",
+  "displayName": "Joe Test",
+  "username": "JoeTest",
+  "profileUrl": "https://github.com/joeTest",
+  "emails": [
+    {
+      "value": "joe.test@gmail.com"
+    }
+  ],
+  "provider": "github",
+  "_raw": "{\"login\":\"JoeTest\",\"id\":12345,\"avatar_url\":\"https://avatars.githubusercontent.com/u/12345?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/JoeTest\",\"html_url\":\"https://github.com/JoeTest\",\"followers_url\":\"https://api.github.com/users/JoeTest/followers\",\"following_url\":\"https://api.github.com/users/JoeTest/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/JoeTest/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/JoeTest/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/JoeTest/subscriptions\",\"organizations_url\":\"https://api.github.com/users/JoeTest/orgs\",\"repos_url\":\"https://api.github.com/users/JoeTest/repos\",\"events_url\":\"https://api.github.com/users/JoeTest/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/JoeTest/received_events\",\"type\":\"User\",\"site_admin\":false,\"name\":\"Joe Test\",\"company\":\"\",\"blog\":null,\"location\":\"Bremerton, WA\",\"email\":\"JoeTest@gmail.com\",\"hireable\":false,\"bio\":null,\"public_repos\":10,\"public_gists\":2,\"followers\":10,\"following\":9,\"created_at\":\"2009-08-09T20:18:38Z\",\"updated_at\":\"2015-07-01T22:00:21Z\"}",
+  "_json": {
+    "login": "JoeTest",
+    "id": 12345,
+    "avatar_url": "https://avatars.githubusercontent.com/u/12345?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/JoeTest",
+    "html_url": "https://github.com/JoeTest",
+    "followers_url": "https://api.github.com/users/JoeTest/followers",
+    "following_url": "https://api.github.com/users/JoeTest/following{/other_user}",
+    "gists_url": "https://api.github.com/users/JoeTest/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/JoeTest/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/JoeTest/subscriptions",
+    "organizations_url": "https://api.github.com/users/JoeTest/orgs",
+    "repos_url": "https://api.github.com/users/JoeTest/repos",
+    "events_url": "https://api.github.com/users/JoeTest/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/JoeTest/received_events",
+    "type": "User",
+    "site_admin": false,
+    "name": "Joe Test",
+    "company": "",
+    "blog": null,
+    "location": "Bremerton, WA",
+    "email": "JoeTest@gmail.com",
+    "hireable": false,
+    "bio": null,
+    "public_repos": 10,
+    "public_gists": 2,
+    "followers": 10,
+    "following": 9,
+    "created_at": "2009-08-09T20:18:38Z",
+    "updated_at": "2015-07-01T22:00:21Z"
+  }
+}

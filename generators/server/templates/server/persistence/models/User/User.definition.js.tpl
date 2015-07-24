@@ -44,5 +44,13 @@ module.exports = {
     googleId: {
        type: String,
        index: true,
+    },<% } if (githubAuth) { %>
+
+    /**
+    * A user's unique Github profile ID
+    */
+    githubId: {
+       type: String,
+       index: true,
     },<% } %>
 };
