@@ -67,5 +67,7 @@ module.exports = {
         } else if (this.props.client === 'angular') {
             composeLocal('client-angular');
         }
+
+        composeLocal('gulp-postinstall');
     },
 };
