@@ -2,11 +2,11 @@ const _ = require('lodash');
 
 function sourceNode(rootName, root, extra={}) {
     return _.merge({
-        all: [`${root}/**/*.js`],
-        source: [`${root}/**/*.js`, `!${root}/**/*.spec.js`, `!${root}/**/*spec*/*`],
-        test: [`${root}/**/*.spec.js`, `${root}/**/*spec*/*`],
+        all: [root + '/**/*.js'],
+        source: [root + '/**/*.js', '!' + root + '/**/*.spec.js', '!' + root + '/**/*spec*/*'],
+        test: [root + '/**/*.spec.js', root + '/**/*spec*/*'],
         output: {
-            coverage: `target/test-reports/${rootName}`,
+            coverage: 'target/test-reports/' + rootName,
         },
     }, extra);
 }
@@ -27,5 +27,9 @@ module.exports = {
             assets: 'public/assets',
             bundle: 'app.js',
         },
-    }),
+    }),<% if (client === 'angular') { %>
+    ngHtml2Js: {
+        module: 'templates',
+        baseDir: 'public',
+    },<% } %>
 };

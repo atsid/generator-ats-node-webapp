@@ -6,12 +6,7 @@ const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
 const browserifyConf = require('./browserify_config');
 const uglifyify = require('uglifyify');
-const envify = require('envify/custom');<% if (client === 'angular') { %>
-const ngHtml2Js = require('browserify-ng-html2js');
-const NGHTML2JSCONFIG = {
-    module: 'templates',
-    baseDir: 'public',
-};<% } %>
+const envify = require('envify/custom');
 
 gulp.task('bundle-client', () => {
     const conf = browserifyConf();
@@ -19,8 +14,7 @@ gulp.task('bundle-client', () => {
     conf.transform.push([uglifyify, { global: true }]);
     const b = browserify(conf);
     b.on('log', gutil.log);
-    return b<% if (client === 'angular') { %>
-        .transform(ngHtml2Js(NGHTML2JSCONFIG))<% } %>
+    return b
         .bundle()
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
         .pipe(source(config.client.dist.bundle))
