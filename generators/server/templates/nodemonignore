@@ -1,0 +1,7 @@
+.idea/
+.git/
+node_modules/
+client/
+public/
+target/
+coverage/
