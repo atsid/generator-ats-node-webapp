@@ -20,7 +20,7 @@ module.exports = {
     password: {
         type: String,
         required: true,
-    },<% if (facebookAuth) { %>
+    },<% if (useOAuthStrategy('facebook')) { %>
 
     /**
      * A user's unique Facebook profile ID
@@ -28,7 +28,7 @@ module.exports = {
     facebookId: {
         type: String,
         index: true,
-    },<% } if (twitterAuth) { %>
+    },<% } if (useOAuthStrategy('twitter')) { %>
 
     /**
      * A user's unique Twitter profile ID
@@ -36,7 +36,7 @@ module.exports = {
     twitterId: {
         type: String,
         index: true,
-    },<% } if (googleAuth) { %>
+    },<% } if (useOAuthStrategy('google')) { %>
 
     /**
     * A user's unique Google profile ID
@@ -44,7 +44,7 @@ module.exports = {
     googleId: {
        type: String,
        index: true,
-    },<% } if (githubAuth) { %>
+    },<% } if (useOAuthStrategy('github')) { %>
 
     /**
     * A user's unique Github profile ID
