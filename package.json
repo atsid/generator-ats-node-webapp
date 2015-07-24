@@ -14,7 +14,8 @@
     "test": "gulp"
   },
   "files": [
-    "generators"
+    "generators",
+    "util"
   ],
   "keywords": [
     "yeoman-generator"
