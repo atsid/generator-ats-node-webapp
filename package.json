@@ -1,6 +1,6 @@
 {
   "name": "generator-ats-node-webapp",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "AST NodeJS Generator",
   "license": "Apache-2.0",
   "main": "app/index.js",
