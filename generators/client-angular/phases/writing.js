@@ -3,7 +3,7 @@ module.exports = {
         this.appendPackageJson({
             'scripts': {
                 'create-public-symlink': './scripts/npm/create-public-symlink.sh',
-                'postinstall': this.updateNpmScript('pretest', 'npm run create-public-symlink'),
+                'postinstall': this.updateNpmScript('postinstall', 'npm run create-public-symlink'),
             },
             'dependencies': {
                 'angular': '^1.4.3',
