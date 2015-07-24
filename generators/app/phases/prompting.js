@@ -90,7 +90,7 @@ module.exports = {
                 { name: 'React', value: 'react'},
                 { name: 'Angular', value: 'angular'},
             ],
-        },];
+        }];
 
         this.prompt(prompts, (props) => {
             this.props = _.extend(this.props, props);
