@@ -3,6 +3,7 @@
 [![Test Coverage](https://codeclimate.com/github/atsid/generator-ats-node-webapp/badges/coverage.svg)](https://codeclimate.com/github/atsid/generator-ats-node-webapp/coverage)
 # generator-ats-node-webapp
 > A [Yeoman](http://yeoman.io) generator for generating NodeJS Web Applications 
+
 The ats-node-webapp generator scaffolds a NodeJS web-application with normative standards for composing a high-quality application.
 ## Key Features
 * An extensible build system implemented in Gulp. Tasks are automatically discovered in the `gulp/tasks` folder.
