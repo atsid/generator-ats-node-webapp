@@ -4,6 +4,7 @@ module.exports = {
             scripts: {
                 pretest: this.updateNpmScript('pretest', 'npm run create-app-symlink'),
                 prerun: this.updateNpmScript('prerun', 'npm run create-app-symlink'),
+                postinstall: this.updateNpmScript('postinstall', 'gulp'),
                 start: 'DEBUG=app*,jefferson* node index',
             },
             files: ['server', 'config'],
