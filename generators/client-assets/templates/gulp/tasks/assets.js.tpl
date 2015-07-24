@@ -4,7 +4,7 @@ const jade = require('gulp-jade');
 const extReplace = require('gulp-ext-replace');
 
 gulp.task('process-jade', () => {
-    return gulp.src(['client/**/*.static.jade'])
+    return gulp.src(config.client.staticJade)
         .pipe(jade({}))
         .pipe(extReplace('.html', '.static.html'))
         .pipe(gulp.dest('./public/'));

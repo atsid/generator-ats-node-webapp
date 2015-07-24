@@ -10,6 +10,7 @@ module.exports = {
                 'angular-ui-router': '^0.2.15',
             },
             'devDependencies': {
+                'angular-mocks': '^1.4.3',
                 'browserify-ng-html2js': '^1.1.2',
                 'gulp-jade': '^1.0.1',
                 'gulp-ext-replace': '^0.2.0',
