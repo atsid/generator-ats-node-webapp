@@ -23,7 +23,12 @@ module.exports =
             clientID: 'your_consumer_key'
             clientSecret: 'bogus_secret'
             callbackURL: 'http://localhost:9000/api/auth/google/callback'
-            scope: 'https://www.googleapis.com/auth/plus.login'<% } %>
+            scope: 'https://www.googleapis.com/auth/plus.login'<% } if (githubAuth) { %>
+        github:
+            clientID: 'your_consumer_key'
+            clientSecret: 'bogus_secret'
+            callbackURL: 'http://localhost:9000/api/auth/github/callback'
+            scope: ['user:email']<% } %>
 
     container:
         composed: 0

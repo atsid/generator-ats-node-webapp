@@ -78,6 +78,10 @@ module.exports = {
             message: 'Include Google OAuth?',
             type: 'confirm',
         }, {
+            name: 'githubAuth',
+            message: 'Include Github OAuth?',
+            type: 'confirm',
+        }, {
             name: 'client',
             message: 'Client Framework',
             type: 'list',
@@ -86,16 +90,7 @@ module.exports = {
                 { name: 'React', value: 'react'},
                 { name: 'Angular', value: 'angular'},
             ],
-        }, /*{
-            name: 'citool',
-            message: 'Continuous Integration Tool',
-            type: 'list',
-            default: (val) => val || 'travis',
-            choices: [
-                { name: 'Wercker', value: 'wercker' },
-                { name: 'Travis', value: 'travis'}
-            ]
-        }*/];
+        },];
 
         this.prompt(prompts, (props) => {
             this.props = _.extend(this.props, props);
