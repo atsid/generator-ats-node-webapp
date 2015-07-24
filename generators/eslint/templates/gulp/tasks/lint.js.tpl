@@ -28,8 +28,8 @@ function lint(glob, eslintConf = {}, tdd = false) {
 function defineLintingTasks(taskName, root) {
     gulp.task('lint-' + taskName + '-source', lint(root.source, srcConfig));
     gulp.task('lint-' + taskName + '-test', lint(root.test, testConfig));
-    gulp.task('lint-' + taskName + '-source-tdd', lint(root.source, {}, true));
-    gulp.task('lint-' + taskName + '-test-tdd', lint(root.test, true, testConfig));
+    gulp.task('lint-' + taskName + '-source-tdd', lint(root.source, srcConfig, true));
+    gulp.task('lint-' + taskName + '-test-tdd', lint(root.test, testConfig, true));
 
     // Aggregated Tasks
     gulp.task('lint-' + taskName, [

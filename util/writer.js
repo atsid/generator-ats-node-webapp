@@ -4,7 +4,8 @@ const DOT_FILES = {
     "editorconfig": true,
     "eslintrc": true,
     "gitignore": true,
-    "gitattributes": true
+    "gitattributes": true,
+    "nodemonignore": true
 };
 
 /**
