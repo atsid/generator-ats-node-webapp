@@ -29,10 +29,7 @@ module.exports = {
          * @param name
          */
         this.addDependency = (name) => {
-            // Use the dependency we set in package.json
-            const update = { dependencies: {}};
-            update.dependencies[name] = packageVersion[name];
-            this.appendPackageJson(update);
+            this.appendPackageJson({dependencies: {[name]: packageVersion(name)}});
         };
 
         /**
@@ -40,10 +37,7 @@ module.exports = {
          * @param name
          */
         this.addDevDependency = (name) => {
-            // Use the dependency we set in package.json
-            const update = { devDependencies: {}};
-            update.devDependencies[name] = packageVersion(name);
-            this.appendPackageJson(update);
+            this.appendPackageJson({devDependencies: {[name]: packageVersion(name)}});
         };
 
         /**
