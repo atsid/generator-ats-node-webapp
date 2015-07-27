@@ -8,6 +8,7 @@ module.exports = {
                 'uglifyify': '^3.0.1',
                 'watchify': '^3.2.3',
                 'jsdom': '^3.x',
+                'gulp-livereload': '^3.8',
             },
         };
 

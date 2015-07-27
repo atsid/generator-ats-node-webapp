@@ -5,6 +5,7 @@ const config = require('../config');
 const watchify = require('watchify');
 const browserify = require('browserify');
 const buffer = require('vinyl-buffer');
+const lload = require('gulp-livereload');
 const source = require('vinyl-source-stream');<% if (client === 'react') { %>
 const lrload = require('livereactload');<% } %>
 const browserifyConf = require('./browserify_config');
@@ -23,10 +24,13 @@ gulp.task('watch-client', () => {
     gulp.watch(config.client.staticJade, ['process-jade']);<% } %>
 
     // watch sass
-    gulp.watch(config.client.styles, ['sass']);<% if (client === 'react') { %>
-    // watch client js
-    lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});<% } %>
+    lload.listen();
+    gulp.watch(config.client.styles, ['sass']);
 
+<% if (client === 'react') { %>
+    // watch client js
+    lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});
+<% } %>
     const b = browserifyConf();<% if (client === 'react') { %>
     b.transform.push(lrload);<% } %>
     b.debug = true;
