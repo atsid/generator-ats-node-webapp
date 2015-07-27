@@ -1,5 +1,8 @@
 const parseAuthor = require('parse-author');
 const _ = require('lodash');
+const generatorPkg = require('../../../package.json');
+
+const packageVersion = (name) => generatorPkg.dependencies[name] || generatorPkg.devDependencies[name];
 
 module.exports = {
     addPrivateHelpers() {
@@ -22,6 +25,38 @@ module.exports = {
         };
 
         /**
+         * A private helper to add dependency to package.json
+         * @param name
+         */
+        this.addDependency = (name) => {
+            this.appendPackageJson({dependencies: {[name]: packageVersion(name)}});
+        };
+
+        /**
+         * A private helper to add dependency to package.json
+         * @param name
+         */
+        this.addDevDependency = (name) => {
+            this.appendPackageJson({devDependencies: {[name]: packageVersion(name)}});
+        };
+
+        /**
+         * A private helper to add multiple dependencies
+         * @param names
+         */
+        this.addDependencies = (...names) => {
+            names.forEach(this.addDependency);
+        };
+
+        /**
+         * A private helper to add multiple dev dependencies
+         * @param names
+         */
+        this.addDevDependencies = (...names) => {
+            names.forEach(this.addDevDependency);
+        };
+
+        /**
          * A private helper to update an NPM Script
          * @param name The name of the script section (e.g. postinstall, pretest)
          * @param data The script data (e.g. 'gulp', 'npm run my-task')
@@ -31,16 +66,19 @@ module.exports = {
             const pkg = this.readPackageJson();
             let existing = pkg.scripts && pkg.scripts[name];
 
+            let result = null;
             // If this script section is already present, don't modify the script
             if (existing) {
                 if (existing.indexOf(data) > -1) {
-                    return existing;
+                    result = existing;
                 } else {
-                    return `${existing} && ${data}`
+                    result = `${existing} && ${data}`
                 }
             } else {
-                return data;
+                result = data;
             }
+
+            this.appendPackageJson({scripts: {[name]: result}});
         }
     },
 

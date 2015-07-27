@@ -1,9 +1,5 @@
 module.exports = {
     packageJson() {
-        this.appendPackageJson({
-            dependencies: {
-                'passport-google-oauth': '^0.2.0',
-            },
-        });
+        this.addDevDependency('passport-google-oauth');
     },
 };

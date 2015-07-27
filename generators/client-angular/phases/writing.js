@@ -1,20 +1,17 @@
 module.exports = {
     packageJson() {
-        this.appendPackageJson({
-            'scripts': {
-                'create-public-symlink': './scripts/npm/create-public-symlink.sh',
-                'postinstall': this.updateNpmScript('postinstall', 'npm run create-public-symlink'),
-            },
-            'dependencies': {
-                'angular': '^1.4.3',
-                'angular-ui-router': '^0.2.15',
-            },
-            'devDependencies': {
-                'angular-mocks': '^1.4.3',
-                'browserify-ng-html2js': '^1.1.2',
-                'gulp-jade': '^1.0.1',
-                'gulp-ext-replace': '^0.2.0',
-            },
-        });
+        this.addDependencies(
+            'angular',
+            'angular-ui-router'
+        );
+
+        this.addDevDependencies(
+            'angular-mocks',
+            'browserify-ng-html2js',
+            'gulp-jade',
+            'gulp-ext-replace'
+        );
+        this.updateNpmScript('postinstall', 'npm run create-public-symlink');
+        this.updateNpmScript('create-public-symlink', './scripts/npm/create-public-symlink.sh');
     },
 };

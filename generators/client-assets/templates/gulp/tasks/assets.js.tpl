@@ -28,8 +28,8 @@ gulp.task('copy-assets', () => {
 
 gulp.task('prepare-assets', [
 <%if (client === 'angular') { %>
-  'process-jade',
+    'process-jade',
 <%}%>
-  'copy-html',
-  'copy-assets',
+    'copy-html',
+    'copy-assets',
 ]);
