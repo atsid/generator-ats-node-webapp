@@ -36,12 +36,11 @@ module.exports = {
             'supertest-session'
         );
 
+        this.updateNpmScript('pretest', 'npm run create-app-symlink');
+        this.updateNpmScript('prerun', 'npm run create-app-symlink');
+        this.updateNpmScript('start', 'DEBUG=app*,jefferson* node index');
+
         this.appendPackageJson({
-            scripts: {
-                pretest: this.updateNpmScript('pretest', 'npm run create-app-symlink'),
-                prerun: this.updateNpmScript('prerun', 'npm run create-app-symlink'),
-                start: 'DEBUG=app*,jefferson* node index',
-            },
             files: ['server', 'config'],
         });
     },

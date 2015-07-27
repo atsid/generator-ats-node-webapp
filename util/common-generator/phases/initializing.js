@@ -66,16 +66,19 @@ module.exports = {
             const pkg = this.readPackageJson();
             let existing = pkg.scripts && pkg.scripts[name];
 
+            let result = null;
             // If this script section is already present, don't modify the script
             if (existing) {
                 if (existing.indexOf(data) > -1) {
-                    return existing;
+                    result = existing;
                 } else {
-                    return `${existing} && ${data}`
+                    result = `${existing} && ${data}`
                 }
             } else {
-                return data;
+                result = data;
             }
+
+            this.appendPackageJson({scripts: {[name]: result}});
         }
     },
 

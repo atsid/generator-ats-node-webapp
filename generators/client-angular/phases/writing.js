@@ -11,12 +11,7 @@ module.exports = {
             'gulp-jade',
             'gulp-ext-replace'
         );
-
-        this.appendPackageJson({
-            'scripts': {
-                'create-public-symlink': './scripts/npm/create-public-symlink.sh',
-                'postinstall': this.updateNpmScript('postinstall', 'npm run create-public-symlink'),
-            },
-        });
+        this.updateNpmScript('postinstall', 'npm run create-public-symlink');
+        this.updateNpmScript('create-public-symlink', './scripts/npm/create-public-symlink.sh');
     },
 };

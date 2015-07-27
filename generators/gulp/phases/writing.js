@@ -11,11 +11,8 @@ module.exports = {
             'vinyl-buffer',
             'vinyl-source-stream',
             'isparta');
-        this.appendPackageJson({
-            'scripts': {
-                'test': 'gulp',
-                'develop': 'gulp develop',
-            },
-        });
+
+        this.updateNpmScript('test', 'gulp');
+        this.updateNpmScript('develop', 'gulp develop');
     },
 };
