@@ -11,8 +11,10 @@ const testConfig = {
     env: {
         'mocha': true,
     },
-    globals: {<% if (client === 'angular') { %>
-      'inject': true,<% } %>
+    globals: {
+<% if (client === 'angular') { %>
+      'inject': true,
+<% } %>
     },
 };
 

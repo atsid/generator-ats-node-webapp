@@ -17,19 +17,24 @@ module.exports =
     auth:
         local:
             password:
-                saltWorkFactor: "SALT_WORK_FACTOR"<% if (useOAuthStrategy('facebook')) { %>
+                saltWorkFactor: "SALT_WORK_FACTOR"
+<% if (useOAuthStrategy('facebook')) { %>
         facebook:
             clientID: "FACEBOOK_CLIENT_ID"
-            clientSecret: "FACEBOOK_CLIENT_SECRET" <% } if (useOAuthStrategy('twitter')) { %>
+            clientSecret: "FACEBOOK_CLIENT_SECRET" 
+<% } if (useOAuthStrategy('twitter')) { %>
         twitter:
             consumerKey: "TWITTER_CONSUMER_KEY"
-            consumerSecret: "TWITTER_CONSUMER_SECRET" <% } if (useOAuthStrategy('google')) { %>
+            consumerSecret: "TWITTER_CONSUMER_SECRET" 
+<% } if (useOAuthStrategy('google')) { %>
         google:
             clientID: "GOOGLE_CLIENT_ID"
             clientSecret: "GOOGLE_CLIENT_SECRET"
-            scope: "GOOGLE_SCOPE"<% } if (useOAuthStrategy('github')) { %>
+            scope: "GOOGLE_SCOPE"
+<% } if (useOAuthStrategy('github')) { %>
         github:
             clientID: "GITHUB_CLIENT_ID"
             clientSecret: "GITHUB_CLIENT_SECRET"
-            scope: "GITHUB_SCOPE"<% } %>
+            scope: "GITHUB_SCOPE"
+<% } %>
 
