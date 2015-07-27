@@ -8,7 +8,7 @@ const browserifyConf = require('./browserify_config');
 const uglifyify = require('uglifyify');
 const envify = require('envify/custom');
 
-gulp.task('bundle-client', () => {
+gulp.task('bundle-client', ['prepare-assets'], () => {
     const conf = browserifyConf();
     conf.transform.push([envify({_: 'purge', NODE_ENV: 'production'}), { global: true }]);
     conf.transform.push([uglifyify, { global: true }]);

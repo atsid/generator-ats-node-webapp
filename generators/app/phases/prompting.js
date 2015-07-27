@@ -84,6 +84,7 @@ module.exports = {
                 { name: 'React', value: 'react'},
                 { name: 'Angular', value: 'angular'},
             ],
+            when: !this.options.client,
         }];
 
         this.prompt(prompts, (props) => {

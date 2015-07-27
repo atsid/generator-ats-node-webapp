@@ -1,5 +1,8 @@
 const parseAuthor = require('parse-author');
 const _ = require('lodash');
+const generatorPkg = require('../../../package.json');
+
+const packageVersion = (name) => generatorPkg.dependencies[name] || generatorPkg.devDependencies[name];
 
 module.exports = {
     addPrivateHelpers() {
@@ -19,6 +22,44 @@ module.exports = {
          */
         this.appendPackageJson = (data) => {
             this.fs.writeJSON("package.json", _.merge(this.readPackageJson(), data));
+        };
+
+        /**
+         * A private helper to add dependency to package.json
+         * @param name
+         */
+        this.addDependency = (name) => {
+            // Use the dependency we set in package.json
+            const update = { dependencies: {}};
+            update.dependencies[name] = packageVersion[name];
+            this.appendPackageJson(update);
+        };
+
+        /**
+         * A private helper to add dependency to package.json
+         * @param name
+         */
+        this.addDevDependency = (name) => {
+            // Use the dependency we set in package.json
+            const update = { devDependencies: {}};
+            update.devDependencies[name] = packageVersion(name);
+            this.appendPackageJson(update);
+        };
+
+        /**
+         * A private helper to add multiple dependencies
+         * @param names
+         */
+        this.addDependencies = (...names) => {
+            names.forEach(this.addDependency);
+        };
+
+        /**
+         * A private helper to add multiple dev dependencies
+         * @param names
+         */
+        this.addDevDependencies = (...names) => {
+            names.forEach(this.addDevDependency);
         };
 
         /**

@@ -29,12 +29,16 @@ class PathScanner {
                 const isTemplate = file.indexOf(".tpl") > -1;
                 const targetFilename = path.join(templateDir, (DOT_FILES[file] ? "." : "") + file).replace(".tpl", "");
                 const method = (isTemplate  ? 'copyTpl' : 'copy');
-
-                console.log("processing", templatePath);
-                context.fs[method](
-                    context.templatePath(templatePath),
-                    context.destinationPath(targetFilename),
-                    context.props);
+                
+                try {
+                    context.fs[method](
+                        context.templatePath(templatePath),
+                        context.destinationPath(targetFilename),
+                        context.props);
+                } catch (err) {
+                    console.log("Error processing template using " + method + ":", templatePath);
+                    throw err;
+                }
             }
         });
     }
