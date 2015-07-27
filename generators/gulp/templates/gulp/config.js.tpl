@@ -27,9 +27,11 @@ module.exports = {
             assets: 'public/assets',
             bundle: 'app.js',
         },
-    }),<% if (client === 'angular') { %>
+    }),
+<% if (client === 'angular') { %>
     ngHtml2Js: {
         module: 'templates',
         baseDir: 'public',
-    },<% } %>
+    },
+<% } %>
 };
