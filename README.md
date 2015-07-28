@@ -1,7 +1,9 @@
 [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-node-webapp.png?branch=master)](https://travis-ci.org/atsid/generator-ats-node-webapp)
 [![Code Climate](https://codeclimate.com/github/atsid/generator-ats-node-webapp/badges/gpa.svg)](https://codeclimate.com/github/atsid/generator-ats-node-webapp)
 [![Test Coverage](https://codeclimate.com/github/atsid/generator-ats-node-webapp/badges/coverage.svg)](https://codeclimate.com/github/atsid/generator-ats-node-webapp/coverage)
+[![Dependency Status](https://david-dm.org/atsid/express-jefferson.svg)](https://david-dm.org/atsid/express-jefferson)
 # generator-ats-node-webapp
+
 > A [Yeoman](http://yeoman.io) generator for generating NodeJS Web Applications 
 
 The ats-node-webapp generator scaffolds a NodeJS web-application with normative standards for composing a high-quality application.
