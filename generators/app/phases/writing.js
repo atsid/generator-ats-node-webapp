@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const debug = require('debug')('generator-ats-node-webapp:app');
 
 module.exports = {
     packageJson() {
@@ -35,6 +36,7 @@ module.exports = {
         };
         const useOAuthStrategy = (name) => (this.props.oauthStrategies || []).indexOf(name) > -1;
         this.props.useOAuthStrategy = useOAuthStrategy;
+        debug('generating application with properties', this.props);
 
         composeLocal('git');
         composeLocal('git-hooks');

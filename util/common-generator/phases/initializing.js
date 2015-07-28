@@ -85,6 +85,10 @@ module.exports = {
     scanPackageJson: function () {
         this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
+        if (_.isString(this.options.oauthStrategies)) {
+            this.options.oauthStrategies = this.options.oauthStrategies.split(',');
+        }
+
         // Pre set the default props from the information we have at this point
         this.props = _.merge((this.options || {}), {
             name: this.pkg.name,

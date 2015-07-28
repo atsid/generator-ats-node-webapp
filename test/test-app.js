@@ -12,7 +12,11 @@ describe('generator-ats-node-webapp:app', function () {
     before(function (done) {
         this.timeout(30000);
         context = helpers.run(path.join(__dirname, '../generators/app'))
-            .withOptions({skipInstall: true, client: 'react'})
+            .withOptions({
+                skipInstall: true,
+                client: 'react',
+                oauthStrategies: ['google', 'facebook', 'twitter', 'github']
+            })
             .on('end', done);
     });
 
