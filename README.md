@@ -9,21 +9,23 @@
 
 The ats-node-webapp generator scaffolds a NodeJS web-application with normative standards for composing a high-quality application.
 ## Key Features
-* An extensible build system implemented in Gulp. Tasks are automatically discovered in the `gulp/tasks` folder.
-* A RESTful, hyperlinked API via express.
-* Linting via AirBnb's eslint config (modified with 4 spaces)
+* Gulp build system.
+* A RESTful API via Express.
 * Declarative routing via using express-jefferson.
 * Dynamic service discovery via express-mountie.
-* Persistence via Mongoose
-* Several OAuth Implementations
-* Client-Side tests using jsdom
-* Combined client/server coverage reporting
-* React Client
-* AngularJS Client 
-   * Class-based services and controllers
-   * Strict DI mode
-   * Static template caching
-
+* MongoDB/Mongoose persistence
+* Client-side tests using jsdom
+* Client Implementations:
+    * React 
+    * AngularJS 
+      * Class-based services and controllers
+      * Strict DI mode
+      * Static template caching
+* OAuth Scaffolding
+    * Facebook
+    * Twitter
+    * Github
+    * Google
 
 ## Getting Started
 
