@@ -35,6 +35,12 @@ module.exports = {
             this.composeWith(`ats-node-webapp:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
         };
         const useOAuthStrategy = (name) => (this.props.oauthStrategies || []).indexOf(name) > -1;
+        const composeOAuth = (name) => {
+            if (useOAuthStrategy(name)) {
+                composeLocal(`auth-${name}`);
+            }
+        };
+
         this.props.useOAuthStrategy = useOAuthStrategy;
         debug('generating application with properties', this.props);
 
@@ -51,25 +57,16 @@ module.exports = {
         composeLocal('client-build');
         composeLocal('gulp');
 
-        if (useOAuthStrategy('facebook')) {
-            composeLocal('auth-facebook');
-        }
-        if (useOAuthStrategy('github')) {
-            composeLocal('auth-github');
-        }
-        if (useOAuthStrategy('google')) {
-            composeLocal('auth-google');
-        }
-        if (useOAuthStrategy('twitter')) {
-            composeLocal('auth-twitter');
-        }
+        // Add OAuth
+        composeOAuth('facebook');
+        composeOAuth('github');
+        composeOAuth('google');
+        composeOAuth('twitter');
 
-        if (this.props.client === 'react') {
-            composeLocal('client-react');
-        } else if (this.props.client === 'angular') {
-            composeLocal('client-angular');
-        }
+        // Add Client
+        composeLocal(`client-${this.props.client}`);
 
+        // Wrap up
         composeLocal('gulp-postinstall');
     },
 };
