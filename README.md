@@ -29,6 +29,11 @@ The ats-node-webapp generator scaffolds a NodeJS web-application with normative 
 
 ## Getting Started
 
+### Prerequisites
+  * [NodeJS](http://nodejs.org) - `brew install nodejs`
+  * [Yeoman](http://yeoman.io) - `sudo npm install yo -g`
+  * [MongoDB](http://mongodb.org) - `brew install mongodb`
+
 ### Usage
 ```bash
 > npm install generator-ats-node-webapp -g
