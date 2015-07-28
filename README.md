@@ -40,6 +40,33 @@ The ats-node-webapp generator scaffolds a NodeJS web-application with normative 
 > yo ats-node-webapp
 ```
 
+### Project Layout
+```
+generated_project
+└───gulp/ (Build System)
+    ├───tasks/ (task files, automatically included during build)
+└───config/ (Application Configuration)
+    ├───custom-environment-variables.coffee (Environment-Variable => Configuration Mapping)
+    ├───default.coffee (Default configuration - always included as base layer)
+    ├───<environment>.coffee (Environment-specific configuration)
+└───scripts
+    ├───npm/ (scripts executed by npm)
+    ├───git/ (git hooks)
+└───server    
+    ├───components/ (application components, should be class-based, testable)
+    ├───errors/ (custom error types, optionally contain an errorCode property to configure HTTP response codes)
+    ├───initialization/ (server initialization scripts)
+    ├───middleware/ (functions that are composed to define RESTful endpoints. These should interact with the domain, but not contain domain logic.)
+    ├───persistence/ (mongoose setup)
+        ├───models/ (mongoose models definitions using Mongoose-Organizer)
+    ├───routers/ (RESTful endpoint definitions)
+    ├───routers.spec/ (RESTful endpoint tests, separate folder because routers is scanned by express-mountie)
+└───client (Web Client Implementation - e.g. React, Angular)
+    ├───app.js (bundled by browserify)
+    ├───assets/ (static assets)
+    ├───styles/ (Sass)
+```
+
 ### License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
