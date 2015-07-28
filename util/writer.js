@@ -1,11 +1,12 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
+const debug = require('debug')('generator-ats-node-webapp:writer');
 const DOT_FILES = {
-    "editorconfig": true,
-    "eslintrc": true,
-    "gitignore": true,
-    "gitattributes": true,
-    "nodemonignore": true
+    'editorconfig': true,
+    'eslintrc': true,
+    'gitignore': true,
+    'gitattributes': true,
+    'nodemonignore': true,
 };
 
 /**
@@ -26,17 +27,17 @@ class PathScanner {
             if (isDirectory) {
                 this.process(filePath, templatePath, context);
             } else {
-                const isTemplate = file.indexOf(".tpl") > -1;
-                const targetFilename = path.join(templateDir, (DOT_FILES[file] ? "." : "") + file).replace(".tpl", "");
-                const method = (isTemplate  ? 'copyTpl' : 'copy');
-                
+                const isTemplate = file.indexOf('.tpl') > -1;
+                const targetFilename = path.join(templateDir, (DOT_FILES[file] ? '.' : '') + file).replace('.tpl', '');
+                const method = (isTemplate ? 'copyTpl' : 'copy');
+
                 try {
                     context.fs[method](
                         context.templatePath(templatePath),
                         context.destinationPath(targetFilename),
                         context.props);
                 } catch (err) {
-                    console.log("Error processing template using " + method + ":", templatePath);
+                    debug('Error processing template using ' + method + ':', templatePath);
                     throw err;
                 }
             }

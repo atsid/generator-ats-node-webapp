@@ -75,6 +75,7 @@ module.exports = {
                 { name: 'Facebook', value: 'facebook', checked: true },
                 { name: 'Twitter', value: 'twitter', checked: true },
             ],
+            when: !this.options.oauthStrategies,
         }, {
             name: 'client',
             message: 'Client Framework',

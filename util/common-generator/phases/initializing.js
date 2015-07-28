@@ -10,18 +10,18 @@ module.exports = {
          * A private helper to read data in package.json
          */
         this.readPackageJson = () => {
+            let result = {};
             if (this.fs.exists('package.json')) {
-                return this.fs.readJSON('package.json')
-            } else {
-                return {};
+                result = this.fs.readJSON('package.json');
             }
+            return result;
         };
 
         /**
          * A private helper to append data to package.json
          */
         this.appendPackageJson = (data) => {
-            this.fs.writeJSON("package.json", _.merge(this.readPackageJson(), data));
+            this.fs.writeJSON('package.json', _.merge(this.readPackageJson(), data));
         };
 
         /**
@@ -64,7 +64,7 @@ module.exports = {
          */
         this.updateNpmScript = (name, data) => {
             const pkg = this.readPackageJson();
-            let existing = pkg.scripts && pkg.scripts[name];
+            const existing = pkg.scripts && pkg.scripts[name];
 
             let result = null;
             // If this script section is already present, don't modify the script
@@ -72,18 +72,22 @@ module.exports = {
                 if (existing.indexOf(data) > -1) {
                     result = existing;
                 } else {
-                    result = `${existing} && ${data}`
+                    result = `${existing} && ${data}`;
                 }
             } else {
                 result = data;
             }
 
             this.appendPackageJson({scripts: {[name]: result}});
-        }
+        };
     },
 
-    scanPackageJson: function () {
+    scanPackageJson: function scanPackageJson() {
         this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+        if (_.isString(this.options.oauthStrategies)) {
+            this.options.oauthStrategies = this.options.oauthStrategies.split(',');
+        }
 
         // Pre set the default props from the information we have at this point
         this.props = _.merge((this.options || {}), {
@@ -91,7 +95,7 @@ module.exports = {
             description: this.pkg.description,
             version: this.pkg.version || '0.0.0',
             homepage: this.pkg.homepage,
-            repository: this.pkg.repository
+            repository: this.pkg.repository,
         });
 
         // The author field can also be a string, we're ignoring this case currently.
@@ -107,5 +111,5 @@ module.exports = {
             this.props.authorEmail = info.email;
             this.props.authorUrl = info.url;
         }
-    }
+    },
 };
