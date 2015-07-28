@@ -6,12 +6,23 @@ var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
 var babel = require('gulp-babel');
 var debug = require('gulp-debug');
-
+var promise = require('bluebird');
+var istanbul = require('gulp-istanbul');
+var isparta = require('isparta');
 require('gulp-semver-tasks')(gulp);
+var DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
 
-gulp.task('test', function () {
-    return gulp.src(['./test/**/test*.js'])
-        .pipe(mocha());
+gulp.task('test', function (cb) {
+    gulp.src(['generators/*/*.js', 'generators/*/phases/**/*.js', 'util/**/*.js'])
+        .pipe(istanbul({includeUntested: true, instrumenter: isparta.Instrumenter}))
+        .pipe(istanbul.hookRequire())
+        .on('error', cb)
+        .on('finish', function () {
+            gulp.src('test/**/*.js')
+                .pipe(mocha())
+                .pipe(istanbul.writeReports())
+                .on('end', cb);
+        });
 });
 
 gulp.task('lint', function () {
@@ -21,7 +32,7 @@ gulp.task('lint', function () {
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('copy-templates', function() {
+gulp.task('copy-templates', function () {
     return gulp.src('./generators/*/templates/**/*')
         .pipe(debug({title: 'resource'}))
         .pipe(gulp.dest('./dist/generators'));
