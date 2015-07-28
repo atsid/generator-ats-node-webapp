@@ -1,6 +1,7 @@
 'use strict';
 require('babel/register');
 var gulp = require('gulp');
+var path = require('path');
 var mocha = require('gulp-mocha');
 var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
@@ -9,16 +10,42 @@ var debug = require('gulp-debug');
 var promise = require('bluebird');
 var istanbul = require('gulp-istanbul');
 var isparta = require('isparta');
+var empty = require('gulp-empty');
+var changed = require('gulp-changed');
+var argv = require('yargs').argv;
 require('gulp-semver-tasks')(gulp);
+
 var DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
+var GENERATOR_CODE = ['./{generators,util}/**/*.js', '!./generators/*/templates/**/*'];
+var TEST_CODE = ['test/**/*.js'];
+var GENERATOR_TEMPLATES = ['./generators/*/templates/**/*'];
+var PACKAGE_RESOURCES = ['package.json', 'README.md'];
+var DIST = './dist';
+
+function doDebug(name) {
+    if (argv.debug) {
+        return debug({title: name})
+    } else {
+        return empty();
+    }
+}
+
+function doChanged(target) {
+    if (argv.full) {
+        return empty();
+    } else {
+        return changed(target);
+    }
+}
 
 gulp.task('test', function (cb) {
-    gulp.src(['generators/*/*.js', 'generators/*/phases/**/*.js', 'util/**/*.js'])
+    gulp.src(GENERATOR_CODE)
         .pipe(istanbul({includeUntested: true, instrumenter: isparta.Instrumenter}))
         .pipe(istanbul.hookRequire())
         .on('error', cb)
         .on('finish', function () {
-            gulp.src('test/**/*.js')
+            gulp.src(TEST_CODE)
+                .pipe(doDebug('test'))
                 .pipe(mocha())
                 .pipe(istanbul.writeReports())
                 .on('end', cb);
@@ -26,22 +53,27 @@ gulp.task('test', function (cb) {
 });
 
 gulp.task('lint', function () {
-    return gulp.src(['./generators/**/*.js', '!./generators/**/templates/**/*.js'])
+    return gulp.src(GENERATOR_CODE)
+        .pipe(doChanged(DIST))
+        .pipe(doDebug('lint'))
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
 gulp.task('copy-templates', function () {
-    return gulp.src('./generators/*/templates/**/*')
-        .pipe(debug({title: 'resource'}))
-        .pipe(gulp.dest('./dist/generators'));
+    var target = path.join(DIST, 'generators');
+    return gulp.src(GENERATOR_TEMPLATES)
+        .pipe(doChanged(target))
+        .pipe(doDebug('resource'))
+        .pipe(gulp.dest(target));
 });
 
 gulp.task('copy-top-level-files', function () {
-    return gulp.src(['package.json', 'README.md'])
-        .pipe(debug({title: 'resource'}))
-        .pipe(gulp.dest('./dist'));
+    return gulp.src(PACKAGE_RESOURCES)
+        .pipe(doChanged(DIST))
+        .pipe(doDebug('resource'))
+        .pipe(gulp.dest(DIST));
 });
 
 gulp.task('copy-resources', [
@@ -49,24 +81,13 @@ gulp.task('copy-resources', [
     'copy-top-level-files',
 ]);
 
-gulp.task('babel-generators', function () {
-    return gulp.src(['./generators/*/*.js', './generators/*/phases/*.js'])
-        .pipe(debug({title: 'babel'}))
+gulp.task('babel', function () {
+    return gulp.src(GENERATOR_CODE)
+        .pipe(doChanged(DIST))
+        .pipe(doDebug('babel'))
         .pipe(babel())
-        .pipe(gulp.dest('./dist/generators'));
+        .pipe(gulp.dest(DIST));
 });
-
-gulp.task('babel-util', function () {
-    return gulp.src(['./util/**/*'])
-        .pipe(debug({title: 'babel'}))
-        .pipe(babel())
-        .pipe(gulp.dest('./dist/util'));
-});
-
-gulp.task('babel', [
-    'babel-generators',
-    'babel-util',
-]);
 
 gulp.task('default', function (cb) {
     runSequence(
