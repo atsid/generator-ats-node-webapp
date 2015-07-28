@@ -13,7 +13,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 target/
-coverage
+coverage/
 
 # Compiled public dir
 public
