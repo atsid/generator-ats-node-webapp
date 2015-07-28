@@ -1,7 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/atsid/generator-ats-node-webapp.png?branch=master)](https://travis-ci.org/atsid/generator-ats-node-webapp)
 [![Code Climate](https://codeclimate.com/github/atsid/generator-ats-node-webapp/badges/gpa.svg)](https://codeclimate.com/github/atsid/generator-ats-node-webapp)
 [![Test Coverage](https://codeclimate.com/github/atsid/generator-ats-node-webapp/badges/coverage.svg)](https://codeclimate.com/github/atsid/generator-ats-node-webapp/coverage)
-[![Dependency Status](https://david-dm.org/atsid/express-jefferson.svg)](https://david-dm.org/atsid/express-jefferson)
+[![Dependency Status](https://david-dm.org/atsid/generator-ats-node-webapp.svg)](https://david-dm.org/atsid/generator-ats-node-webapp)
 [![Dev Dependency Status](https://david-dm.org/atsid/generator-ats-node-webapp/dev-status.svg)](https://david-dm.org/atsid/generator-ats-node-webapp)
 # generator-ats-node-webapp
 
