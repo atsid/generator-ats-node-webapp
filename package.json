@@ -19,7 +19,20 @@
     "util"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "express",
+    "node",
+    "angular",
+    "react"
+  ],
+  "//": [
+    "# Dependency Resolution",
+    "Generators in this project determine their dependency version by polling this file.",
+    "'dependencies' is checked first, then 'devDependencies' to determine the version that will be inserted",
+    "into the target package.json.",
+    "",
+    "# Dependency Notes",
+    " * jsdom: 3.x is pegged because 4.x+ require iojs"
   ],
   "dependencies": {
     "babel": "^5.8.3",
@@ -27,19 +40,19 @@
     "debug": "^2.2.0",
     "lodash": "^3.10.0",
     "parse-author": "^0.2.0",
-    "yeoman-generator": "^0.19.0",
+    "yeoman-generator": "^0.20.2",
     "yosay": "^1.0.2"
   },
   "devDependencies": {
     "angular": "^1.4.3",
     "angular-mocks": "^1.4.3",
     "angular-ui-router": "^0.2.15",
-    "babel-eslint": "^3.1.26",
+    "babel-eslint": "^4.0.5",
     "babelify": "^6.1.3",
     "bcrypt": "^0.8.3",
     "bluebird": "^2.9.34",
     "body-parser": "^1.13.2",
-    "browserify": "^10.2.6",
+    "browserify": "^11.0.0",
     "browserify-ng-html2js": "^1.1.2",
     "chai": "^3.2.0",
     "codeclimate-test-reporter": "^0.1.0",
@@ -49,7 +62,7 @@
     "cookie-parser": "^1.3.5",
     "cookie-session": "^1.2.0",
     "envify": "^3.4.0",
-    "eslint-plugin-react": "^2.7.1",
+    "eslint-plugin-react": "^3.1.0",
     "express": "^4.13.1",
     "express-cache-response-directive": "^0.2.0",
     "express-jefferson": "^2.1.0",
