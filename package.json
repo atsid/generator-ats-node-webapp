@@ -32,7 +32,7 @@
     "into the target package.json.",
     "",
     "# Dependency Notes",
-    " * jsdom: 3.x is pegged because 4.x+ require iojs"
+    " * jsdom: 3.1.2 is pinned because 4.x+ require iojs"
   ],
   "dependencies": {
     "babel": "^5.8.3",
@@ -87,7 +87,7 @@
     "helmet": "^0.10.0",
     "isparta": "^3.0.3",
     "jade": "^1.11.0",
-    "jsdom": "^3.x",
+    "jsdom": "3.1.2",
     "livereactload": "^0.6.0",
     "mkdirp": "^0.5.1",
     "mocha": "2.x",
