@@ -1,6 +1,6 @@
 {
   "name": "generator-ats-node-webapp",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "ATS NodeJS Webapp Generator",
   "license": "Apache-2.0",
   "main": "app/index.js",
@@ -32,7 +32,7 @@
     "into the target package.json."
   ],
   "dependencyNotes": {
-    "jsdom": "3.1.2 is pinned because 4.x+ require iojs" 		     
+    "jsdom": "3.1.2 is pinned because 4.x+ require iojs"
   },
   "dependencies": {
     "babel": "^5.8.3",
