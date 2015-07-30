@@ -29,11 +29,11 @@
     "# Dependency Resolution",
     "Generators in this project determine their dependency version by polling this file.",
     "'dependencies' is checked first, then 'devDependencies' to determine the version that will be inserted",
-    "into the target package.json.",
-    "",
-    "# Dependency Notes",
-    " * jsdom: 3.1.2 is pinned because 4.x+ require iojs"
+    "into the target package.json."
   ],
+  "dependencyNotes": {
+    "jsdom": "3.1.2 is pinned because 4.x+ require iojs" 		     
+  },
   "dependencies": {
     "babel": "^5.8.3",
     "chalk": "^1.0.0",
