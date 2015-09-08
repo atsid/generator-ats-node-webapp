@@ -3,8 +3,12 @@
  */
 class ApplicationController {
     constructor($rootScope, $log) {
-        $rootScope.$on('$stateChangeError', () => $log.error('statechange error', arguments));
-        $rootScope.$on('$stateNotFound', () => $log.error('state not found', arguments));
+        $rootScope.$on('$stateChangeError', function onStateChangeError() {
+            $log.error('statechange error', arguments);
+        });
+        $rootScope.$on('$stateNotFound', function onStateNotFound() {
+            $log.error('state not found', arguments);
+        });
     }
 }
 
