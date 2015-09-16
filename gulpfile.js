@@ -54,7 +54,7 @@ gulp.task('test', function (cb) {
 
 gulp.task('lint', function () {
     return gulp.src(GENERATOR_CODE)
-        .pipe(doChanged(DIST))
+        //.pipe(doChanged(DIST))
         .pipe(doDebug('lint'))
         .pipe(eslint())
         .pipe(eslint.format())

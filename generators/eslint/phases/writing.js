@@ -1,9 +1,10 @@
 module.exports = {
-    packageJson() {
-        this.addDevDependencies(
-                'gulp-eslint',
-                'babel-eslint',
-                'eslint-plugin-react'
-        );
-    },
+  packageJson() {
+    this.addDevDependencies(
+      'gulp-eslint',
+      'babel-eslint',
+      'eslint-config-airbnb',
+      'eslint-plugin-react'
+    );
+  },
 };

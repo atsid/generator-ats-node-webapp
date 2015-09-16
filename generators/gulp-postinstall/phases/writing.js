@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.updateNpmScript('postinstall', 'gulp');
-    },
+  packageJson() {
+    this.updateNpmScript('postinstall', 'gulp');
+  },
 };

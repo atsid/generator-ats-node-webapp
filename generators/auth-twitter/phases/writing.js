@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.addDevDependency('passport-twitter');
-    },
+  packageJson() {
+    this.addDevDependency('passport-twitter');
+  },
 };

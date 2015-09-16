@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.addDevDependency('passport-github2');
-    },
+  packageJson() {
+    this.addDevDependency('passport-github2');
+  },
 };

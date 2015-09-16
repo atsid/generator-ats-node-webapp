@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.addDevDependency('gulp-sass');
-    },
+  packageJson() {
+    this.addDevDependency('gulp-sass');
+  },
 };
