@@ -72,7 +72,7 @@ gulp.task('babel', function () {
     .pipe(gulp.dest(DIST));
 });
 
-gulp.task('compile', (cb) => {
+gulp.task('compile', function (cb) {
   runSequence(['copy-resources', 'babel', 'lint'], cb);
 });
 
