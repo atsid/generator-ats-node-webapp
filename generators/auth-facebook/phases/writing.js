@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.addDependency('passport-facebook');
-    },
+  packageJson() {
+    this.addDependency('passport-facebook');
+  },
 };

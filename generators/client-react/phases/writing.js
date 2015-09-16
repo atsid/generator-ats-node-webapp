@@ -1,5 +1,5 @@
 module.exports = {
-    packageJson() {
-        this.addDependency('react');
-    },
+  packageJson() {
+    this.addDependency('react');
+  },
 };

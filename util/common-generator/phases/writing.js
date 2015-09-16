@@ -4,12 +4,12 @@ const Writer = require('../../writer');
 const writer = new Writer();
 
 module.exports = (generatorPath) => {
-    return {
-        writeTemplates() {
-            const templatePath = path.join(generatorPath, '/templates');
-            if (fs.existsSync(templatePath)) {
-                writer.process(templatePath, '', this);
-            }
-        },
-    };
+  return {
+    writeTemplates() {
+      const templatePath = path.join(generatorPath, '/templates');
+      if (fs.existsSync(templatePath)) {
+        writer.process(templatePath, '', this);
+      }
+    },
+  };
 };

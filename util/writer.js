@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const debug = require('debug')('generator-ats-node-webapp:writer');
 const DOT_FILES = {
-    'editorconfig': true,
-    'eslintrc': true,
-    'gitignore': true,
-    'gitattributes': true,
-    'nodemonignore': true,
+  'editorconfig': true,
+  'eslintrc': true,
+  'gitignore': true,
+  'gitattributes': true,
+  'nodemonignore': true,
 };
 
 /**
@@ -18,31 +18,37 @@ const DOT_FILES = {
  * @param context The yeoman context
  */
 class PathScanner {
-    process(dir, templateDir, context) {
-        fs.readdirSync(dir).forEach((file) => {
-            const filePath = path.join(dir, file);
-            const templatePath = path.join(templateDir, file);
-            const isDirectory = fs.lstatSync(filePath).isDirectory();
+  constructor() {
+    this.process = this.process.bind(this);
+  }
 
-            if (isDirectory) {
-                this.process(filePath, templatePath, context);
-            } else {
-                const isTemplate = file.indexOf('.tpl') > -1;
-                const targetFilename = path.join(templateDir, (DOT_FILES[file] ? '.' : '') + file).replace('.tpl', '');
-                const method = (isTemplate ? 'copyTpl' : 'copy');
+  process(dir, templateDir, context) {
+    fs.readdirSync(dir).forEach((file) => {
+      const filePath = path.join(dir, file);
+      const templatePath = path.join(templateDir, file);
+      const isDirectory = fs.statSync(filePath).isDirectory();
 
-                try {
-                    context.fs[method](
-                        context.templatePath(templatePath),
-                        context.destinationPath(targetFilename),
-                        context.props);
-                } catch (err) {
-                    debug('Error processing template using ' + method + ':', templatePath);
-                    throw err;
-                }
-            }
-        });
-    }
+      if (isDirectory) {
+        debug('processing dir', filePath);
+        this.process(filePath, templatePath, context);
+      } else {
+        debug('processing file', filePath);
+        const isTemplate = file.indexOf('.tpl') > -1;
+        const targetFilename = path.join(templateDir, (DOT_FILES[file] ? '.' : '') + file).replace('.tpl', '');
+        const method = (isTemplate ? 'copyTpl' : 'copy');
+
+        try {
+          context.fs[method](
+            context.templatePath(templatePath),
+            context.destinationPath(targetFilename),
+            context.props);
+        } catch (err) {
+          debug('Error processing template using ' + method + ':', templatePath);
+          throw err;
+        }
+      }
+    });
+  }
 }
 
 module.exports = PathScanner;

@@ -6,9 +6,9 @@ const hat = require('hat');
  * @returns {{githubId: string, name: *, password: *}}
  */
 module.exports = (profile) => {
-    return {
-        githubId: '' + profile.id,
-        name: profile.displayName,
-        password: hat(),
-    };
+  return {
+    githubId: '' + profile.id,
+    name: profile.displayName,
+    password: hat(),
+  };
 };

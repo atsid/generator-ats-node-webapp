@@ -12,14 +12,16 @@ const models = {};
  * Dynamically load model types
  */
 function getModels() {
-    const modelNames = fs.readdirSync(path.join(__dirname, 'models'));
-    function loadModel(modelName) {
-        debug(`loading model ${modelName}`);
-        const modelFunction = require(`./models/${modelName}`);
-        debug(`preparing model ${modelName}`);
-        models[modelName] = modelFunction(mongoose);
-    }
-    modelNames.forEach(loadModel);
+  const modelNames = fs.readdirSync(path.join(__dirname, 'models'));
+
+  function loadModel(modelName) {
+    debug(`loading model ${modelName}`);
+    const modelFunction = require(`./models/${modelName}`);
+    debug(`preparing model ${modelName}`);
+    models[modelName] = modelFunction(mongoose);
+  }
+
+  modelNames.forEach(loadModel);
 }
 
 /**
@@ -27,11 +29,11 @@ function getModels() {
  * @returns {*}
  */
 function populateSeed() {
-    if (config.database.populateSeedData) {
-        debug('loading seed data');
-        const seedingPromise = seeder.seedData(models);
-        startupHooks.addHook(seedingPromise);
-    }
+  if (config.database.populateSeedData) {
+    debug('loading seed data');
+    const seedingPromise = seeder.seedData(models);
+    startupHooks.addHook(seedingPromise);
+  }
 }
 
 debug('Initializing Persistence');

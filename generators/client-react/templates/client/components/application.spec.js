@@ -5,10 +5,10 @@ const ReactTestUtils = React.addons.TestUtils;
 const Application = require('./application');
 
 describe('Application Component', () => {
-    it('should load', () => {
-        const renderedComponent = ReactTestUtils.renderIntoDocument(
-            <Application />
-        );
-        expect(renderedComponent).to.exist;
-    });
+  it('should load', () => {
+    const renderedComponent = ReactTestUtils.renderIntoDocument(
+      <Application />
+    );
+    expect(renderedComponent).to.exist;
+  });
 });

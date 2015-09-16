@@ -8,6 +8,6 @@ const catchError = err => debug('error starting application', err);
 
 debug('starting the application');
 module.exports = startupHooks.resolve()
-    .then(startListening)
-    .then(() => server)
-    .catch(catchError);
+  .then(startListening)
+  .then(() => server)
+  .catch(catchError);

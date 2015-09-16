@@ -1,3 +1,3 @@
 module.exports = (location) => {
-    return (req, res) => res.redirect(location);
+  return (req, res) => res.redirect(location);
 };

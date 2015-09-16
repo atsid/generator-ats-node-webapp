@@ -4,6 +4,6 @@
  * @returns A middleware function
  */
 module.exports = (content) => (req, res) => {
-    res.json({message: content});
-    res.end();
+  res.json({message: content});
+  res.end();
 };
