@@ -1,9 +1,22 @@
+const INITIAL_DOM = '<!doctype html><html><body></body></html>';
+const Bluebird = require('bluebird');
 const jsdom = require('jsdom');
 
-// A super simple DOM ready for React to render into
-// Store this DOM and the window in global scope ready for React to access
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-global.window = document.parentWindow;
-global.navigator = window.navigator;
-
-module.exports = {};
+module.exports = {
+  bootstrapDom(scripts = []) {
+    return new Bluebird((resolve, reject) => {
+      jsdom.env(INITIAL_DOM, scripts,
+        function onJsdom(err, window) {
+          if (err) {
+            reject(err);
+          } else {
+            global.window = window;
+            global.navigator = window.navigator;
+            global.document = window.document;
+            resolve(window);
+          }
+        }
+      );
+    });
+  },
+};
