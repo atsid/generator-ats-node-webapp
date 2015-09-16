@@ -5,16 +5,16 @@ const ngHtml2Js = require('browserify-ng-html2js');
 <% } %>
 
 module.exports = () => {
-    return {
-        entries: config.client.entries,
-        transform: [
-            babelify,
+  return {
+    entries: config.client.entries,
+    transform: [
+      babelify,
 <% if (client === 'angular') { %>
-            ngHtml2Js(config.ngHtml2Js),
+      ngHtml2Js(config.ngHtml2Js),
 <% } %>
-        ],
-        debug: false,
-        cache: {},
-        packageCache: {},
-    };
+    ],
+    debug: false,
+    cache: {},
+    packageCache: {},
+  };
 };

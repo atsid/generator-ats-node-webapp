@@ -18,14 +18,14 @@ const compare = (password, hashed) => doCompare(password, hashed);
  * @param userPassword The encrypted user password
  */
 function isValidPassword(password, hashed) {
-    if (!password) {
-        throw new Error(`'password' argument is required`);
-    }
-    if (!hashed) {
-        throw new Error(`'hashed' argument is required`);
-    }
-    debug('checking user password');
-    return compare(password, hashed);
+  if (!password) {
+    throw new Error(`'password' argument is required`);
+  }
+  if (!hashed) {
+    throw new Error(`'hashed' argument is required`);
+  }
+  debug('checking user password');
+  return compare(password, hashed);
 }
 
 /**
@@ -33,13 +33,13 @@ function isValidPassword(password, hashed) {
  * @param password The password to encrypt
  */
 function encryptPassword(password) {
-    if (!password) {
-        throw new Error(`'password' argument is required`);
-    }
-    return genSalt(saltWorkFactor).then(salt => hash(password, salt));
+  if (!password) {
+    throw new Error(`'password' argument is required`);
+  }
+  return genSalt(saltWorkFactor).then(salt => hash(password, salt));
 }
 
 module.exports = {
-    isValidPassword,
-    encryptPassword,
+  isValidPassword,
+  encryptPassword,
 };

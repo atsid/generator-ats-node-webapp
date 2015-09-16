@@ -9,15 +9,15 @@ const uglifyify = require('uglifyify');
 const envify = require('envify/custom');
 
 gulp.task('bundle-client', () => {
-    const conf = browserifyConf();
-    conf.transform.push([envify({_: 'purge', NODE_ENV: 'production'}), { global: true }]);
-    conf.transform.push([uglifyify, { global: true }]);
-    const b = browserify(conf);
-    b.on('log', gutil.log);
-    return b
-        .bundle()
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-        .pipe(source(config.client.dist.bundle))
-        .pipe(buffer())
-        .pipe(gulp.dest(config.client.dist.path));
+  const conf = browserifyConf();
+  conf.transform.push([envify({_: 'purge', NODE_ENV: 'production'}), {global: true}]);
+  conf.transform.push([uglifyify, {global: true}]);
+  const b = browserify(conf);
+  b.on('log', gutil.log);
+  return b
+    .bundle()
+    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .pipe(source(config.client.dist.bundle))
+    .pipe(buffer())
+    .pipe(gulp.dest(config.client.dist.path));
 });

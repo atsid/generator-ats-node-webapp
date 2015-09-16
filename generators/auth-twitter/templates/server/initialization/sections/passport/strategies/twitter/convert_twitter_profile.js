@@ -6,9 +6,9 @@ const hat = require('hat');
  * @returns {{twitterId: string, name: *, password: *}}
  */
 module.exports = (profile) => {
-    return {
-        twitterId: '' + profile.id,
-        name: profile.name,
-        password: hat(),
-    };
+  return {
+    twitterId: '' + profile.id,
+    name: profile.name,
+    password: hat(),
+  };
 };

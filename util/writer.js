@@ -25,13 +25,14 @@ class PathScanner {
   process(dir, templateDir, context) {
     fs.readdirSync(dir).forEach((file) => {
       const filePath = path.join(dir, file);
-      debug('processing entry', filePath);
       const templatePath = path.join(templateDir, file);
-      const isDirectory = fs.lstatSync(filePath).isDirectory();
+      const isDirectory = fs.statSync(filePath).isDirectory();
 
       if (isDirectory) {
+        debug('processing dir', filePath);
         this.process(filePath, templatePath, context);
       } else {
+        debug('processing file', filePath);
         const isTemplate = file.indexOf('.tpl') > -1;
         const targetFilename = path.join(templateDir, (DOT_FILES[file] ? '.' : '') + file).replace('.tpl', '');
         const method = (isTemplate ? 'copyTpl' : 'copy');

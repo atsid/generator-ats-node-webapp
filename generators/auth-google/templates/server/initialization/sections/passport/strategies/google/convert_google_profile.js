@@ -6,9 +6,9 @@ const hat = require('hat');
  * @returns {{googleId: string, name: *, password: *}}
  */
 module.exports = (profile) => {
-    return {
-        googleId: '' + profile.id,
-        name: profile.displayName,
-        password: hat(),
-    };
+  return {
+    googleId: '' + profile.id,
+    name: profile.displayName,
+    password: hat(),
+  };
 };

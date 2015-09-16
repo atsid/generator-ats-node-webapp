@@ -1,3 +1,3 @@
 module.exports = {
-    send: require('./send'),
+  send: require('./send'),
 };

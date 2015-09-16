@@ -1,7 +1,7 @@
 class NyanCatController {
-    constructor(nyanService) {
-        this.nyanCatSource = nyanService.getNyanSource();
-    }
+  constructor(nyanService) {
+    this.nyanCatSource = nyanService.getNyanSource();
+  }
 }
 
 NyanCatController.$inject = ['NyanService'];

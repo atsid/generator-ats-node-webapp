@@ -3,6 +3,6 @@
  * @param directive
  */
 module.exports = (directive) => (req, res, next) => {
-    res.cacheControl(directive);
-    next();
+  res.cacheControl(directive);
+  next();
 };

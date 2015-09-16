@@ -5,19 +5,19 @@ const passwordChecker = require('app/components/password_checker');
  * @param password the input password
  */
 function isValidPassword(password) {
-    return passwordChecker.isValidPassword(password, this.password);
+  return passwordChecker.isValidPassword(password, this.password);
 }
 
 function process(req) {
-    const result = this.toObject();
-    if (!req.user || `${req.user.id}` !== `${result.id}`) {
-        delete result.facebookId;
-        delete result.twitterId;
-    }
-    delete result.password;
-    delete result._id;
-    delete result.__v;
-    return result;
+  const result = this.toObject();
+  if (!req.user || `${req.user.id}` !== `${result.id}`) {
+    delete result.facebookId;
+    delete result.twitterId;
+  }
+  delete result.password;
+  delete result._id;
+  delete result.__v;
+  return result;
 }
 
 /**

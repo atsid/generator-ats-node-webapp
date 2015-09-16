@@ -1,3 +1,3 @@
 module.exports =
-    database:
-        populateSeedData: false
+  database:
+    populateSeedData: false

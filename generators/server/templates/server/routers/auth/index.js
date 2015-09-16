@@ -4,21 +4,21 @@ const path = require('path');
 const auth = require('app/middleware/auth');
 
 const router = jefferson.router({
-    routes: {
-        '/': {
-            get: [auth.index],
-        },
-        '/current': {
-            get: [auth.getCurrentUser],
-            'delete': [auth.logout],
-        },
+  routes: {
+    '/': {
+      get: [auth.index],
     },
+    '/current': {
+      get: [auth.getCurrentUser],
+      'delete': [auth.logout],
+    },
+  },
 });
 
 mountie({
-    parent: router,
-    src: path.join(__dirname, 'methods'),
-    prefix: (name) => `/${name}`,
+  parent: router,
+  src: path.join(__dirname, 'methods'),
+  prefix: (name) => `/${name}`,
 });
 
 module.exports = router;
