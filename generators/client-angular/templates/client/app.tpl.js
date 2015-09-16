@@ -1,5 +1,3 @@
-const angular = require('angular');
-
 /**
  * Assemble the Application Module
  */

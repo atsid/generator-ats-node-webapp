@@ -57,6 +57,7 @@ module.exports = {
     composeLocal('client-styles');
     composeLocal('client-build');
     composeLocal('gulp');
+    composeLocal('vscode');
 
     // Add OAuth
     composeOAuth('facebook');
