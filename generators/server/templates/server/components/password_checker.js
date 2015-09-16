@@ -1,6 +1,6 @@
 const config = require('config');
 const debug = require('debug')('app:components:password_checker');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltWorkFactor = config.auth.local.password.saltWorkFactor;
 const Bluebird = require('bluebird');
 

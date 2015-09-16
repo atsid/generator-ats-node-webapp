@@ -2,7 +2,7 @@ module.exports = {
   packageJson() {
     this.addDependencies(
       'babel',
-      'bcrypt',
+      'bcryptjs',
       'bluebird',
       'body-parser',
       'coffee-script',
