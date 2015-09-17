@@ -4,6 +4,7 @@ module.exports = {
       'babelify',
       'mkdirp',
       'browserify',
+      'browserify-shim',
       'envify',
       'uglifyify',
       'watchify',
