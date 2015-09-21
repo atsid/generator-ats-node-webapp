@@ -8,13 +8,13 @@
 A [Yeoman](http://yeoman.io) generator for generating kick-ass NodeJS Web Applications 
 
 ## Key Features
-* A rad build system using Gulp.
-* A bitchin' RESTful API.
-* MongoDB/Mongoose persistence
-* Testing examples
+* Bitchin' RESTful API.
 * React and Angular client implementations
-* Client-only mode for S3-deployed apps
 * OAuth Scaffolding (Facebook, Twitter, Github, Google)
+* Extensible Gulp build system.
+* Testing examples
+* Client-only mode
+* MongoDB/Mongoose persistence
 
 ## Getting Started
 
