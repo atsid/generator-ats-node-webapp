@@ -69,31 +69,31 @@ describe('generator-ats-node-webapp:app', function () {
   const BUNDLE_DONE = 'Finished \'bundle-client\' after';
   const LINT_DONE = 'Finished \'lint\' after';
 
-  it('can create a lint-able React fullstack project', function (done) {
+  it('can create a lintable React fullstack project', function (done) {
     this.timeout(30 * 1000);
     generateProject('react', 'full', () => {
       exec('npm run create-app-symlink && gulp lint bundle-client', checkExecOutput(done, BUNDLE_DONE));
     });
   });
 
-  it('can create a lint-able Angular fullstack project', function (done) {
+  it('can create a lintable Angular fullstack project', function (done) {
     this.timeout(30 * 1000);
     generateProject('angular', 'full', () => {
       exec('npm run create-app-symlink && npm run create-public-symlink && gulp lint', checkExecOutput(done, LINT_DONE));
     });
   });
 
-  it('can create a lint-able React client-only project', function (done) {
+  it('can create a lintable React client-only project', function (done) {
     this.timeout(30 * 1000);
     generateProject('react', 'thin', () => {
-      exec('npm run create-app-symlink && gulp lint bundle-client', checkExecOutput(done, BUNDLE_DONE));
+      exec('gulp lint bundle-client', checkExecOutput(done, BUNDLE_DONE));
     });
   });
 
-  it('can create a lint-able Angular client-only project', function (done) {
+  it('can create a lintable Angular client-only project', function (done) {
     this.timeout(30 * 1000);
     generateProject('angular', 'thin', () => {
-      exec('npm run create-app-symlink && npm run create-public-symlink && gulp lint', checkExecOutput(done, LINT_DONE));
+      exec('npm run create-public-symlink && gulp lint', checkExecOutput(done, LINT_DONE));
     });
   });
 });
