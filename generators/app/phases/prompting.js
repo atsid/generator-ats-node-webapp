@@ -3,6 +3,10 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 
+function isOAuthSupported(options) {
+  return options.server !== 'thin';
+}
+
 module.exports = {
   welcome() {
     this.log(yosay(
@@ -66,26 +70,36 @@ module.exports = {
       when: !this.pkg.keywords,
       filter: _.words,
     }, {
-      type: 'checkbox',
-      message: 'OAuth Strategies',
-      name: 'oauthStrategies',
-      choices: [
-        { name: 'Google', value: 'google', checked: true},
-        { name: 'Github', value: 'github', checked: true },
-        { name: 'Facebook', value: 'facebook', checked: true },
-        { name: 'Twitter', value: 'twitter', checked: true },
-      ],
-      when: !this.options.oauthStrategies,
-    }, {
       name: 'client',
       message: 'Client Framework',
       type: 'list',
       'default': (val) => val || 'react',
       choices: [
-        { name: 'React', value: 'react'},
-        { name: 'Angular', value: 'angular'},
+        {name: 'React', value: 'react'},
+        {name: 'Angular', value: 'angular'},
       ],
       when: !this.options.client,
+    }, {
+      name: 'server',
+      message: 'Server Type',
+      type: 'list',
+      'default': (val) => val || 'full',
+      choices: [
+        {name: 'Full Server', value: 'full'},
+        {name: 'Thin Server (dev only)', value: 'thin'},
+      ],
+      when: !this.options.server,
+    }, {
+      type: 'checkbox',
+      message: 'OAuth Strategies',
+      name: 'oauthStrategies',
+      choices: [
+        {name: 'Google', value: 'google', checked: true},
+        {name: 'Github', value: 'github', checked: true},
+        {name: 'Facebook', value: 'facebook', checked: true},
+        {name: 'Twitter', value: 'twitter', checked: true},
+      ],
+      when: isOAuthSupported(this.options) && !this.options.oauthStrategies,
     }];
 
     this.prompt(prompts, (props) => {

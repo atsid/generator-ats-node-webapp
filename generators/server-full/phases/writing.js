@@ -1,24 +1,15 @@
 module.exports = {
   packageJson() {
     this.addDependencies(
-      'babel',
-      'bcryptjs',
-      'bluebird',
       'body-parser',
-      'coffee-script',
       'compression',
-      'config',
       'cookie-parser',
       'cookie-session',
-      'debug',
-      'jade',
-      'express',
       'express-cache-response-directive',
       'express-jefferson',
       'express-mountie',
       'hat',
       'helmet',
-      'lodash',
       'mongoose',
       'mongoose-organizer',
       'mongoose-q',
@@ -29,7 +20,6 @@ module.exports = {
     );
 
     this.addDevDependencies(
-      'chai',
       'gulp-nodemon',
       'rewire',
       'supertest',

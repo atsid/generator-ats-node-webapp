@@ -5,27 +5,16 @@
 [![Dev Dependency Status](https://david-dm.org/atsid/generator-ats-node-webapp/dev-status.svg)](https://david-dm.org/atsid/generator-ats-node-webapp)
 # generator-ats-node-webapp
 
-> A [Yeoman](http://yeoman.io) generator for generating NodeJS Web Applications 
+A [Yeoman](http://yeoman.io) generator for generating kick-ass NodeJS Web Applications 
 
-The ats-node-webapp generator scaffolds a NodeJS web-application with normative standards for composing a high-quality application.
 ## Key Features
-* Gulp build system.
-* A RESTful API via Express.
-* Declarative routing via using express-jefferson.
-* Dynamic service discovery via express-mountie.
+* A rad build system using Gulp.
+* A bitchin' RESTful API.
 * MongoDB/Mongoose persistence
-* Client-side tests using jsdom
-* Client Implementations:
-    * React 
-    * AngularJS 
-      * Class-based services and controllers
-      * Strict DI mode
-      * Static template caching
-* OAuth Scaffolding
-    * Facebook
-    * Twitter
-    * Github
-    * Google
+* Testing examples
+* React and Angular client implementations
+* Client-only mode for S3-deployed apps
+* OAuth Scaffolding (Facebook, Twitter, Github, Google)
 
 ## Getting Started
 
@@ -39,7 +28,10 @@ The ats-node-webapp generator scaffolds a NodeJS web-application with normative 
 > npm install generator-ats-node-webapp -g
 > yo ats-node-webapp
 ```
-
+### Command-Line Options
+* **client** (*optional*) - Possible Values: `react`, `angular`
+* **server** (*optional*) - Possible Values: `full`, `thin`
+* **oauthStrategies** (*optional*) - Possible Values (comma-separated):  `google`, `github`, `facebook`, `twitter`
 ### Project Layout
 ```
 generated_project

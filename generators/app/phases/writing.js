@@ -50,8 +50,13 @@ module.exports = {
     composeLocal('editorconfig');
     composeLocal('eslint');
     composeLocal('readme');
-    composeLocal('app-symlink');
-    composeLocal('server');
+    composeLocal('server-common');
+    composeLocal(`server-${this.props.server}`);
+
+    if (this.props.server !== 'thin') {
+      composeLocal('app-symlink');
+    }
+
     composeLocal('docker-compose');
     composeLocal('client-assets');
     composeLocal('client-styles');
