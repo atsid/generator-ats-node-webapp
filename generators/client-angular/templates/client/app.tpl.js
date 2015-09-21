@@ -1,9 +1,11 @@
 /**
  * Assemble the Application Module
  */
+const angular = require('angular');
 const appModule = angular.module('<%= name %>', [
   // Third Party Modules
-  require('angular-ui-router'),
+  'ui.router',
+  'ngMaterial',
 
   // Application Modules
   'templates',

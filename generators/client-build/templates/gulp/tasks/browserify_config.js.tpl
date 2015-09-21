@@ -12,6 +12,7 @@ module.exports = () => {
 <% if (client === 'angular') { %>
       ngHtml2Js(config.ngHtml2Js),
 <% } %>
+      'browserify-shim',
     ],
     debug: false,
     cache: {},
