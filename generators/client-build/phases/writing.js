@@ -9,7 +9,12 @@ module.exports = {
       'uglifyify',
       'watchify',
       'jsdom',
-      'gulp-livereload');
+      'gulp-livereload',
+      'gulp-rev-all',
+      'gulp-awspublish',
+      'gulp-cloudfront',
+      'gulp-jade'
+    );
 
     // React-Specific build dependencies
     if (this.props.client === 'react') {

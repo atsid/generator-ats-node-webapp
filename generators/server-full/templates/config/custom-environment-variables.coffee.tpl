@@ -1,4 +1,7 @@
 module.exports =
+  server:
+    port: "SERVER_PORT"
+
   session:
     secret: "SESSION_STATE_SECRET"
 

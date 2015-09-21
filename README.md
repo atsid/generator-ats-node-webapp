@@ -21,6 +21,9 @@ The ats-node-webapp generator scaffolds a NodeJS web-application with normative 
       * Class-based services and controllers
       * Strict DI mode
       * Static template caching
+* Server Implementations:
+    * RESTful ExpressJS Server
+    * Thin Dev-Only Server
 * OAuth Scaffolding
     * Facebook
     * Twitter
