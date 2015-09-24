@@ -48,6 +48,7 @@ const Skeleton = React.createClass({
   render() {
     const menuItems = [
       {route: '/', text: 'Home'},
+      {route: '/nyan', text: 'Nyan Mode'},
     ];
 
     if (this.state.user) {
@@ -67,7 +68,7 @@ const Skeleton = React.createClass({
 
         <header>
           <AppBar
-            title="Badger"
+            title="My Fancy New App"
             onLeftIconButtonTouchTap={this.onLeftNavToggle}
             iconElementRight={<FlatButton label={appBarRightLabel} />} />
         </header>
