@@ -1,5 +1,5 @@
-const Application = require('./components/application');
-const React = require('react');
+const Application = require('./components/Application');
+const React = require('react/addons');
 
 window.onload = function onload() {
   // Facebook Authentication adds this value to the location hash

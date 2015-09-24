@@ -67,7 +67,7 @@ const Skeleton = React.createClass({
 
         <header>
           <AppBar
-            title="Badger"
+            title="My Fancy New App"
             onLeftIconButtonTouchTap={this.onLeftNavToggle}
             iconElementRight={<FlatButton label={appBarRightLabel} />} />
         </header>
