@@ -5,12 +5,13 @@ const exec = require('child_process').exec;
 const yoAssert = require('yeoman-generator').assert;
 const helpers = require('yeoman-generator').test;
 const {expect, assert} = require('chai');
+const debug = require('debug')('gentest');
 
 describe('generator-ats-node-webapp:app', function () {
   let context = null;
 
   before(function (done) {
-    this.timeout(30000);
+    this.timeout(60000);
     context = helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({
         skipInstall: true,
@@ -37,6 +38,7 @@ describe('generator-ats-node-webapp:app', function () {
 
   function generateProject(client, server, cb) {
     context.inTmpDir((dir) => {
+      debug('Temp Dir: ', dir);
       helpers.run(path.join(__dirname, '../generators/app'))
         .inDir(dir)
         .withOptions({skipInstall: true, client: client, server: server})
