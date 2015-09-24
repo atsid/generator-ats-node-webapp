@@ -4,9 +4,9 @@ const Card = mui.Card;
 const CardHeader = mui.CardHeader;
 const CardMedia = mui.CardMedia;
 
-const NoMatch = React.createClass({
-  propTypes: {
-    project: React.PropTypes.object.isRequired,
+const NyanCat = React.createClass({
+  contextTypes: {
+    stores: React.PropTypes.object.isRequired,
   },
 
   getInitialState() {
@@ -41,4 +41,4 @@ const NoMatch = React.createClass({
   },
 });
 
-module.exports = NoMatch;
+module.exports = NyanCat;

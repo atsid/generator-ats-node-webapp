@@ -48,6 +48,7 @@ const Skeleton = React.createClass({
   render() {
     const menuItems = [
       {route: '/', text: 'Home'},
+      {route: '/nyan', text: 'Nyan Mode'},
     ];
 
     if (this.state.user) {

@@ -11,6 +11,7 @@ const NoMatch = require('./NoMatch');
 const Skeleton = require('./Skeleton');
 const Dashboard = require('./Dashboard');
 const Login = require('./Login');
+const NyanCat = require('./NyanCat');
 
 // MUI
 const mui = require('material-ui');
