@@ -13,6 +13,8 @@ module.exports = {
       'gulp-rev-all',
       'gulp-awspublish',
       'gulp-cloudfront',
+      'gulp-sourcemaps',
+      'gulp-cssmin',
       'gulp-jade'
     );
 
