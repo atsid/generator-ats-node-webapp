@@ -80,6 +80,7 @@
     "gulp-eslint": "^1.0.0",
     "gulp-exit": "0.0.2",
     "gulp-ext-replace": "^0.2.0",
+    "gulp-imagemin": "^2.3.0",
     "gulp-istanbul": "^0.10.0",
     "gulp-jade": "^1.0.1",
     "gulp-livereload": "^3.8",

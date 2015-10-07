@@ -22,6 +22,9 @@ gulp.task('watch-client', () => {
 
   // watch assets
   gulp.watch(config.client.assets, ['copy-assets']);
+
+  // watch assets
+  gulp.watch(config.client.images, ['imagemin']);
 <% if (client === 'angular') { %>
 
   // watch jade
