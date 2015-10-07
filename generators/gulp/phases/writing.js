@@ -7,6 +7,7 @@ module.exports = {
       'gulp-istanbul',
       'gulp-mocha',
       'gulp-util',
+      'gulp-plumber',
       'run-sequence',
       'vinyl-buffer',
       'vinyl-source-stream',

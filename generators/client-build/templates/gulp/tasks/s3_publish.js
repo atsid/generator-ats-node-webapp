@@ -3,6 +3,7 @@ const RevAll = require('gulp-rev-all');
 const awspublish = require('gulp-awspublish');
 const cloudfront = require('gulp-cloudfront');
 const gulp = require('gulp');
+const plumber = require('gulp-plumber');
 
 gulp.task('publish', () => {
   debug('preparing to publish');
@@ -23,6 +24,7 @@ gulp.task('publish', () => {
   debug('publishing');
   const revall = new RevAll();
   return gulp.src('./public/**/*')
+    .pipe(plumber())
     .pipe(revall.revision())
     .pipe(awspublish.gzip())
     .pipe(publisher.publish(headers))
