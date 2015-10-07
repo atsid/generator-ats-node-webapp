@@ -30,4 +30,5 @@ gulp.task('prepare-assets', [
   'process-jade',
   'copy-html',
   'copy-assets',
+  'imagemin',
 ]);

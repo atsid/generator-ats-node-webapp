@@ -15,6 +15,7 @@ module.exports = {
       'gulp-cloudfront',
       'gulp-sourcemaps',
       'gulp-cssmin',
+      'gulp-imagemin',
       'gulp-jade'
     );
 
