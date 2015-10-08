@@ -10,6 +10,7 @@ const INIT_SECTIONS = [
   require('./sections/passport'),
   require('./sections/jade'),
   require('./sections/routing'),
+  require('./sections/ui_routing'),
   require('./sections/error_handling'),
 ];
 

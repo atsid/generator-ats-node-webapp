@@ -65,10 +65,13 @@ module.exports = {
     composeLocal('vscode');
 
     // Add OAuth
-    composeOAuth('facebook');
-    composeOAuth('github');
-    composeOAuth('google');
-    composeOAuth('twitter');
+    // NOTE: When we add OAuth client implementations, make new generators for them
+    if (this.props.server !== 'thin') {
+      composeOAuth('facebook');
+      composeOAuth('github');
+      composeOAuth('google');
+      composeOAuth('twitter');
+    }
 
     // Add Client
     composeLocal(`client-${this.props.client}`);

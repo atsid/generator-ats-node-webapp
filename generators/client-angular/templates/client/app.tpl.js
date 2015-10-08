@@ -17,19 +17,25 @@ appModule.controller('ApplicationController', require('./application_controller'
 /**
  * Set up State-Based Routing
  */
-appModule.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
-  $stateProvider.state('app', {
-    url: '/?target',
-    templateUrl: '/welcome/welcome.html',
-    controller: 'WelcomeController as ctrl',
-    resolve: {
-      // Use array-style injection for strict-di
-      welcomeTarget: ['$stateParams', ($stateParams) => {
-        return $stateParams.target || 'World';
-      }],
-    },
-  });
-  $urlRouterProvider.otherwise('/');
-}]);
+appModule.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  '$locationProvider',
+  ($stateProvider, $urlRouterProvider, $locationProvider) => {
+    $locationProvider.html5Mode(true);
+
+    $stateProvider.state('app', {
+      url: '/?target',
+      templateUrl: '/welcome/welcome.html',
+      controller: 'WelcomeController as ctrl',
+      resolve: {
+        // Use array-style injection for strict-di
+        welcomeTarget: ['$stateParams', ($stateParams) => {
+          return $stateParams.target || 'World';
+        }],
+      },
+    });
+    $urlRouterProvider.otherwise('/');
+  }]);
 
 angular.bootstrap(document, [appModule.name], {strictDi: true});
