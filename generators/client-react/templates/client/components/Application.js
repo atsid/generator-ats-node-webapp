@@ -5,6 +5,7 @@ const ReactRouter = require('react-router');
 const Router = ReactRouter.Router;
 const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
+const createBrowserHistory = require('history/lib/createBrowserHistory');
 
 // Application Components
 const NoMatch = require('./NoMatch');
@@ -38,7 +39,7 @@ const Application = React.createClass({
 
   render() {
     return (
-      <Router>
+      <Router history={createBrowserHistory()}>
         <Route path="/" component={Skeleton}>
           <IndexRoute component={Dashboard} />
           <Route path="login" component={Login} />
