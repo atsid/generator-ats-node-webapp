@@ -1,0 +1,9 @@
+{
+  "provider": "linkedin",
+  "id": "12345",
+  "displayName": "Joe Test",
+  "name": {
+    "familyName": "Test",
+    "givenName": "Joe"
+  }
+}
