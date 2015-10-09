@@ -12,6 +12,8 @@ module.exports = (req, res) => {
       'google': '/auth/google',
 <% } if (useOAuthStrategy('github')) { %>
       'github': '/auth/github',
+<% } if (useOAuthStrategy('linkedin')) { %>
+      'linkedin': '/auth/linkedin',
 <% } %>
     },
   });

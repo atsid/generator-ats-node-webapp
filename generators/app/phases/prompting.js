@@ -98,6 +98,7 @@ module.exports = {
         {name: 'Github', value: 'github', checked: true},
         {name: 'Facebook', value: 'facebook', checked: true},
         {name: 'Twitter', value: 'twitter', checked: true},
+        {name: 'LinkedIn', value: 'linkedin', checked: true},
       ],
       when: isOAuthSupported(this.options) && !this.options.oauthStrategies,
     }];

@@ -71,6 +71,7 @@ module.exports = {
       composeOAuth('github');
       composeOAuth('google');
       composeOAuth('twitter');
+      composeOAuth('linkedin');
     }
 
     // Add Client
