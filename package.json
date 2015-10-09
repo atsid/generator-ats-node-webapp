@@ -111,6 +111,7 @@
     "passport-facebook": "^2.0.0",
     "passport-github2": "^0.1.9",
     "passport-google-oauth": "^0.2.0",
+    "passport-linkedin": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.3",
     "q-bluebird": "0.0.1",

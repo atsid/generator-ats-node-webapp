@@ -57,5 +57,14 @@ module.exports = {
     type: String,
     index: true,
   },
+<% } if (useOAuthStrategy('linkedin')) { %>
+
+  /**
+  * A user's unique LinkedIn profile ID
+  */
+  linkedinId: {
+    type: String,
+    index: true,
+  },
 <% } %>
 };

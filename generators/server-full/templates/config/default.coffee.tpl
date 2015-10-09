@@ -33,6 +33,12 @@ module.exports =
       clientSecret: 'bogus_secret'
       callbackURL: 'http://localhost:9000/api/auth/github/callback'
       scope: ['user:email']
+<% } if (useOAuthStrategy('linkedin')) { %>
+    linkedin:
+      clientID: 'your_consumer_key'
+      clientSecret: 'bogus_secret'
+      callbackURL: 'http://localhost:9000/api/auth/linkedin/callback'
+      scope: ['r_basicprofile', 'r_emailaddress']
 <% } %>
 
   container:

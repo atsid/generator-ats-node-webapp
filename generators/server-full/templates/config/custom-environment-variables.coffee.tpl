@@ -39,5 +39,10 @@ module.exports =
       clientID: "GITHUB_CLIENT_ID"
       clientSecret: "GITHUB_CLIENT_SECRET"
       scope: "GITHUB_SCOPE"
+<% } if (useOAuthStrategy('linkedin')) { %>
+    linkedin:
+      clientID: "LINKEDIN_CLIENT_ID"
+      clientSecret: "LINKEDIN_CLIENT_SECRET"
+      scope: "LINKEDIN_SCOPE"
 <% } %>
 
