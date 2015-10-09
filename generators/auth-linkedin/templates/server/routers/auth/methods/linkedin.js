@@ -6,7 +6,7 @@ const redirect = require('app/middleware/redirect');
 module.exports = jefferson.router({
   routes: {
     '/': {
-      get: [passport.authenticate('linkedin', {scope: config.auth.github.scope})],
+      get: [passport.authenticate('linkedin', {scope: config.auth.linkedin.scope})],
     },
     '/callback': {
       get: [

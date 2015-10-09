@@ -16,7 +16,7 @@ const Login = React.createClass({
         <br/><% } if (useOAuthStrategy('github')) { %>
         <a href="/api/auth/github">Login with Github</a>
         <br/><% } if (useOAuthStrategy('linkedin')) { %>
-        <a href="/api/auth/github">Login with LinkedIn</a>
+        <a href="/api/auth/linkedin">Login with LinkedIn</a>
         <br/><% } %>
       </div>
     );

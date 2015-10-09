@@ -13,7 +13,7 @@ module.exports = (req, res) => {
 <% } if (useOAuthStrategy('github')) { %>
       'github': '/auth/github',
 <% } if (useOAuthStrategy('linkedin')) { %>
-      'github': '/auth/linkedin',
+      'linkedin': '/auth/linkedin',
 <% } %>
     },
   });
