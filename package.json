@@ -123,7 +123,7 @@
     "superagent": "^1.4.0",
     "superagent-bluebird-promise": "^2.1.0",
     "supertest": "^1.0.1",
-    "supertest-session": "^1.0.0",
+    "supertest-session": "^1.1.2",
     "uglifyify": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
