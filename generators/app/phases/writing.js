@@ -76,8 +76,5 @@ module.exports = {
 
     // Add Client
     composeLocal(`client-${this.props.client}`);
-
-    // Wrap up
-    composeLocal('gulp-postinstall');
   },
 };
