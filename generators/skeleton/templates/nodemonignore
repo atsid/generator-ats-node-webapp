@@ -5,3 +5,4 @@ client/
 public/
 target/
 coverage/
+gulp/

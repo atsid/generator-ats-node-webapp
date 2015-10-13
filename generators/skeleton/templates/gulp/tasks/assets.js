@@ -11,34 +11,32 @@ const cssmin = require('gulp-cssmin');
 const config = require('../config');
 const empty = require('gulp-empty');
 
-function instrument(glob, title, action, dest, isIncremental) {
-  let incrementalTask = empty();
-  if (isIncremental) {
-    incrementalTask = changed(dest);
-  }
+function instrument(glob, title, action, dest, changedArgs) {
   return gulp.src(glob)
-             .pipe(plumber())
-             .pipe(incrementalTask)
-             .pipe(debug({title))
-             .pipe(action)
-             .pipe(gulp.dest(dest))
-             .pipe(lload());
+    .pipe(plumber())
+    .pipe((!!changedArgs ? changed(dest, changedArgs) : empty()))
+    .pipe(debug({title}))
+    .pipe(action)
+    .pipe(gulp.dest(dest))
+    .pipe(lload());
 }
 
-gulp.task('jade', () => instrument(config.client.staticJade, 'jade', jade({}), './public/', false));
-gulp.task('jade-incr', () => instrument(config.client.staticJade, 'jade', jade({}), './public/', true));
+gulp.task('jade', () => instrument(config.client.staticJade, 'jade', jade({}), './public/'));
+gulp.task('jade-incr', () => instrument(config.client.staticJade, 'jade', jade({}), './public/', {extension: '.html'}));
 
-gulp.task('html', () => instrument(config.client.html, 'html', empty(), config.client.dist.path, false));
-gulp.task('html-incr', () => instrument(config.client.html, 'html', empty(), config.client.dist.path, true));
+gulp.task('html', () => instrument(config.client.html, 'html', empty(), config.client.dist.path));
+gulp.task('html-incr', () => instrument(config.client.html, 'html', empty(), config.client.dist.path, {}));
 
-gulp.task('assets', () => instrument(config.client.assets, 'asset', empty(), config.client.dist.assets, false));
-gulp.task('assets-incr', () => instrument(config.client.assets, 'asset', empty(), config.client.dist.assets, true));
+gulp.task('assets', () => instrument(config.client.assets, 'asset', empty(), config.client.dist.assets));
+gulp.task('assets-incr', () => instrument(config.client.assets, 'asset', empty(), config.client.dist.assets, {}));
 
-gulp.task('imagemin', () => instrument(config.client.images, 'image', imagemin(config.imagemin), config.client.dist.path, false));
-gulp.task('imagemin-incr', () => instrument(config.client.images, 'image', imagemin(config.imagemin), config.client.dist.path, true));
+gulp.task('imagemin', () => instrument(config.client.images, 'image', imagemin(config.imagemin), config.client.dist.path));
+gulp.task('imagemin-incr', () => instrument(config.client.images, 'image', imagemin(config.imagemin), config.client.dist.path, {}));
 
 gulp.task('sass', () => {
-  return instrument(config.client.styles, 'sass')
+  return gulp.src(config.client.styles)
+    .pipe(plumber())
+    .pipe(debug({title: 'sass'}))
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(cssmin())

@@ -15,6 +15,7 @@ module.exports = {
     this.addDevDependencies(
       'gulp',
       'gulp-livereload',
+      'gulp-debug',
       'gulp-rev-all',
       'gulp-awspublish',
       'gulp-cloudfront',
