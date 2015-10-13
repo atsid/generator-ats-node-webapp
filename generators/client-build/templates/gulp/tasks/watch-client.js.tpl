@@ -25,16 +25,13 @@ gulp.task('watch-client', () => {
 
   // watch assets
   gulp.watch(config.client.images, ['imagemin']);
-<% if (client === 'angular') { %>
 
   // watch jade
   gulp.watch(config.client.staticJade, ['process-jade']);
-<% } %>
 
   // watch sass
   lload.listen();
   gulp.watch(config.client.styles, ['sass']);
-
 <% if (client === 'react') { %>
   // watch client js
   lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});
