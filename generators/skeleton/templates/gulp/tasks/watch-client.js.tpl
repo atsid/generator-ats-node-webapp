@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const config = require('../config');
@@ -10,7 +11,6 @@ const source = require('vinyl-source-stream');
 <% if (client === 'react') { %>
 const lrload = require('livereactload');
 <% } %>
-const browserifyConf = require('./browserify_config');
 const plumber = require('gulp-plumber');
 
 gulp.task('watch-client', () => {
@@ -27,7 +27,7 @@ gulp.task('watch-client', () => {
   // watch client js
   lrload.monitor(config.client.dist.path + '/' + config.client.dist.bundle, {displayNotification: true});
 <% } %>
-  const b = browserifyConf();
+  const b = _.cloneDeep(config.browserify);
 <% if (client === 'react') { %>
   b.transform.push(lrload);
 <% } %>

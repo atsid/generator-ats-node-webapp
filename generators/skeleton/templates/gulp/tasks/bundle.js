@@ -1,16 +1,16 @@
+const _ = require('lodash');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const config = require('../config');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
-const browserifyConf = require('./browserify_config');
 const uglifyify = require('uglifyify');
 const envify = require('envify/custom');
 const plumber = require('gulp-plumber');
 
 gulp.task('bundle', ['prepare-assets'], () => {
-  const conf = browserifyConf();
+  const conf = _.cloneDeep(config.browserify);
   conf.transform.push([envify({_: 'purge', NODE_ENV: 'production'}), {global: true}]);
   conf.transform.push([uglifyify, {global: true}]);
 

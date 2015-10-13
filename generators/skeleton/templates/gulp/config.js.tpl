@@ -1,4 +1,6 @@
 const _ = require('lodash');
+const babelify = require('babelify');<% if (client === 'angular') { %>
+const ngHtml2Js = require('browserify-ng-html2js');<% } %>
 
 function sourceNode(rootName, root, extra = {}) {
   return _.merge({
@@ -11,6 +13,8 @@ function sourceNode(rootName, root, extra = {}) {
   }, extra);
 }
 
+const CLIENT_ENTRIES = ['client/app.js'];
+
 module.exports = {
   server: sourceNode('server', 'server'),
   all: sourceNode('all', '{client,server}'),
@@ -21,7 +25,7 @@ module.exports = {
     staticJade: ['client/**/*.jade', '!client/**/*.dynamic.jade'],
     assets: ['client/assets/**/*.*'],
     html: ['client/**/*.html'],
-    entries: ['client/app.js'],
+    entries: CLIENT_ENTRIES,
     dist: {
       path: 'public',
       styles: 'public/styles',
@@ -30,10 +34,18 @@ module.exports = {
     },
   }),
   imagemin: { optimizationLevel: 4 },
-<% if (client === 'angular') { %>
-  ngHtml2Js: {
-    module: 'templates',
-    baseDir: 'public',
+  browserify: {
+    entries: CLIENT_ENTRIES,
+    transform: [
+      babelify,<% if (client === 'angular') { %>
+      ngHtml2Js({
+        module: 'templates',
+        baseDir: 'public',
+      }),<% } %>
+      'browserify-shim',
+    ],
+    debug: false,
+    cache: {},
+    packageCache: {},
   },
-<% } %>
 };
