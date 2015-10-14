@@ -19,10 +19,10 @@ module.exports = {
     const prompts = [{
       name: 'name',
       message: 'Module Name',
-      'default': path.basename(process.cwd()),
+      'default': this.options.name || path.basename(process.cwd()),
       filter: _.kebabCase,
       validate: (input) => input.length ? true : false,
-      when: !this.pkg.name,
+      when: !this.pkg.name && !this.options.name,
     }];
     this.prompt(prompts, (props) => {
       if (props.askAgain) {

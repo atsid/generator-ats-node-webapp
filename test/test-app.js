@@ -43,7 +43,7 @@ describe('generator-ats-node-webapp:app', function () {
       debug('Temp Dir: ', dir);
       helpers.run(path.join(__dirname, '../generators/app'))
         .inDir(dir)
-        .withOptions({skipInstall: true, client: client, server: server})
+        .withOptions({skipInstall: true, client: client, server: server, name: `${client}_${server}`})
         .on('end', () => {
           fs.symlinkSync(path.join(__dirname, '../node_modules'), path.join(dir, 'node_modules'));
           cb();
@@ -76,28 +76,28 @@ describe('generator-ats-node-webapp:app', function () {
   it('can create a buildable React fullstack project', function (done) {
     this.timeout(TIMEOUT);
     generateProject('react', 'full', () => {
-      exec('npm run create-app-symlink && gulp', checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-app-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
     });
   });
 
   it('can create a buildable Angular fullstack project', function (done) {
     this.timeout(TIMEOUT);
     generateProject('angular', 'full', () => {
-      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
     });
   });
 
   it('can create a buildable React client-only project', function (done) {
     this.timeout(TIMEOUT);
     generateProject('react', 'thin', () => {
-      exec('gulp', checkExecOutput(done, BUILD_DONE));
+      exec('gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
     });
   });
 
   it('can create a buildable Angular client-only project', function (done) {
     this.timeout(TIMEOUT);
     generateProject('angular', 'thin', () => {
-      exec('npm run create-public-symlink && gulp', checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
     });
   });
 });
