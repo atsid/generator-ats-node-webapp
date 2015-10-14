@@ -51,14 +51,17 @@ module.exports = {
       composeLocal('app-symlink');
     }
 
-    // Add OAuth
-    // NOTE: When we add OAuth client implementations, make new generators for them
-    if (this.props.server !== 'thin') {
+    // Add Server Components
+    if (this.props.server === 'full') {
+      // Add OAuth Generators
       composeOAuth('facebook');
       composeOAuth('github');
       composeOAuth('google');
       composeOAuth('twitter');
       composeOAuth('linkedin');
+
+      // Add Persistence
+      composeLocal('persistence-mongodb');
     }
 
     // Add Client

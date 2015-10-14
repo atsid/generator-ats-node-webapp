@@ -33,8 +33,8 @@ TODO: Insert Dependency Status Badge
     ├───errors/ (custom error types, optionally contain an errorCode property to configure HTTP response codes)
     ├───initialization/ (server initialization scripts)
     ├───middleware/ (functions that are composed to define RESTful endpoints. These should interact with the domain, but not contain domain logic.)
-    ├───persistence/ (mongoose setup)
-        ├───models/ (mongoose models definitions using Mongoose-Organizer)
+    ├───persistence/ (persistence layer)
+    └──────models/ (model definitions)
     ├───routers/ (RESTful endpoint definitions)
     ├───routers.spec/ (RESTful endpoint tests, separate folder because routers is scanned by express-mountie)
 <% } %>
