@@ -1,11 +1,11 @@
 const {expect} = require('chai');
 const app = require('../server');
-const Session = require('supertest-session')({app: app});
+const session = require('supertest-session');
 
 describe('/api/auth', () => {
   let sess = null;
   beforeEach(() => require('../startup_hooks').resolve());
-  beforeEach(() => sess = new Session());
+  beforeEach(() => sess = session(app));
   afterEach(() => sess.destroy());
 
   it('GET emits authentication details', (done) => {

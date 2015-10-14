@@ -45,24 +45,11 @@ module.exports = {
     this.props.useOAuthStrategy = useOAuthStrategy;
     debug('generating application with properties', this.props);
 
-    composeLocal('git');
-    composeLocal('git-hooks');
-    composeLocal('editorconfig');
-    composeLocal('eslint');
-    composeLocal('readme');
-    composeLocal('server-common');
+    composeLocal('skeleton');
     composeLocal(`server-${this.props.server}`);
-
     if (this.props.server !== 'thin') {
       composeLocal('app-symlink');
     }
-
-    composeLocal('docker-compose');
-    composeLocal('client-assets');
-    composeLocal('client-styles');
-    composeLocal('client-build');
-    composeLocal('gulp');
-    composeLocal('vscode');
 
     // Add OAuth
     // NOTE: When we add OAuth client implementations, make new generators for them
