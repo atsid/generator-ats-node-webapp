@@ -1,4 +1,4 @@
-const User = require('app/persistence').models.User;
+const Users = require('app/persistence').repositories.Users;
 const debug = require('debug')('app:auth');
 
 /**
@@ -12,8 +12,8 @@ function defaultHandleTokens(user) {
 
 module.exports = (findUserEntity, createUserEntity, methodName, handleTokens = defaultHandleTokens) => {
   return (tokenA, tokenB, profile, done) => {
-    return User.findOneQ(findUserEntity(profile))
-      .then((found) => found || User.createQ(createUserEntity(profile)))
+    return Users.findOneByCriteria(findUserEntity(profile))
+      .then((found) => found || Users.create(createUserEntity(profile)))
       .then((user) => handleTokens(user, tokenA, tokenB))
       .then((user) => done(null, user))
       .catch((err) => {

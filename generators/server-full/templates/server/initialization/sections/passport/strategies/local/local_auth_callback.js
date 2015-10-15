@@ -1,12 +1,11 @@
 const debug = require('debug')('app:auth');
-const persistence = require('app/persistence');
-const User = persistence.models.User;
+const Users = require('app/persistence').repositories.Users;
 const Bluebird = require('bluebird');
 
 module.exports = (email, password, done) => {
   debug('authenticating user ' + email);
   return Bluebird.resolve(true)
-    .then(() => User.findOneQ({email: email}))
+    .then(() => Users.findByEmail(email))
     .then((user) => {
       if (!user) {
         debug('could not find user -' + email);
