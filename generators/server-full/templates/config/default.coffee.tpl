@@ -62,7 +62,7 @@ module.exports =
       password: ''
       port: 3306
       host: 'localhost'
-      dbName: '<%= name %>'
+      dbName: '<%= name.replace(/-/g,'_') %>'
       dialect: 'mysql'
 <% } %>
     populateSeedData: true

@@ -8,6 +8,5 @@ node_js:
 install: npm install
 script: npm test
 before_script:
-  - mysql -e 'create database react_full_sequelize;'
   - mysql -e 'create database angular_full_sequelize;'
 after_script: npm run report-coverage
