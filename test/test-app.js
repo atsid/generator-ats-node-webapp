@@ -104,7 +104,7 @@ describe('generator-ats-node-webapp:app', function () {
   it('can create a buildable Angular fullstack project with Sequelize persistence', function (done) {
     this.timeout(TIMEOUT);
     generateProject({
-      client: 'react',
+      client: 'angular',
       server: 'full',
       database: 'sequelize'
     }, () => {
