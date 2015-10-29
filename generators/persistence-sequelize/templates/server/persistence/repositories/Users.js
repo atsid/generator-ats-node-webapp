@@ -8,23 +8,23 @@ class UserRepository {
   }
 
   findById(id) {
-    return this.models.User.findByIdQ(id);
+    return this.models.User.findById(id);
   }
 
   findByEmail(email) {
-    return this.models.User.findOneQ({email: email});
+    return this.models.User.findOne({where: {email}});
   }
 
   findOneByCriteria(criteria) {
-    return this.models.User.findOneQ(criteria);
+    return this.models.User.findOne({where: criteria});
   }
 
   create(data) {
-    return this.models.User.createQ(data);
+    return this.models.User.create(data);
   }
 
   deleteAll() {
-    return this.models.User.removeQ();
+    return this.models.User.destroy({where: {}});
   }
 }
 module.exports = UserRepository;

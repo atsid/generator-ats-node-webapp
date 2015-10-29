@@ -2,8 +2,12 @@ sudo: false
 language: node_js
 services:
   - mongodb
+  - mysql
 node_js:
   - '4.0'
 install: npm install
 script: npm test
+before_script:
+  - mysql -e 'create database react-full-sequelize;'
+  - mysql -e 'create database angular-full-sequelize;'
 after_script: npm run report-coverage

@@ -11,19 +11,15 @@ function createTestUsers(Users) {
 
 function resetUsers(Users) {
   debug('resetting users');
-  return Users.deleteAll().then(() => createTestUsers(Users));
+  return createTestUsers(Users);
 }
 
 function seedData(repositories) {
   debug('loading seed data');
   const Users = repositories.Users;
-
-  const resetPromises = [
-    resetUsers(Users),
-  ];
-  return Promise.all(resetPromises)
-    .then(() => debug('seed data populated'))
-    .catch((err) => debug('errror seeding data', err));
+  return sequelize.sync({force: true})
+    .then(() => [resetUsers(Users)])
+    .then(() => debug('seed data populated'));
 }
 
 module.exports = {seedData};

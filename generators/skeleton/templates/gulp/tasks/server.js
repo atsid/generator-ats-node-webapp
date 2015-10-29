@@ -7,7 +7,7 @@ gulp.task('nodemon', () => {
     script: 'index',
     ext: 'js',
     env: {
-      'DEBUG': 'app*,jefferson*,mountie*',
+      'DEBUG': 'app*,jefferson*,mountie*,sequelize',
     },
     tasks: ['lint-server', 'test-server'],
   })

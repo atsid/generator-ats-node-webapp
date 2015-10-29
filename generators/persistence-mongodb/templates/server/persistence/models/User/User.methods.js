@@ -13,6 +13,9 @@ function process(req) {
   if (!req.user || `${req.user.id}` !== `${result.id}`) {
     delete result.facebookId;
     delete result.twitterId;
+    delete result.googleId;
+    delete result.githubId;
+    delete result.linkedinId;
   }
   delete result.password;
   delete result._id;
