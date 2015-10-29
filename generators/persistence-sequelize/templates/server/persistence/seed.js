@@ -3,7 +3,7 @@
  * to disable, edit config/environment/index.js, and set `seedDB: false`
  */
 const debug = require('debug')('app:persistence:seeding');
-
+const sequelize = require('./sequelize');
 function createTestUsers(Users) {
   debug('creating test users');
   return Users.create({email: 'test@atsid.com', password: 'abc123'});
