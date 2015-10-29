@@ -101,7 +101,7 @@ describe('generator-ats-node-webapp:app', function () {
     });
   });
 
-  it.only('can create a buildable Angular fullstack project with Sequelize persistence', function (done) {
+  it('can create a buildable Angular fullstack project with Sequelize persistence', function (done) {
     this.timeout(TIMEOUT);
     generateProject({
       client: 'react',
