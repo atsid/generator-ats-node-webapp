@@ -1,6 +1,5 @@
 const sequelize = require('../sequelize');
 const Sequelize = require('sequelize');
-const Bluebird = require('bluebird');
 const passwordChecker = require('app/components/password_checker');
 
 const USER_ATTRIBUTES = {
@@ -9,7 +8,7 @@ const USER_ATTRIBUTES = {
    */
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 
   /**
@@ -25,11 +24,6 @@ const USER_ATTRIBUTES = {
   password: {
     type: Sequelize.STRING,
     allowNull: false,
-    set(value) {
-      return Bluebird.resolve(true)
-            .then(() => passwordChecker.encryptPassword(value))
-            .then((hash) => this.password = hash);
-    },
   },
 <% if (useOAuthStrategy('facebook')) { %>
   /**
@@ -88,7 +82,7 @@ const USER_OPTIONS = {
     },
 
     process(req) {
-      const result = this.values;
+      const result = this.get({plain: true});
       if (!req.user || `${req.user.id}` !== `${result.id}`) {
         delete result.facebookId;
         delete result.twitterId;
@@ -103,4 +97,14 @@ const USER_OPTIONS = {
 };
 
 const User = sequelize.define('User', USER_ATTRIBUTES, USER_OPTIONS);
+
+function hashPasswordHook(instance) {
+  if (instance.changed('password')) {
+    return passwordChecker.encryptPassword(instance.password)
+      .then((hash) => instance.password = hash);
+  }
+}
+
+User.beforeCreate(hashPasswordHook);
+User.beforeUpdate(hashPasswordHook);
 module.exports = User;
