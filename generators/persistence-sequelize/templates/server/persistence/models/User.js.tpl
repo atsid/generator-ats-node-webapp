@@ -28,9 +28,7 @@ const USER_ATTRIBUTES = {
     set(value) {
       return Bluebird.resolve(true)
             .then(() => passwordChecker.encryptPassword(value))
-            .then((hash) => this.password = hash)
-            .then(next)
-            .catch(next);
+            .then((hash) => this.password = hash);
     },
   },
 <% if (useOAuthStrategy('facebook')) { %>
