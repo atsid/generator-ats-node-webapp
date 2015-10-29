@@ -10,13 +10,9 @@ module.exports = {
       'express-mountie',
       'hat',
       'helmet',
-      'mongoose',
-      'mongoose-organizer',
-      'mongoose-q',
       'mr-cluster',
       'passport',
-      'passport-local',
-      'q-bluebird'
+      'passport-local'
     );
 
     this.addDevDependencies(
