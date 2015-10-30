@@ -7,7 +7,6 @@ var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
 var babel = require('gulp-babel');
 var debug = require('gulp-debug');
-var promise = require('bluebird');
 var istanbul = require('gulp-istanbul');
 var isparta = require('isparta');
 var empty = require('gulp-empty');
