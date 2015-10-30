@@ -6,7 +6,6 @@ module.exports = {
     this.addDependency('history');
     this.addDependency('react-tap-event-plugin');
     this.addDevDependency('nock');
-
-    this.addBrowserifyShim('debug', 'global:debug');
+    this.appendPackageJson({'browserify-shim': {}});
   },
 };

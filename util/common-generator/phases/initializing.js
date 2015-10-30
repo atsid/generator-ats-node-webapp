@@ -111,10 +111,6 @@ module.exports = {
       repository: this.pkg.repository,
     });
 
-    if (!this.pkg['browserify-shim']) {
-      this.pkg['browserify-shim'] = {};
-    }
-
     // The author field can also be a string, we're ignoring this case currently.
     if (_.isObject(this.pkg.author)) {
       this.props.authorName = this.pkg.author.name;
