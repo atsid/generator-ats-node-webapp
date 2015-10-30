@@ -7,7 +7,6 @@ const yoAssert = require('yeoman-generator').assert;
 const helpers = require('yeoman-generator').test;
 const {expect, assert} = require('chai');
 const debug = require('debug')('gentest');
-
 const TIMEOUT = 5 * 60000;
 
 describe('generator-ats-node-webapp:app', function () {
@@ -61,9 +60,8 @@ describe('generator-ats-node-webapp:app', function () {
     return (err, stdout, stderr) => {
       const out = '' + stdout;
       const errs = '' + stderr;
-      debug(out);
-      debug(errs);
-
+      debug("~~~~~STDOUT~~~~~\n\n" + out + "\n\n******************************************************************************");
+      debug("~~~~~STDERR~~~~~\n\n" + errs + "\n\n******************************************************************************");
       if (err) {
         done(err);
       } else {
