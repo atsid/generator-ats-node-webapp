@@ -26,7 +26,7 @@ class UserStore {
           return res.body;
         })
         .catch((err) => {
-          log.debug('error getting current user', err);
+          log.debug('error getting current user', err.message, err.body, err.status);
           this.state.currentUser = {result: null};
           return null;
         });
