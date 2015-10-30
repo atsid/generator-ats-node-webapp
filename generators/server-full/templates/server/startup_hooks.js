@@ -1,4 +1,3 @@
-const Bluebird = require('bluebird');
 const log = require('log4js').getLogger('app:startup');
 const promises = [];
 
@@ -10,6 +9,6 @@ module.exports = {
 
   resolve() {
     log.debug(`resolving ${promises.length} startup hooks`);
-    return Bluebird.all(promises);
+    return Promise.all(promises);
   },
 };

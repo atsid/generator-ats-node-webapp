@@ -3,7 +3,6 @@ module.exports = {
     this.addDependencies(
       'babel',
       'bcryptjs',
-      'bluebird',
       'coffee-script',
       'config',
       'jade',

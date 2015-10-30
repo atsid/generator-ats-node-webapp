@@ -2,15 +2,34 @@ const config = require('config');
 const log = require('log4js').getLogger('app:components:password_checker');
 const bcrypt = require('bcryptjs');
 const saltWorkFactor = config.auth.local.password.saltWorkFactor;
-const Bluebird = require('bluebird');
 
-const doHash = Bluebird.promisify(bcrypt.hash, bcrypt);
-const doSalt = Bluebird.promisify(bcrypt.genSalt, bcrypt);
-const doCompare = Bluebird.promisify(bcrypt.compare, bcrypt);
+function autohandle(resolve, reject) {
+  return (err, res) => {
+    if (err) {
+      reject(err);
+    } else {
+      resolve(res);
+    }
+  }
+}
 
-const hash = (pw, salt) => doHash(pw, salt);
-const genSalt = (workFactor) => doSalt(workFactor);
-const compare = (password, hashed) => doCompare(password, hashed);
+function hash(pw, salt) {
+  return new Promise((resolve, reject) => {
+    bcrypt.hash(pw, salt, autohandle(resolve, reject));
+  });
+}
+
+function genSalt(workFactor) {
+  return new Promise((resolve, reject) => {
+    bcrypt.genSalt(workFactor, autohandle(resolve, reject));
+  });
+}
+
+function compare(password, hashed) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, hashed, autohandle(resolve, reject));
+  });
+}
 
 /**
  * A predicate promise that determines if a password matches a given encrypted password

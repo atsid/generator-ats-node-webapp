@@ -1,10 +1,9 @@
 const log = require('log4js').getLogger('app:auth');
 const Users = require('app/persistence').repositories.Users;
-const Bluebird = require('bluebird');
 
 module.exports = (email, password, done) => {
   log.debug('authenticating user ' + email);
-  return Bluebird.resolve(true)
+  return Promise.resolve(true)
     .then(() => Users.findByEmail(email))
     .then((user) => {
       if (!user) {

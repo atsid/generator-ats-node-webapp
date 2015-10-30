@@ -1,4 +1,3 @@
-const Bluebird = require('bluebird');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const mocha = require('gulp-mocha');
@@ -47,7 +46,7 @@ function writeReports(sourceGlob, outputDir, reporters = DEFAULT_COVERAGE_REPORT
  * Executes coverage-instrumented tests
  */
 function runTests(sourceGlob, testGlob, reportDir, reporter = DEFAULT_SPEC_REPORTER, coverageReporters = DEFAULT_COVERAGE_REPORTERS, tdd = false) {
-  return new Bluebird((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     gulp.src(sourceGlob)
       .pipe(istanbul({includeUntested: true, instrumenter: isparta.Instrumenter}))
       .on('error', handleErr(tdd, resolve, reject))
