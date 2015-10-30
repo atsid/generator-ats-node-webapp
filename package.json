@@ -40,7 +40,7 @@
     "debug": "^2.2.0",
     "lodash": "^3.10.0",
     "parse-author": "^0.2.0",
-    "yeoman-generator": "^0.20.2",
+    "yeoman-generator": "^0.21.1",
     "yosay": "^1.0.2"
   },
   "devDependencies": {
