@@ -1,5 +1,4 @@
 "use strict";
-var config = require("config");
-var debug = require("debug")("app:bootstrap");
+const config = require("config");
 require("babel/register");
 require("mr-cluster");

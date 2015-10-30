@@ -52,7 +52,17 @@ module.exports =
     port: 9000
 
   database:
+<% if (useDatabase('mongodb')) { %>
     connectionString: 'mongodb://localhost/<%= name %>'
-    populateSeedData: true
     composeConnection:
       dbName: '<%= name %>'
+<% } if (useDatabase('sequelize')) { %>
+    connection:
+      user: 'root'
+      password: ''
+      port: 3306
+      host: 'localhost'
+      dbName: '<%= name.replace(/-/g,'_') %>'
+      dialect: 'mysql'
+<% } %>
+    populateSeedData: true

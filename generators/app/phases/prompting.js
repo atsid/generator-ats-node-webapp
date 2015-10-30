@@ -2,9 +2,19 @@ const _ = require('lodash');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
+const debug = require('debug')('generator-ats-node-webapp:prompting');
 
 function isOAuthSupported(options) {
   return options.server !== 'thin';
+}
+
+function acceptString(value, defaultValue) {
+  const result = value || defaultValue;
+  if (typeof result !== 'string') {
+    throw new Error(`Could not accept input [${JSON.stringify(value)}], default=${defaultValue}`);
+  } else {
+    return result;
+  }
 }
 
 module.exports = {
@@ -35,6 +45,7 @@ module.exports = {
 
   askFor() {
     const done = this.async();
+    debug('prompting for input', this.options);
     const prompts = [{
       name: 'description',
       message: 'Description',
@@ -73,7 +84,7 @@ module.exports = {
       name: 'client',
       message: 'Client Framework',
       type: 'list',
-      'default': (val) => val || 'react',
+      'default': (val) => acceptString(val, 'react'),
       choices: [
         {name: 'React', value: 'react'},
         {name: 'Angular', value: 'angular'},
@@ -83,12 +94,22 @@ module.exports = {
       name: 'server',
       message: 'Server Type',
       type: 'list',
-      'default': (val) => val || 'full',
+      'default': (val) => acceptString(val, 'full'),
       choices: [
         {name: 'Full Server', value: 'full'},
         {name: 'Thin Server (dev only)', value: 'thin'},
       ],
       when: !this.options.server,
+    }, {
+      name: 'database',
+      message: 'Database Type',
+      type: 'list',
+      'default': (val) => acceptString(val, 'mongodb'),
+      choices: [
+        {name: 'MongoDB', value: 'mongodb'},
+        {name: 'Sequelize (MySQL)', value: 'sequelize'},
+      ],
+      when: this.options.server === 'full' && !this.options.database,
     }, {
       type: 'checkbox',
       message: 'OAuth Strategies',
@@ -105,11 +126,9 @@ module.exports = {
 
     this.prompt(prompts, (props) => {
       this.props = _.extend(this.props, props);
-
       if (props.githubAccount) {
         this.props.repository = props.githubAccount + '/' + this.props.name;
       }
-
       done();
     });
   },

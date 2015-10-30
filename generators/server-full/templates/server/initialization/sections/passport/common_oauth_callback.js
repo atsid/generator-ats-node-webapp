@@ -1,5 +1,5 @@
-const User = require('app/persistence').models.User;
-const debug = require('debug')('app:auth');
+const Users = require('app/persistence').repositories.Users;
+const log = require('log4js').getLogger('app:auth');
 
 /**
  * The default token handler - does nothing with the provider tokens
@@ -12,12 +12,12 @@ function defaultHandleTokens(user) {
 
 module.exports = (findUserEntity, createUserEntity, methodName, handleTokens = defaultHandleTokens) => {
   return (tokenA, tokenB, profile, done) => {
-    return User.findOneQ(findUserEntity(profile))
-      .then((found) => found || User.createQ(createUserEntity(profile)))
+    return Users.findOneByCriteria(findUserEntity(profile))
+      .then((found) => found || Users.create(createUserEntity(profile)))
       .then((user) => handleTokens(user, tokenA, tokenB))
       .then((user) => done(null, user))
       .catch((err) => {
-        debug(`error authenticating via ${methodName}`, err);
+        log.debug(`error authenticating via ${methodName}`, err);
         done(err, null);
       });
   };

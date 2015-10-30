@@ -6,10 +6,10 @@ module.exports = {
       'bluebird',
       'coffee-script',
       'config',
-      'debug',
       'jade',
       'express',
-      'lodash'
+      'lodash',
+      'log4js'
     );
 
     this.addDevDependencies(
@@ -58,5 +58,7 @@ module.exports = {
     this.updateNpmScript('develop', 'gulp develop');
     this.updateNpmScript('postinstall', 'npm run install-git-hooks');
     this.updateNpmScript('install-git-hooks', './scripts/npm/install-git-hooks.sh');
+    this.updateNpmScript('postinstall', 'npm run create-public-symlink');
+    this.updateNpmScript('create-public-symlink', './scripts/npm/create-public-symlink.sh');
   },
 };

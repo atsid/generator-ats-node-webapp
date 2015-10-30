@@ -58,7 +58,7 @@ function runTests(sourceGlob, testGlob, reportDir, reporter = DEFAULT_SPEC_REPOR
           .then(() => writeReports(sourceGlob, reportDir, coverageReporters, tdd))
           .then(resolve)
           .catch((err) => {
-            gutil.log('Error Testing', err);
+            gutil.log('Error Running Tests', err, err.stack);
             if (tdd) {
               resolve();
             } else {

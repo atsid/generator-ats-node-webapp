@@ -36,6 +36,7 @@ module.exports = {
       this.composeWith(`ats-node-webapp:${name}`, {options: this.props}, {local: require.resolve(`../../${name}`)});
     };
     const useOAuthStrategy = (name) => (this.props.oauthStrategies || []).indexOf(name) > -1;
+    const useDatabase = (name) => this.props.database === name;
     const composeOAuth = (name) => {
       if (useOAuthStrategy(name)) {
         composeLocal(`auth-${name}`);
@@ -43,6 +44,7 @@ module.exports = {
     };
 
     this.props.useOAuthStrategy = useOAuthStrategy;
+    this.props.useDatabase = useDatabase;
     debug('generating application with properties', this.props);
 
     composeLocal('skeleton');
@@ -51,14 +53,17 @@ module.exports = {
       composeLocal('app-symlink');
     }
 
-    // Add OAuth
-    // NOTE: When we add OAuth client implementations, make new generators for them
-    if (this.props.server !== 'thin') {
+    // Add Server Components
+    if (this.props.server === 'full') {
+      // Add OAuth Generators
       composeOAuth('facebook');
       composeOAuth('github');
       composeOAuth('google');
       composeOAuth('twitter');
       composeOAuth('linkedin');
+
+      // Add Persistence
+      composeLocal(`persistence-${this.props.database}`);
     }
 
     // Add Client

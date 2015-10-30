@@ -1,11 +1,11 @@
 "use strict";
-var debug = require("debug")("app:bootstrap");
-var express = require("express");
-var http = require("http");
-var path = require("path");
-var config = require("config");
+const log = require('log4js').getLogger("app:bootstrap");
+const express = require("express");
+const http = require("http");
+const path = require("path");
+const config = require("config");
 
-var app = express();
+const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 // HTML5 Pushstate Support
@@ -14,7 +14,7 @@ app.get('*', (req, res) => {
 });
 
 
-var server = http.createServer(app);
-server.listen(config.server.port, function onListening() {
-  debug('server listening on port ', config.server.port);
+const server = http.createServer(app);
+server.listen(config.server.port, () => {
+  log.info('server listening on port ', config.server.port);
 });

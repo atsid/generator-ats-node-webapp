@@ -1,5 +1,6 @@
 const React = require('react/addons');
 const mui = require('material-ui');
+const log = require('log4js').getLogger('app:components:NyanCat');
 const Card = mui.Card;
 const CardHeader = mui.CardHeader;
 const CardMedia = mui.CardMedia;
@@ -24,7 +25,7 @@ const NyanCat = React.createClass({
         this.setState({nyanSource, loading: false});
       })
       .catch((err) => {
-        debug('error loading store data', err);
+        log.debug('error loading store data', err);
         this.setState({loading: false});
       });
   },

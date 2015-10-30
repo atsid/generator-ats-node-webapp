@@ -1,6 +1,5 @@
 const passport = require('passport');
-const persistence = require('app/persistence');
-const User = persistence.models.User;
+const Users = require('app/persistence').repositories.Users;
 const fs = require('fs');
 const path = require('path');
 
@@ -12,7 +11,11 @@ module.exports = {
       passport.use(strategy);
     });
     passport.serializeUser((user, done) => done(null, user.id));
-    passport.deserializeUser((id, done) => User.findById(id, (err, user) => done(err, user)));
+    passport.deserializeUser((id, done) => {
+      Users.findById(id)
+        .then((user) => done(null, user))
+        .catch((err) => done(err));
+    });
     app.use(passport.initialize());
     app.use(passport.session());
   },

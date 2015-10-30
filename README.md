@@ -21,7 +21,9 @@ A [Yeoman](http://yeoman.io) generator for generating kick-ass NodeJS Web Applic
 ### Prerequisites
   * [NodeJS](http://nodejs.org) - `brew install nodejs`
   * [Yeoman](http://yeoman.io) - `sudo npm install yo -g`
-  * [MongoDB](http://mongodb.org) - `brew install mongodb`
+  * A Running Database
+    * [MongoDB](http://mongodb.org) - `brew install mongodb`
+    * [MySQL](http://mysql.org) - `brew install mysql`
 
 ### Usage
 ```bash

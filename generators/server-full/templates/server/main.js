@@ -1,12 +1,12 @@
 const config = require('config');
-const debug = require('debug')('app:main');
+const log = require('log4js').getLogger('app:main');
 const startupHooks = require('./startup_hooks');
 const server = require('./server');
-const emitListeningMessage = () => debug('server listening on port ' + config.server.port);
+const emitListeningMessage = () => log.info('server listening on port ' + config.server.port);
 const startListening = () => server.listen(config.server.port, emitListeningMessage);
-const catchError = err => debug('error starting application', err);
+const catchError = err => log.error('error starting application', err);
 
-debug('starting the application');
+log.debug('starting the application');
 module.exports = startupHooks.resolve()
   .then(startListening)
   .then(() => server)

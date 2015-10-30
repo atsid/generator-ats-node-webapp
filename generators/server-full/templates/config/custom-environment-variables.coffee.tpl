@@ -13,10 +13,19 @@ module.exports =
 
   database:
     connectionString: "DB_CONNECTION_STRING"
+<% if (useDatabase('mongodb')) { %>
     composeConnection:
       host: "MONGO_1_PORT_27017_TCP_ADDR"
       port: "MONGO_1_PORT_27017_TCP_PORT"
-
+<% } else if (useDatabase('sequelize')) { %>
+    connection:
+      user: "DB_CONNECTION_USER"
+      password: "DB_CONNECTION_PASSWORD"
+      port: "DB_CONNECTION_PORT"
+      host: "DB_CONNECTION_HOST"
+      dbName: "DB_CONNECTION_DBNAME"
+      dialect: "DB_CONNECTION_DIALECT"
+<% } %>
   auth:
     local:
       password:

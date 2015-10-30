@@ -14,7 +14,6 @@ describe('The User Store', () => {
 
   it('can retrieve the current user', function test() {
     nock('http://localhost').get('/api/auth/current').reply(200, { 'name': 'Bob Tester'});
-
     return this.store.getCurrentUser().then((user) => {
       expect(user).to.be.an.object;
       expect(user.name).to.equal('Bob Tester');
