@@ -2,16 +2,7 @@ const config = require('config');
 const log = require('log4js').getLogger('app:components:password_checker');
 const bcrypt = require('bcryptjs');
 const saltWorkFactor = config.auth.local.password.saltWorkFactor;
-
-function autohandle(resolve, reject) {
-  return (err, res) => {
-    if (err) {
-      reject(err);
-    } else {
-      resolve(res);
-    }
-  };
-}
+const autohandle = require('./autohandle');
 
 function hash(pw, salt) {
   return new Promise((resolve, reject) => {
