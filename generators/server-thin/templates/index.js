@@ -1,5 +1,5 @@
 "use strict";
-const log = require('debug')("app:bootstrap");
+const log = require('log4js').getLogger("app:bootstrap");
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -16,5 +16,5 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 server.listen(config.server.port, () => {
-  log('server listening on port ', config.server.port);
+  log.info('server listening on port ', config.server.port);
 });

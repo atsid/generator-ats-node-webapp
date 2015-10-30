@@ -6,10 +6,10 @@ module.exports = {
       'bluebird',
       'coffee-script',
       'config',
-      'debug',
       'jade',
       'express',
-      'lodash'
+      'lodash',
+      'log4js'
     );
 
     this.addDevDependencies(

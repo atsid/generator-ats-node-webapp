@@ -1,7 +1,7 @@
 const config = require('config');
 const seeder = require('./seed');
 const startupHooks = require('../startup_hooks');
-const debug = require('debug')('app:persistence');
+const log = require('log4js').getLogger('app:persistence');
 const models = require('./models');
 const repoIndex = require('./repositories');
 const repositories = repoIndex.initialize(models);
@@ -12,7 +12,7 @@ const repositories = repoIndex.initialize(models);
  */
 function populateSeed() {
   if (config.database.populateSeedData) {
-    debug('loading seed data');
+    log.debug('loading seed data');
     const seedingPromise = seeder.seedData(repositories);
     startupHooks.addHook(seedingPromise);
   }

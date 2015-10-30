@@ -1,5 +1,5 @@
 const passwordChecker = require('app/components/password_checker');
-const debug = require('debug')('app:models:user:encrypt_on_save');
+const log = require('log4js').getLogger('app:models:user:encrypt_on_save');
 const Bluebird = require('bluebird');
 
 function encryptPassword(next) {
@@ -10,7 +10,7 @@ function encryptPassword(next) {
   if (!checkForPasswordChange) {
     next();
   } else {
-    debug('password change detected for ', user.email || user.name);
+    log.debug('password change detected for ', user.email || user.name);
     return Bluebird.resolve(true)
       .then(() => passwordChecker.encryptPassword(user.password))
       .then((hash) => user.password = hash)
