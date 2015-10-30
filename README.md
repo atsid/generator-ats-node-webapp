@@ -30,10 +30,12 @@ A [Yeoman](http://yeoman.io) generator for generating kick-ass NodeJS Web Applic
 > npm install generator-ats-node-webapp -g
 > yo ats-node-webapp
 ```
+
 ### Command-Line Options
 * **client** (*optional*) - Possible Values: `react`, `angular`
 * **server** (*optional*) - Possible Values: `full`, `thin`
 * **oauthStrategies** (*optional*) - Possible Values (comma-separated):  `google`, `github`, `facebook`, `twitter`
+
 ### Project Layout
 ```
 generated_project
