@@ -10,7 +10,7 @@ function autohandle(resolve, reject) {
     } else {
       resolve(res);
     }
-  }
+  };
 }
 
 function hash(pw, salt) {
