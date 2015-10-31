@@ -7,13 +7,13 @@ module.exports = (email, password, done) => {
     .then(() => Users.findByEmail(email))
     .then((user) => {
       if (!user) {
-        log.debug('could not find user -' + email);
+        log.debug('could not find user - ' + email);
         done(null, false);
       } else {
         return user.isValidPassword(password)
           .then((isValid) => {
             if (!isValid) {
-              log.debug('password not valid for user -' + email);
+              log.debug('password not valid for user - ' + email);
             } else {
               log.debug('authenticated user with password - ' + email);
             }
