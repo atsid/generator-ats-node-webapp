@@ -15,12 +15,11 @@ const repositories = repoIndex.initialize(models);
 function populateSeed() {
   if (config.database.populateSeedData) {
     log.debug('loading seed data');
-    const seedingPromise = seeder.seedData(repositories);
-    startupHooks.addHook(seedingPromise);
+    return seeder.seedData(repositories);
   }
 }
 
 // Initialize Persistence
-sequelize.sync().then(populateSeed);
+startupHooks.addHook(sequelize.sync().then(populateSeed));
 
 module.exports = {models, repositories};
