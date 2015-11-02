@@ -1,5 +1,5 @@
 'use strict';
-require('babel/register');
+require('babel-core').transform("code", { presets: ["es2015"] });
 var gulp = require('gulp');
 var path = require('path');
 var mocha = require('gulp-mocha');
@@ -11,6 +11,7 @@ var istanbul = require('gulp-istanbul');
 var isparta = require('isparta');
 var empty = require('gulp-empty');
 var changed = require('gulp-changed');
+var plumber = require('gulp-plumber');
 require('gulp-semver-tasks')(gulp);
 
 var DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
@@ -24,22 +25,32 @@ function doDebug(name) {
   return debug({title: name})
 }
 
+function doTest() {
+  return gulp.src(TEST_CODE)
+    .pipe(doDebug('test'))
+    .pipe(plumber())
+    .pipe(mocha());
+}
+
 gulp.task('test', function (cb) {
   gulp.src(GENERATOR_CODE)
     .pipe(istanbul({includeUntested: true, instrumenter: isparta.Instrumenter}))
     .pipe(istanbul.hookRequire())
     .on('error', cb)
     .on('finish', function () {
-      gulp.src(TEST_CODE)
-        .pipe(doDebug('test'))
-        .pipe(mocha())
+      doTest()
         .pipe(istanbul.writeReports())
         .on('end', cb);
     });
 });
 
+gulp.task('test-raw', function() {
+  return doTest();
+});
+
 gulp.task('lint', function () {
   return gulp.src(GENERATOR_CODE)
+    .pipe(plumber())
     .pipe(doDebug('lint'))
     .pipe(eslint())
     .pipe(eslint.format())
@@ -49,12 +60,14 @@ gulp.task('lint', function () {
 gulp.task('copy-templates', function () {
   var target = path.join(DIST, 'generators');
   return gulp.src(GENERATOR_TEMPLATES)
+    .pipe(plumber())
     .pipe(doDebug('resource'))
     .pipe(gulp.dest(target));
 });
 
 gulp.task('copy-top-level-files', function () {
   return gulp.src(PACKAGE_RESOURCES)
+    .pipe(plumber())
     .pipe(doDebug('resource'))
     .pipe(gulp.dest(DIST));
 });
@@ -66,6 +79,7 @@ gulp.task('copy-resources', [
 
 gulp.task('babel', function () {
   return gulp.src(GENERATOR_CODE)
+    .pipe(plumber())
     .pipe(doDebug('babel'))
     .pipe(babel())
     .pipe(gulp.dest(DIST));

@@ -14,6 +14,7 @@ describe('generator-ats-node-webapp:app', function () {
 
   before(function (done) {
     this.timeout(TIMEOUT);
+    debug('pre-test generator run');
     context = helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({
         skipInstall: true,

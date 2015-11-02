@@ -2,6 +2,7 @@ module.exports = {
   packageJson() {
     this.addDependencies(
       'babel',
+      'babel-core',
       'bcryptjs',
       'coffee-script',
       'config',
@@ -39,6 +40,7 @@ module.exports = {
       'babel-eslint',
       'eslint-config-airbnb',
       'eslint-plugin-react',
+      'babel-preset-es2015',
       'babelify',
       'mkdirp',
       'browserify',

@@ -7,6 +7,7 @@ const DOT_FILES = {
   'gitignore': true,
   'gitattributes': true,
   'nodemonignore': true,
+  'babelrc': true,
 };
 
 /**
@@ -19,10 +20,12 @@ const DOT_FILES = {
  */
 class PathScanner {
   constructor() {
+    debug('CONSTRUCTING PATHSCANNER');
     this.process = this.process.bind(this);
   }
 
   process(dir, templateDir, context) {
+    debug('PROCESSING');
     fs.readdirSync(dir).forEach((file) => {
       const filePath = path.join(dir, file);
       const templatePath = path.join(templateDir, file);

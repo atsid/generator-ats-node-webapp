@@ -1,4 +1,4 @@
 "use strict";
 const config = require("config");
-require("babel/register");
+require("babel-core/register");
 require("mr-cluster");
