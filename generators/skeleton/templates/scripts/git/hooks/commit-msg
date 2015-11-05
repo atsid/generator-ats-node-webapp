@@ -1,9 +1,9 @@
 #!/bin/bash
 
-commit_regex='^#[0-9]+\ \-\ .+'
-error_message="Missing or invalid issue number format."
+commit_regex='^\(#[0-9]+\)\ \-\ .+'
+error_message="Missing or invalid issue number format. Expected: (#123) - Correct Issue"
 
-if ! grep -iqE "$commit_regex" "$1"; then 
+if ! grep -iqE "$commit_regex" "$1"; then
     echo "$error_message" >&2
     exit 1
 fi
