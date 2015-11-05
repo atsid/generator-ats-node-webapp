@@ -1,5 +1,5 @@
 'use strict';
-require('babel-core').transform("code", { presets: ["es2015"] });
+require('babel-core/register');
 var gulp = require('gulp');
 var path = require('path');
 var mocha = require('gulp-mocha');
