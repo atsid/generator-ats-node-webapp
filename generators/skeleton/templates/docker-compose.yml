@@ -8,6 +8,7 @@ app:
     - ./client:/app/client
     - ./config:/app/config
     - ./gulp:/app/gulp
+    - ./scripts:/app/scripts
     - ./server:/app/server
     - ./target:/app/target
     - ./public:/app/public
@@ -15,7 +16,8 @@ app:
   links:
     - mongo
   ports:
-    - 9000:9000
+    - "9000:9000"
+    - "35729:35729"
   environment:
     - DEBUG=app*,jefferson*,mountie*
     - DOCKER_COMPOSED=1
