@@ -44,8 +44,8 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "angular": "^1.4.3",
-    "angular-mocks": "^1.4.3",
+    "angular": "^1.4.x",
+    "angular-mocks": "^1.4.x",
     "angular-ui-router": "^0.2.15",
     "babel-eslint": "4.0.10",
     "babelify": "^6.1.3",
