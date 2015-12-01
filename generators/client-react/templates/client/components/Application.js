@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 
 // Router Components
 const ReactRouter = require('react-router');
@@ -15,8 +15,9 @@ const Login = require('./Login');
 const NyanCat = require('./NyanCat');
 
 // MUI
-const mui = require('material-ui');
-const ThemeManager = new mui.Styles.ThemeManager();
+const ThemeManager = require('material-ui/lib/styles/theme-manager');
+const MuiTheme = require('material-ui/lib/styles/raw-themes/light-raw-theme');
+
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:
@@ -32,7 +33,7 @@ const Application = React.createClass({
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getCurrentTheme(),
+      muiTheme: ThemeManager.getMuiTheme(MuiTheme),
       stores: require('./../stores'),
     };
   },

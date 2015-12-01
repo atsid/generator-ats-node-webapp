@@ -1,11 +1,17 @@
 module.exports = {
   packageJson() {
-    this.addDependency('react');
-    this.addDependency('react-router');
-    this.addDependency('material-ui');
-    this.addDependency('history');
-    this.addDependency('react-tap-event-plugin');
-    this.addDevDependency('nock');
+    this.addDependencies(
+      'react',
+      'react-dom',
+      'react-router',
+      'material-ui',
+      'history',
+      'react-tap-event-plugin'
+    );
+    this.addDevDependencies(
+      'nock',
+      'react-addons-test-utils'
+    );
     this.appendPackageJson({'browserify-shim': {}});
   },
 };

@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "gulp",
-    "report-coverage": "codeclimate-test-reporter < coverage/lcov.info"
+    "report-coverage": "codeclimate-test-reporter < coverage/lcov.info",
+    "preinstall": "./scripts/preinstall.sh"
   },
   "files": [
     "generators",
@@ -31,15 +32,14 @@
     "'dependencies' is checked first, then 'devDependencies' to determine the version that will be inserted",
     "into the target package.json."
   ],
-  "dependencyNotes": {
-    "jsdom": "3.1.2 is pinned because 4.x+ require iojs"
-  },
   "dependencies": {
     "babel": "^5.8.3",
     "chalk": "^1.0.0",
     "debug": "^2.2.0",
     "lodash": "^3.10.0",
     "parse-author": "^0.2.0",
+    "react-addons-test-utils": "^0.14.3",
+    "react-dom": "^0.14.3",
     "yeoman-generator": "^0.21.1",
     "yosay": "^1.0.2"
   },
@@ -92,21 +92,21 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.6",
     "hat": "0.0.3",
-    "helmet": "^0.10.0",
+    "helmet": "^0.15.0",
     "history": "^1.12.3",
     "isparta": "^3.0.3",
     "jade": "^1.11.0",
-    "jsdom": "^6.5.0",
-    "livereactload": "^0.7.0",
+    "jsdom": "^7.1.0",
+    "livereactload": "^2.1.0",
     "log4js": "^0.6.27",
-    "material-ui": "^0.11.1",
+    "material-ui": "^0.13.4",
     "mkdirp": "^0.5.1",
     "mocha": "2.x",
     "mongoose": "^4.0.7",
     "mongoose-organizer": "^0.1.0",
     "mr-cluster": "^0.1.1",
     "mysql": "^2.9.0",
-    "nock": "^2.12.0",
+    "nock": "^3.3.2",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
     "passport-github2": "^0.1.9",
@@ -114,9 +114,9 @@
     "passport-linkedin": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.3",
-    "react": "^0.13.3",
-    "react-router": "^1.0.0-rc1",
-    "react-tap-event-plugin": "^0.1.6",
+    "react": "^0.14.3",
+    "react-router": "^1.0.0",
+    "react-tap-event-plugin": "^0.2.1",
     "rewire": "^2.3.4",
     "run-sequence": "^1.1.2",
     "sequelize": "^3.13.0",

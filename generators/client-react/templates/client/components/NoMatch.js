@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 
 const NoMatch = React.createClass({
   getInitialState() {
