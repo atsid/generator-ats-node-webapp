@@ -54,7 +54,7 @@ gulp.task('lint', function () {
 gulp.task('copy-scripts', function() {
   return gulp.src(GENERATOR_SCRIPTS)
     .pipe(doDebug('scripts'))
-    .pipe(gulp.dest(DIST));
+    .pipe(gulp.dest(path.join(DIST, 'scripts')));
 });
 
 gulp.task('copy-templates', function () {
@@ -67,7 +67,7 @@ gulp.task('copy-templates', function () {
 gulp.task('copy-top-level-files', function () {
   return gulp.src(PACKAGE_RESOURCES)
     .pipe(doDebug('resource'))
-    .pipe(gulp.dest(path.join(DIST, 'scripts')));
+    .pipe(gulp.dest(DIST));
 });
 
 gulp.task('copy-resources', [
