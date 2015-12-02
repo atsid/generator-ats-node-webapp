@@ -9,6 +9,10 @@ function isOAuthSupported(options) {
 }
 
 function acceptString(value, defaultValue) {
+  if (typeof value !== 'string') {
+    debug(`string parameter is type "${typeof value}", using default value "${defaultValue}"`);
+    return defaultValue;
+  }
   const result = value || defaultValue;
   if (typeof result !== 'string') {
     throw new Error(`Could not accept input [${JSON.stringify(value)}], default=${defaultValue}`);

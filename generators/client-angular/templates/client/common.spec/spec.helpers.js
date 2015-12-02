@@ -6,6 +6,7 @@ global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = document.defaultView;
 global.location = document.location;
 global.navigator = window.navigator;
+global.Node = window.Node;
 
 // load angular into the global space
 require('angular/angular');

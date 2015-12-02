@@ -56,7 +56,7 @@ describe('generator-ats-node-webapp:app', function () {
     });
   }
 
-  function checkExecOutput(done, test) {
+  function checkExecOutput(done, test, failTest) {
     return (err, stdout, stderr) => {
       const out = '' + stdout;
       const errs = '' + stderr;
@@ -70,10 +70,7 @@ describe('generator-ats-node-webapp:app', function () {
       if (err) {
         done(err);
       } else {
-        expect(errs).to.equal('');
-        if (out.indexOf(test) == -1) {
-          assert.fail('Execution Failed');
-        }
+        expect(out.indexOf(failTest)).to.equal(-1);
         expect(out.indexOf(test)).to.be.greaterThan(-1);
         done();
       }
@@ -81,6 +78,7 @@ describe('generator-ats-node-webapp:app', function () {
   }
 
   const BUILD_DONE = 'Finished \'default\' after';
+  const BUILD_FAIL = 'errored after';
 
   it('can create a buildable React fullstack project with MongoDB persistence', function (done) {
     this.timeout(TIMEOUT);
@@ -89,7 +87,7 @@ describe('generator-ats-node-webapp:app', function () {
       server: 'full',
       database: 'mongodb'
     }, () => {
-      exec('npm run create-app-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-app-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 
@@ -100,7 +98,7 @@ describe('generator-ats-node-webapp:app', function () {
       server: 'full',
       database: 'mongodb'
     }, () => {
-      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 
@@ -111,7 +109,7 @@ describe('generator-ats-node-webapp:app', function () {
       server: 'full',
       database: 'sequelize'
     }, () => {
-      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-app-symlink && npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 
@@ -121,7 +119,7 @@ describe('generator-ats-node-webapp:app', function () {
       client: 'react',
       server: 'thin'
     }, () => {
-      exec('gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
+      exec('gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 
@@ -131,7 +129,7 @@ describe('generator-ats-node-webapp:app', function () {
       client: 'angular',
       server: 'thin',
     }, () => {
-      exec('npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE));
+      exec('npm run create-public-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 });

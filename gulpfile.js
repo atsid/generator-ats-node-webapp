@@ -24,6 +24,10 @@ function doDebug(name) {
   return debug({title: name})
 }
 
+gulp.task('fail', function() {
+  throw new Error('Error Being Thrown');
+});
+
 gulp.task('test', function (cb) {
   gulp.src(GENERATOR_CODE)
     .pipe(istanbul({includeUntested: true, instrumenter: isparta.Instrumenter}))

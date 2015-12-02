@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 const mui = require('material-ui');
 const log = require('log4js').getLogger('app:components:NyanCat');
 const Card = mui.Card;

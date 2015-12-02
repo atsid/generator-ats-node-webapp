@@ -1,7 +1,7 @@
 require('../common.spec/spec.helpers');
 const { expect } = require('chai');
-const React = require('react/addons');
-const ReactTestUtils = React.addons.TestUtils;
+const React = require('react');
+const ReactTestUtils = require('react-addons-test-utils');
 const Application = require('./Application');
 const nock = require('nock');
 
