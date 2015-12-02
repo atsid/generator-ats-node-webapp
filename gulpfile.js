@@ -1,24 +1,25 @@
 'use strict';
 require('babel/register');
-var gulp = require('gulp');
-var path = require('path');
-var mocha = require('gulp-mocha');
-var eslint = require('gulp-eslint');
-var runSequence = require('run-sequence');
-var babel = require('gulp-babel');
-var debug = require('gulp-debug');
-var istanbul = require('gulp-istanbul');
-var isparta = require('isparta');
-var empty = require('gulp-empty');
-var changed = require('gulp-changed');
+const gulp = require('gulp');
+const path = require('path');
+const mocha = require('gulp-mocha');
+const eslint = require('gulp-eslint');
+const runSequence = require('run-sequence');
+const babel = require('gulp-babel');
+const debug = require('gulp-debug');
+const istanbul = require('gulp-istanbul');
+const isparta = require('isparta');
+const empty = require('gulp-empty');
+const changed = require('gulp-changed');
 require('gulp-semver-tasks')(gulp);
 
-var DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
-var GENERATOR_CODE = ['./{generators,util}/**/*.js', '!./generators/*/templates/**/*'];
-var TEST_CODE = ['test/**/*.js'];
-var GENERATOR_TEMPLATES = ['./generators/*/templates/**/*'];
-var PACKAGE_RESOURCES = ['package.json', 'README.md'];
-var DIST = './dist';
+const DEFAULT_COVERAGE_REPORTERS = ['lcov', 'text-summary'];
+const GENERATOR_CODE = ['./{generators,util}/**/*.js', '!./generators/*/templates/**/*'];
+const GENERATOR_SCRIPTS = ['./scripts/**/*'];
+const TEST_CODE = ['test/**/*.js'];
+const GENERATOR_TEMPLATES = ['./generators/*/templates/**/*'];
+const PACKAGE_RESOURCES = ['package.json', 'README.md'];
+const DIST = './dist';
 
 function doDebug(name) {
   return debug({title: name})
@@ -50,6 +51,12 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('copy-scripts', function() {
+  return gulp.src(GENERATOR_SCRIPTS)
+    .pipe(doDebug('scripts'))
+    .pipe(gulp.dest(DIST));
+});
+
 gulp.task('copy-templates', function () {
   var target = path.join(DIST, 'generators');
   return gulp.src(GENERATOR_TEMPLATES)
@@ -60,12 +67,13 @@ gulp.task('copy-templates', function () {
 gulp.task('copy-top-level-files', function () {
   return gulp.src(PACKAGE_RESOURCES)
     .pipe(doDebug('resource'))
-    .pipe(gulp.dest(DIST));
+    .pipe(gulp.dest(path.join(DIST, 'scripts')));
 });
 
 gulp.task('copy-resources', [
   'copy-templates',
   'copy-top-level-files',
+  'copy-scripts'
 ]);
 
 gulp.task('babel', function () {
