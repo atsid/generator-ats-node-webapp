@@ -17,7 +17,8 @@
   },
   "files": [
     "generators",
-    "util"
+    "util",
+    "scripts"
   ],
   "keywords": [
     "yeoman-generator",
