@@ -108,12 +108,15 @@ module.exports = {
       name: 'database',
       message: 'Database Type',
       type: 'list',
-      'default': (val) => acceptString(val, 'mongodb'),
+      default: 'mongodb',
       choices: [
         {name: 'MongoDB', value: 'mongodb'},
         {name: 'Sequelize (MySQL)', value: 'sequelize'},
       ],
-      when: this.options.server === 'full' && !this.options.database,
+      when: (hash) => {
+        const isFullServer = (this.options.server === 'full' || hash.server === 'full');
+        return isFullServer && !this.options.database;
+      },
     }, {
       type: 'checkbox',
       message: 'OAuth Strategies',
