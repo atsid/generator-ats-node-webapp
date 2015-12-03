@@ -50,6 +50,7 @@ module.exports =
 
   server:
     port: 9000
+    webpackHotLoader: 0
 
   database:
 <% if (useDatabase('mongodb')) { %>
