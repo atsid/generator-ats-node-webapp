@@ -16,9 +16,7 @@ module.exports = {
       'gulp-eslint',
       'babel-eslint',
       'babel-loader',
-      'babel-plugin-react-transform',
       'eslint-config-airbnb',
-      'eslint-plugin-react',
       'gulp',
       'gulp-livereload',
       'gulp-debug',
@@ -42,10 +40,6 @@ module.exports = {
       'isparta',
       'jsdom',
       'mkdirp',
-      'react-transform',
-      'react-transform-hmr',
-      'react-transform-catch-errors',
-      'redbox-react',
       'run-sequence',
       'vinyl-buffer',
       'vinyl-source-stream',
@@ -53,10 +47,6 @@ module.exports = {
       'webpack-dev-middleware',
       'webpack-hot-middleware'
     );
-
-    if (this.props.client === 'react') {
-      this.addDevDependency('livereactload');
-    }
     this.updateNpmScript('test', 'gulp');
     this.updateNpmScript('develop', 'gulp develop');
     this.updateNpmScript('postinstall', 'npm run install-git-hooks');

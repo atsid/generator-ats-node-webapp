@@ -10,7 +10,15 @@ module.exports = {
     );
     this.addDevDependencies(
       'nock',
-      'react-addons-test-utils'
+      'react-addons-test-utils',
+
+      // Build Support
+      'react-transform',
+      'react-transform-hmr',
+      'react-transform-catch-errors',
+      'redbox-react',
+      'eslint-plugin-react',
+      'babel-plugin-react-transform'
     );
   },
 };
