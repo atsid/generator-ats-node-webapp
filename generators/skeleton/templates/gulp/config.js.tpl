@@ -31,5 +31,5 @@ module.exports = {
       bundle: 'app.js',
     },
   }),
-  imagemin: { optimizationLevel: 4 }
+  imagemin: { optimizationLevel: 4 },
 };
