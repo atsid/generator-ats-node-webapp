@@ -12,6 +12,11 @@ module.exports = {
     );
 
     this.addDevDependencies(
+      'chai',
+      'gulp-eslint',
+      'babel-eslint',
+      'eslint-config-airbnb',
+      'eslint-plugin-react',
       'gulp',
       'gulp-livereload',
       'gulp-debug',
@@ -31,17 +36,20 @@ module.exports = {
       'gulp-util',
       'gulp-nodemon',
       'gulp-plumber',
+      'gulp-webpack',
+      'isparta',
+      'jsdom',
+      'mkdirp',
+      'react-transform',
+      'react-transform-hmr',
+      'react-transform-catch-errors',
+      'redbox-react',
       'run-sequence',
       'vinyl-buffer',
       'vinyl-source-stream',
-      'isparta',
-      'gulp-eslint',
-      'babel-eslint',
-      'eslint-config-airbnb',
-      'eslint-plugin-react',
-      'mkdirp',
-      'jsdom',
-      'chai'
+      'webpack',
+      'webpack-dev-middleware',
+      'webpack-hot-middleware'
     );
 
     if (this.props.client === 'react') {

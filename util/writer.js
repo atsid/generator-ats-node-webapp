@@ -1,13 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const debug = require('debug')('generator-ats-node-webapp:writer');
-const DOT_FILES = {
-  'editorconfig': true,
-  'eslintrc': true,
-  'gitignore': true,
-  'gitattributes': true,
-  'nodemonignore': true,
-};
 
 /**
  * Recursively processes content in a directory.
@@ -34,7 +27,10 @@ class PathScanner {
       } else {
         debug('processing file', filePath);
         const isTemplate = file.indexOf('.tpl') > -1;
-        const targetFilename = path.join(templateDir, (DOT_FILES[file] ? '.' : '') + file).replace('.tpl', '');
+        const filePrefix = file.endsWith('.dotfile') ? '.' : '';
+        const targetFilename = path.join(templateDir, filePrefix + file)
+          .replace('.tpl', '')
+          .replace('.dotfile', '');
         const method = (isTemplate ? 'copyTpl' : 'copy');
 
         try {
