@@ -6,9 +6,7 @@ module.exports = {
     );
 
     this.addDevDependencies(
-      'angular-mocks',
-      'browserify-ng-html2js'
+      'angular-mocks'
     );
-    this.addBrowserifyShim('angular', 'global:angular');
   },
 };

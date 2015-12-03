@@ -4,6 +4,7 @@ const INIT_SECTIONS = [
   require('./sections/force_ssl'),
   require('./sections/cache_control'),
   require('./sections/compression'),
+  require('./sections/webpack'),
   require('./sections/body_parsing'),
   require('./sections/static_content'),
   require('./sections/sessions'),

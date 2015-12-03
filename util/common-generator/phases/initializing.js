@@ -54,10 +54,6 @@ function addDevDependencies(...names) {
   names.forEach(this.addDevDependency);
 }
 
-function addBrowserifyShim(key, value) {
-  this.appendPackageJson({'browserify-shim': {[key]: value}});
-}
-
 /**
  * A private helper to update an NPM Script
  * @param name The name of the script section (e.g. postinstall, pretest)
@@ -92,7 +88,6 @@ module.exports = {
     this.addDependencies = addDependencies.bind(this);
     this.addDevDependencies = addDevDependencies.bind(this);
     this.updateNpmScript = updateNpmScript.bind(this);
-    this.addBrowserifyShim = addBrowserifyShim.bind(this);
   },
 
   scanPackageJson: function scanPackageJson() {
