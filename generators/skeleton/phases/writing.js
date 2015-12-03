@@ -15,6 +15,7 @@ module.exports = {
       'chai',
       'gulp-eslint',
       'babel-eslint',
+      'babel-plugin-react-transform',
       'eslint-config-airbnb',
       'eslint-plugin-react',
       'gulp',
