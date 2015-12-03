@@ -6,7 +6,4 @@ const index = angular.module('<%= name %>.welcome', [
 // define components
 index.controller('WelcomeController', require('./welcome_controller'));
 
-// include templates
-require('public/welcome/welcome.html');
-
 module.exports = index;
