@@ -47,7 +47,7 @@ module.exports = {
       'webpack-dev-middleware',
       'webpack-hot-middleware'
     );
-    this.updateNpmScript('test', 'gulp');
+    this.updateNpmScript('test', 'NODE_ENV=testing gulp');
     this.updateNpmScript('develop', 'gulp develop');
     this.updateNpmScript('postinstall', 'npm run install-git-hooks');
     this.updateNpmScript('install-git-hooks', './scripts/npm/install-git-hooks.sh');
