@@ -1,9 +1,8 @@
-"use strict";
-const log = require('log4js').getLogger("app:bootstrap");
-const express = require("express");
-const http = require("http");
-const path = require("path");
-const config = require("config");
+const log = require('debug')('app:bootstrap');
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const config = require('config');
 
 const app = express();
 
@@ -13,7 +12,7 @@ const compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {noInfo: true}));
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // HTML5 Pushstate Support
 app.get('*', (req, res) => {
@@ -22,5 +21,5 @@ app.get('*', (req, res) => {
 
 const server = http.createServer(app);
 server.listen(config.server.port, () => {
-  log.info('server listening on port ', config.server.port);
+  log('server listening on port ', config.server.port);
 });

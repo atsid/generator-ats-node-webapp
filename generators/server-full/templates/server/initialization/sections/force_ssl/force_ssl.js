@@ -1,4 +1,4 @@
-const log = require('log4js').getLogger('app:middleware:force_ssl');
+const log = require('debug')('app:middleware:force_ssl');
 
 /**
  * An express handler that redirects HTTP input to HTTPS port
@@ -13,7 +13,7 @@ function forceSsl(req, res, next) {
 
   if (isForwardedHttp() && !isHealthCheck()) {
     const newUrl = `https://${getHost()}${req.url}`;
-    log.debug(`Redirect HTTP request => ${newUrl}`);
+    log(`Redirect HTTP request => ${newUrl}`);
     res.redirect(newUrl);
   } else {
     next();

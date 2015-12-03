@@ -8,7 +8,7 @@ module.exports = {
       'jade',
       'express',
       'lodash',
-      'log4js'
+      'debug'
     );
 
     this.addDevDependencies(

@@ -98,7 +98,6 @@
     "jade": "^1.11.0",
     "jsdom": "^7.1.0",
     "livereactload": "^2.1.0",
-    "log4js": "^0.6.27",
     "material-ui": "^0.13.4",
     "mkdirp": "^0.5.1",
     "mocha": "2.x",

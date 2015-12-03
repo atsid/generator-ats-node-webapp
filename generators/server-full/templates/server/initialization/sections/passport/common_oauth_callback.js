@@ -1,5 +1,5 @@
 const Users = require('app/persistence').repositories.Users;
-const log = require('log4js').getLogger('app:auth');
+const log = require('debug')('app:auth');
 
 /**
  * The default token handler - does nothing with the provider tokens
@@ -17,7 +17,7 @@ module.exports = (findUserEntity, createUserEntity, methodName, handleTokens = d
       .then((user) => handleTokens(user, tokenA, tokenB))
       .then((user) => done(null, user))
       .catch((err) => {
-        log.debug(`error authenticating via ${methodName}`, err);
+        log(`error authenticating via ${methodName}`, err);
         done(err, null);
       });
   };

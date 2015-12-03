@@ -1,4 +1,4 @@
-const log = require('log4js').getLogger('app:stores:project_store');
+const log = require('debug')('app:stores:project_store');
 const request = require('superagent');
 
 /**
@@ -26,11 +26,11 @@ class UserStore {
             if (err.status === 404) {
               resolve(null);
             } else {
-              log.debug('error getting current user', err.message, err.body, err.status);
+              log('error getting current user', err.message, err.body, err.status);
               reject(err);
             }
           } else {
-            log.debug('current user: ', res.body);
+            log('current user: ', res.body);
             this.state.currentUser = {result: res.body};
             resolve(res.body);
           }

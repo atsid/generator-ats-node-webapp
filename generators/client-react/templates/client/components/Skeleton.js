@@ -1,4 +1,4 @@
-const log = require('log4js').getLogger('app:components:application');
+const log = require('debug')('app:components:application');
 const React = require('react');
 
 // Components
@@ -40,7 +40,7 @@ const Skeleton = React.createClass({
     return this.context.stores.users.getCurrentUser()
       .then((user) => this.setState({user, loading: false}))
       .catch((err) => {
-        log.debug('error loading store data', err);
+        log('error loading store data', err);
         this.setState({loading: false});
       });
   },

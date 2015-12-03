@@ -1,5 +1,5 @@
 const fs = require('fs');
-const log = require('log4js').getLogger('app:persistence:models');
+const log = require('debug')('app:persistence:models');
 const models = {};
 const mongoose = require('../mongoose');
 
@@ -11,9 +11,9 @@ function getModels() {
 
   function loadModel(modelName) {
     if (modelName !== 'index.js') {
-      log.debug(`loading model ${modelName}`);
+      log(`loading model ${modelName}`);
       const modelFunction = require(`./${modelName}`);
-      log.debug(`preparing model ${modelName}`);
+      log(`preparing model ${modelName}`);
       models[modelName] = modelFunction(mongoose);
     }
   }

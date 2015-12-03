@@ -1,5 +1,5 @@
 const passwordChecker = require('app/components/password_checker');
-const log = require('log4js').getLogger('app:models:user:encrypt_on_save');
+const log = require('debug')('app:models:user:encrypt_on_save');
 
 function encryptPassword(next) {
   const user = this;
@@ -9,7 +9,7 @@ function encryptPassword(next) {
   if (!checkForPasswordChange) {
     next();
   } else {
-    log.debug('password change detected for ', user.email || user.name);
+    log('password change detected for ', user.email || user.name);
     return Promise.resolve(true)
       .then(() => passwordChecker.encryptPassword(user.password))
       .then((hash) => user.password = hash)
