@@ -1,5 +1,5 @@
 const config = require('config');
-const log = require('log4js').getLogger('app:components:password_checker');
+const log = require('debug')('app:components:password_checker');
 const bcrypt = require('bcryptjs');
 const saltWorkFactor = config.auth.local.password.saltWorkFactor;
 const autohandle = require('./autohandle');
@@ -34,7 +34,7 @@ function isValidPassword(password, hashed) {
   if (!hashed) {
     throw new Error(`'hashed' argument is required`);
   }
-  log.debug('checking user password');
+  log('checking user password');
   return compare(password, hashed);
 }
 

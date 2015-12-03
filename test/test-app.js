@@ -87,7 +87,7 @@ describe('generator-ats-node-webapp:app', function () {
       server: 'full',
       database: 'mongodb'
     }, () => {
-      exec('npm run create-app-symlink && gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
+      exec('npm run create-app-symlink && NODE_ENV=testing gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 
@@ -119,7 +119,7 @@ describe('generator-ats-node-webapp:app', function () {
       client: 'react',
       server: 'thin'
     }, () => {
-      exec('gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
+      exec('NODE_ENV=testing gulp', { env: process.env }, checkExecOutput(done, BUILD_DONE, BUILD_FAIL));
     });
   });
 

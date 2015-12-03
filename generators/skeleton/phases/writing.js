@@ -8,10 +8,15 @@ module.exports = {
       'jade',
       'express',
       'lodash',
-      'log4js'
+      'debug'
     );
 
     this.addDevDependencies(
+      'chai',
+      'gulp-eslint',
+      'babel-eslint',
+      'babel-loader',
+      'eslint-config-airbnb',
       'gulp',
       'gulp-livereload',
       'gulp-debug',
@@ -31,29 +36,18 @@ module.exports = {
       'gulp-util',
       'gulp-nodemon',
       'gulp-plumber',
+      'gulp-webpack',
+      'isparta',
+      'jsdom',
+      'mkdirp',
       'run-sequence',
       'vinyl-buffer',
       'vinyl-source-stream',
-      'isparta',
-      'gulp-eslint',
-      'babel-eslint',
-      'eslint-config-airbnb',
-      'eslint-plugin-react',
-      'babelify',
-      'mkdirp',
-      'browserify',
-      'browserify-shim',
-      'envify',
-      'uglifyify',
-      'watchify',
-      'jsdom',
-      'chai'
+      'webpack',
+      'webpack-dev-middleware',
+      'webpack-hot-middleware'
     );
-
-    if (this.props.client === 'react') {
-      this.addDevDependency('livereactload');
-    }
-    this.updateNpmScript('test', 'gulp');
+    this.updateNpmScript('test', 'NODE_ENV=testing gulp');
     this.updateNpmScript('develop', 'gulp develop');
     this.updateNpmScript('postinstall', 'npm run install-git-hooks');
     this.updateNpmScript('install-git-hooks', './scripts/npm/install-git-hooks.sh');

@@ -8,7 +8,6 @@ const appModule = angular.module('<%= name %>', [
   'ngMaterial',
 
   // Application Modules
-  'templates',
   require('./services/index').name,
   require('./welcome/index').name,
 ]);

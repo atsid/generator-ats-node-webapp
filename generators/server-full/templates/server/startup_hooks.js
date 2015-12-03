@@ -1,14 +1,14 @@
-const log = require('log4js').getLogger('app:startup');
+const log = require('debug')('app:startup');
 const promises = [];
 
 module.exports = {
   addHook(hook) {
-    log.debug('adding startup hook');
+    log('adding startup hook');
     promises.push(hook);
   },
 
   resolve() {
-    log.debug(`resolving ${promises.length} startup hooks`);
+    log(`resolving ${promises.length} startup hooks`);
     return Promise.all(promises);
   },
 };

@@ -1,9 +1,10 @@
-const log = require('log4js').getLogger('app:initialization');
+const log = require('debug')('app:initialization');
 const INIT_SECTIONS = [
   require('./sections/helmet'),
   require('./sections/force_ssl'),
   require('./sections/cache_control'),
   require('./sections/compression'),
+  require('./sections/webpack'),
   require('./sections/body_parsing'),
   require('./sections/static_content'),
   require('./sections/sessions'),
@@ -16,7 +17,7 @@ const INIT_SECTIONS = [
 
 function configure(app) {
   INIT_SECTIONS.forEach((sec) => {
-    log.debug('configuring ' + sec.name);
+    log('configuring ' + sec.name);
     sec.configure(app);
   });
 }

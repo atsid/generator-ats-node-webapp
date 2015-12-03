@@ -4,6 +4,10 @@ if [ ! -e node_modules ]; then
     mkdir -p node_modules
 fi
 
+if [ ! -e public ]; then
+  mkdir -p public
+fi
+
 if [ -e node_modules/public ]; then
   rm node_modules/public
 fi

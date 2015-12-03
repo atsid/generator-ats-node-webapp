@@ -1,4 +1,3 @@
-require('public/welcome/nyan_cat/nyan_cat.html');
 module.exports = [() => {
   return {
     restrict: 'E',
