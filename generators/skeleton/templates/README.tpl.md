@@ -35,7 +35,7 @@ TODO: Insert Dependency Status Badge
         ├───routers/ (RESTful endpoint definitions)
         ├───routers.spec/ (RESTful endpoint tests, separate folder because routers is scanned by express-mountie)<% } %>
     └───client (Client Implementation)
-        ├───app.js (bundling root - bundled by browserify)
+        ├───app.js (bundling root - bundled by webpack)
         ├───assets/ (static assets)
         ├───styles/ (Sass entry-point)
     └───public - statically served directory containing processed client assets

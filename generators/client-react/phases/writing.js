@@ -12,6 +12,5 @@ module.exports = {
       'nock',
       'react-addons-test-utils'
     );
-    this.appendPackageJson({'browserify-shim': {}});
   },
 };

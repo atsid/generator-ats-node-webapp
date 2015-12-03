@@ -1,6 +1,4 @@
 const _ = require('lodash');
-const babelify = require('babelify');<% if (client === 'angular') { %>
-const ngHtml2Js = require('browserify-ng-html2js');<% } %>
 
 function sourceNode(rootName, root, extra = {}) {
   return _.merge({
@@ -33,19 +31,5 @@ module.exports = {
       bundle: 'app.js',
     },
   }),
-  imagemin: { optimizationLevel: 4 },
-  browserify: {
-    entries: CLIENT_ENTRIES,
-    transform: [
-      babelify,<% if (client === 'angular') { %>
-      ngHtml2Js({
-        module: 'templates',
-        baseDir: 'public',
-      }),<% } %>
-      'browserify-shim',
-    ],
-    debug: false,
-    cache: {},
-    packageCache: {},
-  },
+  imagemin: { optimizationLevel: 4 }
 };

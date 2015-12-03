@@ -39,13 +39,7 @@ module.exports = {
       'babel-eslint',
       'eslint-config-airbnb',
       'eslint-plugin-react',
-      'babelify',
       'mkdirp',
-      'browserify',
-      'browserify-shim',
-      'envify',
-      'uglifyify',
-      'watchify',
       'jsdom',
       'chai'
     );
